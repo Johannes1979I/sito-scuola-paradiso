@@ -11,3 +11,6 @@ desktop.ini
 *.bak-*
 *.tmp
 *~
+
+# Server locale (solo sviluppo, non va online)
+dev-router.php
