@@ -56,13 +56,15 @@ body {
   overflow-x: hidden;
 }
 
-/* --- Sfondo: immagine "mani colorate" SEMPRE visibile in trasparenza al 10% (fissa, dietro a tutto) --- */
+/* --- Sfondo: logo della scuola come filigrana centrata in trasparenza (fisso, dietro a tutto) --- */
 body::before {
   content: "";
   position: fixed; inset: 0; z-index: -1;
-  background-image: var(--bg-photo, url("../img/mani-colorate.jpg"));
-  background-size: cover; background-position: center;
-  opacity: .10;
+  background-image: var(--bg-photo, url("../img/logo.png"));
+  background-size: min(620px, 70vw);
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: .08;
   pointer-events: none;
 }
 img { max-width: 100%; height: auto; display: block; }
