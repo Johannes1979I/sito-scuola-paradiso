@@ -1,0 +1,15 @@
+AUDIO DELL'INTRO DELLA HOME
+===========================
+Per far partire l'audio durante l'animazione di apertura della home, metti qui un file
+chiamato esattamente:  intro.mp3
+
+IMPORTANTE (copyright):
+- NON usare l'audio scaricato da YouTube o brani protetti senza licenza: su un sito
+  pubblico sarebbe una violazione di copyright.
+- Usa un brano di cui hai i diritti, oppure musica royalty-free / libera da copyright.
+
+NOTE TECNICHE:
+- L'audio viene riprodotto e poi sfumato in fade-out durante l'intro (circa 4 secondi).
+- I browser BLOCCANO l'audio automatico finché l'utente non interagisce con la pagina:
+  se non parte subito, partirà al primo clic/tocco (gia' gestito nel codice).
+- Formato consigliato: MP3 (.mp3). Durata breve consigliata (~5-8 secondi).

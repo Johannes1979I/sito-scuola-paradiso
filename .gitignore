@@ -1,0 +1,13 @@
+# Credenziali admin: restano SOLO in locale, mai online
+admin/config.php
+
+# File di sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Backup e temporanei
+*.bak
+*.bak-*
+*.tmp
+*~

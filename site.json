@@ -1,0 +1,36 @@
+{
+    "nav": [
+        {
+            "page": "index.html",
+            "label": "Home"
+        },
+        {
+            "page": "chi-siamo.html",
+            "label": "Chi siamo"
+        },
+        {
+            "page": "offerta-formativa.html",
+            "label": "Offerta formativa"
+        },
+        {
+            "page": "vita-scolastica.html",
+            "label": "Vita scolastica"
+        },
+        {
+            "page": "teatro.html",
+            "label": "Teatro"
+        },
+        {
+            "page": "sostienici.html",
+            "label": "Sostienici"
+        },
+        {
+            "page": "news.html",
+            "label": "News"
+        },
+        {
+            "page": "contatti.html",
+            "label": "Contatti"
+        }
+    ]
+}
