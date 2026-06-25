@@ -10,7 +10,7 @@
   --blu-scuro:  #0c2c6b;
   --blu-chiaro: #2f6bd6;
 
-  /* Accenti gioiosi (dalle mani colorate) */
+  /* Accenti colore secondari (usati con parsimonia, mai in sequenza multicolore) */
   --giallo:  #ffc23c;
   --arancio: #ff7a3c;
   --rosa:    #ff5470;
@@ -201,8 +201,8 @@ h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); }
 .hero-badge strong { display: block; font-family: "Fraunces", serif; font-size: 1.05rem; }
 .hero-badge span { font-size: .82rem; color: var(--muted); }
 .hero-blob { position: absolute; z-index: -1; border-radius: 50%; filter: blur(8px); opacity: .5; }
-.hero-blob.b1 { width: 130px; height: 130px; background: var(--rosa); top: -20px; right: 30px; }
-.hero-blob.b2 { width: 90px; height: 90px; background: var(--verde); bottom: 40px; right: -18px; }
+.hero-blob.b1 { width: 130px; height: 130px; background: var(--ciano); top: -20px; right: 30px; }
+.hero-blob.b2 { width: 90px; height: 90px; background: var(--blu); bottom: 40px; right: -18px; }
 
 /* ---------- Strip loghi/ente ---------- */
 .trust { padding: 30px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -219,7 +219,7 @@ h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); }
 }
 .mission::before {
   content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
-  background: linear-gradient(90deg, var(--giallo), var(--arancio), var(--rosa), var(--ciano), var(--verde));
+  background: linear-gradient(90deg, var(--blu), var(--ciano));
 }
 .mission-head { text-align: center; max-width: 780px; margin: 0 auto clamp(30px, 4vw, 46px); }
 .mission-head h2 em { font-style: italic; color: var(--blu); }
@@ -236,11 +236,8 @@ h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); }
   font-size: 2.1rem; background: var(--bg-blu); line-height: 1;
 }
 .mission-item strong { font-size: 1.12rem; font-weight: 600; line-height: 1.32; color: var(--ink); }
-.mission-item:nth-child(1) .mi-ico { background: color-mix(in srgb, var(--giallo) 20%, #fff); }
-.mission-item:nth-child(2) .mi-ico { background: color-mix(in srgb, var(--arancio) 17%, #fff); }
-.mission-item:nth-child(3) .mi-ico { background: color-mix(in srgb, var(--rosa) 15%, #fff); }
-.mission-item:nth-child(4) .mi-ico { background: color-mix(in srgb, var(--ciano) 17%, #fff); }
-.mission-item:nth-child(5) .mi-ico { background: color-mix(in srgb, var(--verde) 17%, #fff); }
+/* Icone missione: tinta blu istituzionale uniforme (niente sequenza multicolore) */
+.mission-item .mi-ico { background: color-mix(in srgb, var(--blu) 10%, #fff); }
 @media (max-width: 900px) { .mission-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 480px) { .mission-grid { grid-template-columns: 1fr; } }
 
