@@ -495,3 +495,60 @@
     }
   })();
 })();
+
+/* --- Carosello News in home (auto-rotazione, frecce, puntini, swipe) --- */
+(function () {
+  function initCarousel(root) {
+    var track = root.querySelector(".nc-track");
+    var slides = root.querySelectorAll(".nc-slide");
+    if (!track || slides.length === 0) { return; }
+    var dotsWrap = root.querySelector(".nc-dots");
+    var prevBtn = root.querySelector(".nc-prev");
+    var nextBtn = root.querySelector(".nc-next");
+    var n = slides.length, i = 0, timer = null;
+    var delay = parseInt(root.getAttribute("data-autoplay"), 10) || 6000;
+    var editMode = new URLSearchParams(location.search).get("edit") === "1";
+    var dots = [];
+
+    if (dotsWrap) {
+      for (var k = 0; k < n; k++) {
+        var b = document.createElement("button");
+        b.type = "button"; b.className = "nc-dot";
+        b.setAttribute("aria-label", "Vai alla notizia " + (k + 1));
+        (function (idx) { b.addEventListener("click", function () { go(idx); restart(); }); })(k);
+        dotsWrap.appendChild(b); dots.push(b);
+      }
+    }
+    function update() {
+      track.style.transform = "translateX(" + (-i * 100) + "%)";
+      for (var d = 0; d < dots.length; d++) { dots[d].classList.toggle("active", d === i); }
+    }
+    function go(idx) { i = (idx + n) % n; update(); }
+    function start() { if (!editMode && n > 1 && !timer) { timer = setInterval(function () { go(i + 1); }, delay); } }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function restart() { stop(); start(); }
+
+    if (nextBtn) { nextBtn.addEventListener("click", function () { go(i + 1); restart(); }); }
+    if (prevBtn) { prevBtn.addEventListener("click", function () { go(i - 1); restart(); }); }
+    root.addEventListener("mouseenter", stop);
+    root.addEventListener("mouseleave", start);
+    document.addEventListener("visibilitychange", function () { if (document.hidden) { stop(); } else { start(); } });
+
+    var x0 = null;
+    root.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; stop(); }, { passive: true });
+    root.addEventListener("touchend", function (e) {
+      if (x0 === null) { return; }
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 40) { go(i + (dx < 0 ? 1 : -1)); }
+      x0 = null; restart();
+    }, { passive: true });
+
+    update(); start();
+  }
+  function boot() {
+    var list = document.querySelectorAll(".news-carousel");
+    Array.prototype.forEach.call(list, initCarousel);
+  }
+  if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", boot); }
+  else { boot(); }
+})();

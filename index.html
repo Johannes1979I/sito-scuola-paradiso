@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=4">
+<link rel="stylesheet" href="assets/css/style.css?v=5">
 <script>if(/[?&]edit=1/.test(location.search)){document.documentElement.classList.add('no-intro');}</script>
 </head>
 <body data-page="home">
@@ -59,7 +59,7 @@
       <div class="hero-media reveal">
         <span class="hero-blob b1"></span>
         <span class="hero-blob b2"></span>
-        <div class="photo"><img src="assets/img/secondaria.jpg" alt="Studenti sorridenti della scuola"></div>
+        <div class="photo"><img src="uploads/chiostro-e92c03.webp" alt="Il chiostro storico della scuola Santa Maria del Paradiso"></div>
         <div class="hero-badge">
           <span class="ico">✨</span>
           <div><strong>Un'unica grande famiglia</strong><span>educare con il cuore, ogni giorno</span></div>
@@ -69,82 +69,51 @@
   </div>
 </section>
 
-<!-- ============ MISSION ============ -->
-<section class="section" id="mission">
-  <div class="container">
-    <div class="mission reveal">
-      <div class="mission-head">
-        <span class="eyebrow">La nostra identità</span>
-        <h2>La nostra <em>mission</em></h2>
-        <p class="lead" data-edit="home.mission.lead">Una scuola paritaria riconosciuta, di ispirazione cristiana, che accompagna bambini e ragazzi in un unico cammino educativo dall'Infanzia alla Secondaria di I grado.</p>
-      </div>
-      <div class="mission-grid">
-        <div class="mission-item"><span class="mi-ico">🏅</span><strong>Scuola Paritaria riconosciuta</strong></div>
-        <div class="mission-item"><span class="mi-ico">🧸</span><strong>Scuola dell'Infanzia</strong></div>
-        <div class="mission-item"><span class="mi-ico">✏️</span><strong>Scuola Primaria</strong></div>
-        <div class="mission-item"><span class="mi-ico">🔬</span><strong>Secondaria di I grado</strong></div>
-        <div class="mission-item"><span class="mi-ico">🕊️</span><strong>Ispirazione cristiana</strong></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CHI SIAMO ============ -->
-<section class="section">
-  <div class="container">
-    <div class="split">
-      <div class="split-media reveal">
-        <img src="assets/img/vita-scuola.jpg" alt="La vita nella nostra scuola">
-      </div>
-      <div class="reveal">
-        <span class="eyebrow">La nostra identità</span>
-        <h2>Una comunità educativa che mette al centro <em style="font-style:italic;color:var(--blu)">ogni bambino</em></h2>
-        <p class="lead" style="margin-top:18px" data-edit="home.chisiamo.lead">Da generazioni accompagniamo i bambini e i ragazzi di Viterbo in un percorso di crescita che unisce solide competenze, attenzione personale e valori autentici.</p>
-        <ul class="value-list">
-          <li><span class="chk">✓</span><div><strong>Centralità della persona</strong><span>Ogni studente è unico: lo accompagniamo con cura, ascolto e fiducia.</span></div></li>
-          <li><span class="chk">✓</span><div><strong>Valori che fanno la differenza</strong><span>Rispetto, accoglienza e responsabilità ispirano la nostra giornata.</span></div></li>
-          <li><span class="chk">✓</span><div><strong>Continuità educativa</strong><span>Un unico cammino coerente, dall'infanzia alla secondaria di I grado.</span></div></li>
-        </ul>
-        <a href="chi-siamo.html" class="btn btn--primary" style="margin-top:32px">Conosci la nostra storia</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PERCORSI ============ -->
-<section class="section section--soft" id="percorsi">
+<!-- ============ NEWS IN EVIDENZA (carosello) ============ -->
+<section class="section section--soft" id="news">
   <div class="container">
     <div class="section-head center mx-auto reveal">
-      <span class="eyebrow">Offerta formativa</span>
-      <h2>Un percorso completo, dai primi passi alla preadolescenza</h2>
-      <p class="lead" data-edit="home.percorsi.lead">Tre ordini di scuola, un'unica visione educativa: crescere insieme, con competenza e con il sorriso.</p>
+      <span class="eyebrow">In primo piano</span>
+      <h2>Avvisi e novità dalla scuola</h2>
+      <p class="lead">Le ultime comunicazioni, gli eventi e gli appuntamenti della nostra comunità.</p>
     </div>
-    <div class="grid grid-3">
-      <div class="level reveal" style="--accent:var(--giallo)">
-        <div class="ico-big">🧸</div>
-        <span class="tag">Infanzia</span>
-        <h3>Scuola dell'Infanzia</h3>
-        <div class="age">👶 3 – 6 anni</div>
-        <p>Il primo incontro con la scuola: gioco, scoperta e affetto per imparare a stare insieme e a esprimere la propria creatività.</p>
-        <a href="offerta-formativa.html#infanzia" class="link-arrow">Scopri di più <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <div class="news-carousel reveal" data-autoplay="6000" aria-roledescription="carosello" aria-label="Avvisi e novità">
+      <div class="nc-viewport">
+        <div class="nc-track">
+          <a class="nc-slide" href="news.html#serra-club">
+            <div class="nc-media"><img src="assets/img/vita-scuola.jpg" alt="Vincitori Serra Club 2023"></div>
+            <div class="nc-body">
+              <span class="date">Riconoscimenti</span>
+              <h3>I nostri vincitori del Serra Club 2023</h3>
+              <p>I nostri studenti si sono distinti nel concorso del Serra Club di Viterbo, conquistando i primi posti sia per la primaria sia per la secondaria.</p>
+              <span class="link-arrow">Leggi l'articolo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+          <a class="nc-slide" href="news.html#open-day">
+            <div class="nc-media"><img src="assets/img/open-day.jpeg" alt="Open Day in classe"></div>
+            <div class="nc-body">
+              <span class="date">Eventi</span>
+              <h3>Open Day: vieni a conoscere la scuola</h3>
+              <p>Apriamo le porte alle famiglie per scoprire gli ambienti, il progetto educativo e le persone che ogni giorno fanno grande la scuola.</p>
+              <span class="link-arrow">Scopri di più <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+          <a class="nc-slide" href="news.html#iscrizioni">
+            <div class="nc-media"><img src="assets/img/iscrizioni.jpeg" alt="Iscrizioni aperte"></div>
+            <div class="nc-body">
+              <span class="date">Iscrizioni</span>
+              <h3>Iscrizioni aperte: un posto per tuo figlio</h3>
+              <p>Sono aperte le iscrizioni a Infanzia, Primaria e Secondaria di I grado. Contatta la segreteria per modalità, scadenze e documenti.</p>
+              <span class="link-arrow">Come iscriversi <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+        </div>
       </div>
-      <div class="level reveal" style="--accent:var(--arancio)">
-        <div class="ico-big">✏️</div>
-        <span class="tag">Primaria</span>
-        <h3>Scuola Primaria</h3>
-        <div class="age">🎒 6 – 11 anni</div>
-        <p>Le basi del sapere e del carattere: leggere, scrivere, ragionare e collaborare, accompagnati passo dopo passo verso l'autonomia.</p>
-        <a href="offerta-formativa.html#primaria" class="link-arrow">Scopri di più <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div>
-      <div class="level reveal" style="--accent:var(--ciano)">
-        <div class="ico-big">🔬</div>
-        <span class="tag">Secondaria</span>
-        <h3>Secondaria di I grado</h3>
-        <div class="age">📚 11 – 14 anni</div>
-        <p>Il tempo delle grandi domande: conoscenze più ampie, pensiero critico e orientamento per scegliere con consapevolezza il futuro.</p>
-        <a href="offerta-formativa.html#secondaria" class="link-arrow">Scopri di più <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div>
+      <button class="nc-arrow nc-prev" type="button" aria-label="Notizia precedente">&#8249;</button>
+      <button class="nc-arrow nc-next" type="button" aria-label="Notizia successiva">&#8250;</button>
+      <div class="nc-dots" aria-hidden="true"></div>
     </div>
+    <div class="reveal" style="text-align:center;margin-top:30px"><a href="news.html" class="btn btn--ghost">Vedi tutte le news</a></div>
   </div>
 </section>
 
@@ -231,43 +200,6 @@
   </div>
 </section>
 
-<!-- ============ NEWS ============ -->
-<section class="section" id="news">
-  <div class="container">
-    <div class="section-head center mx-auto reveal">
-      <span class="eyebrow">In primo piano</span>
-      <h2>Avvisi e novità dalla scuola</h2>
-      <p class="lead">Comunicazioni, eventi e momenti significativi della nostra comunità.</p>
-    </div>
-    <div class="grid grid-3">
-      <a href="news.html#serra-club" class="news reveal">
-        <div class="thumb"><img src="assets/img/vita-scuola.jpg" alt="Vincitori Serra Club 2023"></div>
-        <div class="body">
-          <span class="date">Riconoscimenti</span>
-          <h3>I nostri vincitori del Serra Club 2023</h3>
-          <span class="link-arrow">Leggi l'articolo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </div>
-      </a>
-      <a href="news.html#open-day" class="news reveal">
-        <div class="thumb"><img src="assets/img/open-day.jpeg" alt="Open Day"></div>
-        <div class="body">
-          <span class="date">Eventi</span>
-          <h3>Open Day: vieni a conoscere la scuola</h3>
-          <span class="link-arrow">Scopri di più <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </div>
-      </a>
-      <a href="news.html#iscrizioni" class="news reveal">
-        <div class="thumb"><img src="assets/img/iscrizioni.jpeg" alt="Iscrizioni aperte"></div>
-        <div class="body">
-          <span class="date">Iscrizioni</span>
-          <h3>Iscrizioni aperte: un posto per tuo figlio</h3>
-          <span class="link-arrow">Come iscriversi <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
 <!-- ============ CTA BAND ============ -->
 <section class="section" style="padding-top:0">
   <div class="container">
@@ -301,6 +233,6 @@
   </div>
 </section>
 
-<script src="assets/js/layout.js?v=5"></script>
+<script src="assets/js/layout.js?v=6"></script>
 </body>
 </html>
