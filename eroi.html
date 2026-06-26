@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=10">
+<link rel="stylesheet" href="assets/css/style.css?v=11">
 </head>
 <body data-page="eroi">
 
@@ -26,15 +26,58 @@
 
 <section class="section">
   <div class="container">
-    <div class="todo-note reveal mx-auto" style="max-width:820px;margin-bottom:28px;text-align:center"><strong>DA COMPLETARE:</strong> inserite qui gli ex studenti che hanno ottenuto grandi successi — foto, nome, anno di diploma e il traguardo raggiunto. Mandatemi i dati e li impagino.</div>
-    <div class="staff-grid">
-      <div class="staff-card reveal"><div class="avatar">🌟</div><strong>Nome Cognome</strong><span>Diplomato/a nel 20.. — traguardo raggiunto</span></div>
-      <div class="staff-card reveal"><div class="avatar">🏆</div><strong>Nome Cognome</strong><span>Diplomato/a nel 20.. — traguardo raggiunto</span></div>
-      <div class="staff-card reveal"><div class="avatar">🎓</div><strong>Nome Cognome</strong><span>Diplomato/a nel 20.. — traguardo raggiunto</span></div>
-      <div class="staff-card reveal"><div class="avatar">⭐</div><strong>Nome Cognome</strong><span>Diplomato/a nel 20.. — traguardo raggiunto</span></div>
+    <div class="todo-note reveal mx-auto" style="max-width:880px;margin-bottom:30px">
+      <strong>DA COMPLETARE:</strong> mandami per ogni ex studente — <strong>foto</strong>, nome, anno di diploma, traguardo, una breve descrizione e (se c'è) un <strong>video</strong> (link YouTube oppure un file da caricare in <code>uploads/</code>). Qui sotto c'è già il modello pronto: foto cliccabile, testo e pulsante "Guarda il video".
+    </div>
+    <div class="heroes-grid">
+
+      <article class="hero-card reveal">
+        <a class="hc-photo" href="#" data-modal data-modal-title="Nome Cognome — video" data-modal-content="#src-eroe-video">
+          <img src="assets/img/secondaria.jpg" alt="Foto ex studente">
+          <span class="hc-play"><span>▶</span></span>
+        </a>
+        <div class="hc-body">
+          <span class="hc-meta">Diplomato/a nel 20.. · Traguardo</span>
+          <h3>Nome Cognome</h3>
+          <p>Breve descrizione del percorso e del successo raggiunto.</p>
+          <div class="hc-actions"><a class="btn btn--ghost" href="#" data-modal data-modal-title="Nome Cognome — video" data-modal-content="#src-eroe-video">Guarda il video</a></div>
+        </div>
+      </article>
+
+      <article class="hero-card reveal">
+        <a class="hc-photo" href="#" data-modal data-modal-image="assets/img/vita-scuola.jpg" data-modal-title="Nome Cognome">
+          <img src="assets/img/vita-scuola.jpg" alt="Foto ex studente">
+        </a>
+        <div class="hc-body">
+          <span class="hc-meta">Diplomato/a nel 20.. · Traguardo</span>
+          <h3>Nome Cognome</h3>
+          <p>Breve descrizione del percorso e del successo raggiunto. (Esempio con sola foto, senza video.)</p>
+        </div>
+      </article>
+
+      <article class="hero-card reveal">
+        <a class="hc-photo" href="#" data-modal data-modal-title="Nome Cognome — video" data-modal-content="#src-eroe-video">
+          <img src="assets/img/iscrizioni.jpeg" alt="Foto ex studente">
+          <span class="hc-play"><span>▶</span></span>
+        </a>
+        <div class="hc-body">
+          <span class="hc-meta">Diplomato/a nel 20.. · Traguardo</span>
+          <h3>Nome Cognome</h3>
+          <p>Breve descrizione del percorso e del successo raggiunto.</p>
+          <div class="hc-actions"><a class="btn btn--ghost" href="#" data-modal data-modal-title="Nome Cognome — video" data-modal-content="#src-eroe-video">Guarda il video</a></div>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
+
+<!-- Sorgente modale video (istruzioni / esempio per ogni eroe) -->
+<div class="lm-source" id="src-eroe-video" hidden>
+  <p><strong>DA COMPLETARE — video dell'eroe.</strong> Due modi possibili, entrambi già supportati:</p>
+  <p><strong>1) Video YouTube</strong> — nel link "Guarda il video" sostituisci <code>data-modal-content="#src-eroe-video"</code> con:<br><code>data-modal-embed="https://www.youtube.com/embed/ID_VIDEO"</code></p>
+  <p><strong>2) Video caricato</strong> — carica il filmato in <code>uploads/</code> e qui (al posto di questo testo) metti:<br><code>&lt;video controls style="width:100%;border-radius:12px" src="uploads/nome-video.mp4"&gt;&lt;/video&gt;</code></p>
+</div>
 
 <section class="section section--soft">
   <div class="container">
