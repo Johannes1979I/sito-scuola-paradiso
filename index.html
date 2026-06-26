@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=6">
+<link rel="stylesheet" href="assets/css/style.css?v=7">
 <script>if(/[?&]edit=1/.test(location.search)){document.documentElement.classList.add('no-intro');}</script>
 </head>
 <body data-page="home">
@@ -114,6 +114,35 @@
       <div class="nc-dots" aria-hidden="true"></div>
     </div>
     <div class="reveal" style="text-align:center;margin-top:30px"><a href="news.html" class="btn btn--ghost">Vedi tutte le news</a></div>
+  </div>
+</section>
+
+<!-- ============ SLOGAN ============ -->
+<section class="section" style="padding-bottom:0">
+  <div class="container">
+    <div class="callout reveal mx-auto" style="max-width:840px;text-align:center">
+      <p style="font-size:1.3rem;font-style:italic;color:var(--blu-scuro)">«Per far crescere un progetto ci vuole una comunità.»</p>
+      <p style="margin-top:10px;color:var(--muted);font-size:.92rem">— ispirato a Papa Francesco · <em>(frase da confermare)</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACCESSO RAPIDO ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center mx-auto reveal"><span class="eyebrow">Accesso rapido</span><h2>Tutto a portata di clic</h2></div>
+    <div class="reveal" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+      <a href="chi-siamo.html" class="btn btn--ghost">Chi siamo</a>
+      <a href="chi-siamo.html#mission" class="btn btn--ghost">La nostra mission</a>
+      <a href="offerta-formativa.html#infanzia" class="btn btn--ghost">Infanzia</a>
+      <a href="offerta-formativa.html#primaria" class="btn btn--ghost">Primaria</a>
+      <a href="offerta-formativa.html#secondaria" class="btn btn--ghost">Secondaria</a>
+      <a href="docenti.html" class="btn btn--ghost">Corpo docenti</a>
+      <a href="erasmus.html" class="btn btn--ghost">Erasmus</a>
+      <a href="galleria.html" class="btn btn--ghost">Galleria foto</a>
+      <a href="#" class="btn btn--ghost" data-modal data-modal-title="PTOF — Piano Triennale dell'Offerta Formativa" data-modal-content="#src-ptof">PTOF</a>
+      <a href="#" class="btn btn--ghost" data-modal data-modal-title="Rette scolastiche" data-modal-content="#src-rette">Rette</a>
+    </div>
   </div>
 </section>
 
@@ -233,6 +262,12 @@
   </div>
 </section>
 
-<script src="assets/js/layout.js?v=6"></script>
+<div class="lm-source" id="src-ptof" hidden>
+  <p><strong>DA COMPLETARE:</strong> caricate il <strong>PTOF</strong> (Piano Triennale dell'Offerta Formativa) in PDF e lo colleghiamo a questo pulsante (oppure lo incorporiamo qui nel modale).</p>
+</div>
+<div class="lm-source" id="src-rette" hidden>
+  <p><strong>DA COMPLETARE:</strong> inserite qui gli importi delle <strong>rette</strong> (Infanzia / Primaria / Secondaria) e le modalità di pagamento. Le scrivo io appena me le date.</p>
+</div>
+<script src="assets/js/layout.js?v=7"></script>
 </body>
 </html>

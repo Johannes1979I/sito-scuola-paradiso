@@ -22,7 +22,13 @@
     orari: "Lun–Ven · 7:45–10:00 / 12:00–13:30",
     // Canale chat PROVVISORIO (da decidere: WhatsApp Business o altro)
     whatsapp: "393405416568",
-    whatsappMsg: "Salve, vorrei alcune informazioni sulla scuola."
+    whatsappMsg: "Salve, vorrei alcune informazioni sulla scuola.",
+    // Social — DA COMPLETARE con gli URL reali dei profili (lascia "" per nascondere l'icona)
+    facebook: "",
+    instagram: "",
+    youtube: "",
+    // Claim "Scuola e Famiglie unite"
+    claim: "Scuola e Famiglie, unite per crescere insieme."
   };
 
   var NAV = [
@@ -47,7 +53,10 @@
     mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>',
     wa:   '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M.05 24l1.69-6.16a11.87 11.87 0 0 1-1.59-5.95C.16 5.34 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.41c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.69-1.45L.05 24zm6.6-3.8c1.68.99 3.28 1.59 5.4 1.59 5.45 0 9.89-4.43 9.89-9.88a9.83 9.83 0 0 0-9.88-9.89C6.6 1.99 2.16 6.42 2.16 11.87c0 2.23.65 3.9 1.74 5.65l-1 3.66 3.75-.98zm11.39-5.55c-.07-.12-.27-.2-.57-.35-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42z"/></svg>',
     chat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>',
-    clock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>'
+    clock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+    fb:   '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z"/></svg>',
+    ig:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>',
+    yt:   '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.77-1.77C19.34 5.13 12 5.13 12 5.13s-7.34 0-8.83.4A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.77 1.77c1.49.4 8.83.4 8.83.4s7.34 0 8.83-.4a2.5 2.5 0 0 0 1.77-1.77C23 15.2 23 12 23 12ZM9.75 15.02V8.98L15.5 12l-5.75 3.02Z"/></svg>'
   };
 
   /* ----------------------------------------------------------
@@ -77,19 +86,35 @@
   /* ----------------------------------------------------------
      FOOTER
      ---------------------------------------------------------- */
+  var socials = [
+    { u: CFG.facebook, i: I.fb, n: "Facebook" },
+    { u: CFG.instagram, i: I.ig, n: "Instagram" },
+    { u: CFG.youtube, i: I.yt, n: "YouTube" }
+  ].filter(function (s) { return s.u; });
+  var socialHTML = socials.length
+    ? '<div class="footer-social">' + socials.map(function (s) {
+        return '<a href="' + s.u + '" target="_blank" rel="noopener" aria-label="' + s.n + '">' + s.i + "</a>";
+      }).join("") + "</div>"
+    : "";
+
   var footerHTML =
     '<footer class="footer"><div class="container"><div class="footer-grid">' +
       '<div><div class="footer-brand"><img src="assets/img/logo.png" alt="Logo"><strong>' + CFG.nome + "</strong></div>" +
-        "<p>Scuola Paritaria a Viterbo. Un cammino educativo dall'Infanzia alla Secondaria di I grado, con al centro la persona, i valori e la gioia di crescere insieme.</p></div>" +
+        "<p>Scuola Paritaria a Viterbo. Un cammino educativo dall'Infanzia alla Secondaria di I grado, con al centro la persona, i valori e la gioia di crescere insieme.</p>" +
+        '<p class="footer-claim">' + CFG.claim + "</p>" + socialHTML + "</div>" +
       '<div><h4>Scuola</h4><ul class="footer-links" id="footScuola">' +
         '<li><a href="chi-siamo.html">Chi siamo</a></li>' +
         '<li><a href="offerta-formativa.html">Offerta formativa</a></li>' +
+        '<li><a href="docenti.html">Corpo docenti</a></li>' +
         '<li><a href="vita-scolastica.html">Vita scolastica</a></li>' +
         '<li><a href="teatro.html">Teatro di fine anno</a></li>' +
+        '<li><a href="erasmus.html">Erasmus</a></li>' +
+        '<li><a href="galleria.html">Galleria foto</a></li>' +
         '<li><a href="sostienici.html">Sostienici</a></li>' +
-        '<li><a href="news.html">News</a></li></ul></div>' +
+        '<li><a href="news.html">News ed eventi</a></li></ul></div>' +
       '<div><h4>Area documenti</h4><ul class="footer-links">' +
         '<li><a href="modulistica.html">Modulistica</a></li>' +
+        '<li><a href="modulistica.html#richieste">Richieste documentali</a></li>' +
         '<li><a href="albo.html">Albo</a></li>' +
         '<li><a href="amministrazione-trasparente.html">Amministrazione Trasparente</a></li>' +
         '<li><a href="privacy.html">Privacy Policy</a></li></ul></div>' +
@@ -99,7 +124,7 @@
         "<li>" + I.mail + ' <a href="mailto:' + CFG.email + '">' + CFG.email + "</a></li></ul></div>" +
     '</div><div class="footer-bottom">' +
       "<span>© 2026 Scuola Paritaria " + CFG.nome + " · Viterbo</span>" +
-      '<span><a href="privacy.html">Privacy Policy</a> · <a href="contatti.html">Contatti</a></span>' +
+      '<span class="footer-meta"><span class="site-hits" id="siteHits" hidden></span><a href="privacy.html">Privacy Policy</a> · <a href="contatti.html">Contatti</a></span>' +
     "</div></div></footer>";
 
   /* ----------------------------------------------------------
@@ -131,11 +156,35 @@
       '<img src="assets/img/logo.png" alt="Logo ' + CFG.nome + '">' +
     "</a>";
 
+  // Banner cookie (solo cookie tecnici)
+  var cookieHTML =
+    '<div class="cookie-bar" id="cookieBar" role="dialog" aria-label="Informativa cookie" hidden>' +
+      "<p>Questo sito usa solo <strong>cookie tecnici</strong> necessari al funzionamento. " +
+      'Per saperne di più leggi la <a href="privacy.html">Privacy &amp; Cookie Policy</a>.</p>' +
+      '<button type="button" class="btn btn--primary" id="cookieOk">Ho capito</button>' +
+    "</div>";
+
   /* ----------------------------------------------------------
      INIEZIONE NEL DOM
      ---------------------------------------------------------- */
   document.body.insertAdjacentHTML("afterbegin", headerHTML);
-  document.body.insertAdjacentHTML("beforeend", footerHTML + chatHTML + logoBadgeHTML);
+  document.body.insertAdjacentHTML("beforeend", footerHTML + chatHTML + logoBadgeHTML + cookieHTML);
+
+  // Banner cookie: visibile finché non si accetta (ricordato in localStorage)
+  (function () {
+    var bar = document.getElementById("cookieBar");
+    if (!bar) { return; }
+    var seen = false;
+    try { seen = !!localStorage.getItem("cookieOk"); } catch (e) {}
+    if (!seen) { bar.hidden = false; }
+    var ok = document.getElementById("cookieOk");
+    if (ok) {
+      ok.addEventListener("click", function () {
+        bar.hidden = true;
+        try { localStorage.setItem("cookieOk", "1"); } catch (e) {}
+      });
+    }
+  })();
 
   /* ----------------------------------------------------------
      INTERAZIONI
@@ -370,7 +419,10 @@
             return n.page !== "index.html" && n.page !== "contatti.html";
           }).map(function (n) {
             return '<li><a href="' + n.page + '">' + n.label + "</a></li>";
-          }).join("");
+          }).join("") +
+          '<li><a href="docenti.html">Corpo docenti</a></li>' +
+          '<li><a href="erasmus.html">Erasmus</a></li>' +
+          '<li><a href="galleria.html">Galleria foto</a></li>';
         }
       })
       .catch(function () {});

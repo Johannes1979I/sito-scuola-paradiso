@@ -822,3 +822,34 @@ html.no-intro #paradiso-intro { display: none !important; }
   .nc-dot { width: 10px; height: 10px; }
   .nc-dot.active { width: 26px; }
 }
+
+/* ---------- Social, claim, contatore e banner cookie ---------- */
+.footer-claim { margin-top: 14px; font-weight: 600; color: #fff; opacity: .95; }
+.footer-social { display: flex; gap: 10px; margin-top: 16px; }
+.footer-social a { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.12); color: #fff; transition: background .2s, transform .2s; }
+.footer-social a:hover { background: rgba(255,255,255,.25); transform: translateY(-2px); }
+.footer-social svg { width: 20px; height: 20px; }
+.footer-meta { display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.site-hits { font-size: .85rem; opacity: .8; }
+.cookie-bar { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 1400; max-width: 780px; margin: 0 auto; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; justify-content: space-between; background: var(--white); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--sh-lg); padding: 16px 20px; }
+.cookie-bar p { margin: 0; font-size: .92rem; color: var(--ink); flex: 1 1 320px; }
+.cookie-bar a { color: var(--blu); text-decoration: underline; }
+.cookie-bar .btn { white-space: nowrap; }
+@media (max-width: 520px) { .cookie-bar { left: 10px; right: 10px; bottom: 10px; padding: 14px 16px; } .cookie-bar .btn { width: 100%; } }
+
+/* ---------- Galleria foto ---------- */
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+.gallery-grid a { display: block; border-radius: var(--r-sm); overflow: hidden; aspect-ratio: 4 / 3; box-shadow: var(--sh-sm); }
+.gallery-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s var(--ease); }
+.gallery-grid a:hover img { transform: scale(1.06); }
+
+/* ---------- Corpo docenti ---------- */
+.staff-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.staff-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--r); padding: 22px; text-align: center; }
+.staff-card .avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--bg-blu); color: var(--blu); display: grid; place-items: center; font-size: 1.5rem; margin: 0 auto 12px; }
+.staff-card strong { display: block; color: var(--ink); }
+.staff-card span { font-size: .9rem; color: var(--muted); }
+
+/* Riquadro "DA COMPLETARE" (segnaposto contenuti da inserire) */
+.todo-note { background: color-mix(in srgb, var(--giallo) 16%, #fff); border: 1px dashed color-mix(in srgb, var(--arancio) 55%, #fff); border-radius: var(--r-sm); padding: 14px 18px; color: var(--blu-scuro); font-size: .92rem; }
+.todo-note strong { color: var(--arancio); }
