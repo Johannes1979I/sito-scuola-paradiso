@@ -45,7 +45,8 @@
       { label: "Secondaria di I grado",  href: "offerta-formativa.html#secondaria" },
       { label: "PTOF",                   href: "ptof.html" },
       { label: "Rette",                  href: "rette.html" },
-      { label: "Erasmus",                href: "erasmus.html" }
+      { label: "Erasmus",                href: "erasmus.html" },
+      { label: "Concorsi",               href: "concorsi.html" }
     ] },
     { page: "vita",     label: "Vita scolastica",  href: "vita-scolastica.html" },
     { page: "galleria", label: "Galleria",         href: "galleria.html" },
