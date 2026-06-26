@@ -144,9 +144,7 @@
         "<li>" + I.mail + ' <a href="mailto:' + CFG.email + '">' + CFG.email + "</a></li></ul></div>" +
     '</div><div class="footer-bottom">' +
       "<span>© 2026 Scuola Paritaria " + CFG.nome + " · Viterbo</span>" +
-      '<span class="footer-meta"><img class="site-hits" id="siteHits" alt="Contatore visite del sito" ' +
-        'src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fjohannes1979i.github.io%2Fsito-scuola-paradiso%2F&count_bg=%2313449b&title_bg=%230c2c6b&title=Visite&edge_flat=true" ' +
-        'onerror="this.style.display=\'none\'" loading="lazy">' +
+      '<span class="footer-meta"><span class="site-hits" id="siteHits" hidden></span>' +
         '<a href="privacy.html">Privacy Policy</a> · <a href="contatti.html">Contatti</a></span>' +
     "</div></div></footer>";
 
@@ -207,6 +205,21 @@
         try { localStorage.setItem("cookieOk", "1"); } catch (e) {}
       });
     }
+  })();
+
+  // Contatore visite anonimo (counterapi.dev) — incrementa e mostra il totale
+  (function () {
+    var el = document.getElementById("siteHits");
+    if (!el) { return; }
+    fetch("https://api.counterapi.dev/v1/scuolasmparadiso/sito/up")
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (d && typeof d.count === "number") {
+          el.textContent = "Visite: " + d.count.toLocaleString("it-IT");
+          el.hidden = false;
+        }
+      })
+      .catch(function () {});
   })();
 
   /* ----------------------------------------------------------
