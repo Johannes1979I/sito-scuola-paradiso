@@ -44,8 +44,6 @@
       { label: "Scuola Primaria",        href: "offerta-formativa.html#primaria" },
       { label: "Secondaria di I grado",  href: "offerta-formativa.html#secondaria" },
       { label: "PTOF",                   href: "ptof.html" },
-      { label: "Rette",                  href: "rette.html" },
-      { label: "Come iscriversi",        href: "iscrizioni.html" },
       { label: "Erasmus",                href: "erasmus.html" },
       { label: "Concorsi",               href: "concorsi.html" }
     ] },
@@ -53,6 +51,7 @@
     { page: "vita",     label: "Vita scolastica",  href: "vita-scolastica.html" },
     { page: "galleria", label: "Galleria",         href: "galleria.html" },
     { page: "teatro",   label: "Teatro",           href: "teatro.html" },
+    { page: "genitori", label: "Scuola e Genitori",href: "genitori.html" },
     { page: "sostieni", label: "Sostienici",       href: "sostienici.html" },
     { page: "news",     label: "News",             href: "news.html" },
     { page: "contatti", label: "Contatti",         href: "contatti.html" }
@@ -98,10 +97,10 @@
         '<span class="brand-txt"><strong>' + CFG.nome + "</strong><span>" + CFG.sottotitolo + "</span></span>" +
       "</a>" +
       '<ul class="nav-links" id="navLinks">' + navList() +
-        '<li><a href="contatti.html" class="btn btn--primary">Iscriviti</a></li>' +
+        '<li><a href="iscrizioni.html" class="btn btn--primary">Iscriviti</a></li>' +
       "</ul>" +
       '<div class="nav-cta">' +
-        '<a href="contatti.html" class="btn btn--primary">Iscriviti</a>' +
+        '<a href="iscrizioni.html" class="btn btn--primary">Iscriviti</a>' +
         '<button class="burger" id="burger" aria-label="Apri menu" aria-expanded="false"><span></span></button>' +
       "</div>" +
     "</nav></div></header>";
@@ -133,6 +132,7 @@
         '<li><a href="docenti.html">Corpo docenti</a></li>' +
         '<li><a href="vita-scolastica.html">Vita scolastica</a></li>' +
         '<li><a href="teatro.html">Teatro di fine anno</a></li>' +
+        '<li><a href="genitori.html">Scuola e Genitori</a></li>' +
         '<li><a href="erasmus.html">Erasmus</a></li>' +
         '<li><a href="galleria.html">Galleria foto</a></li>' +
         '<li><a href="sostienici.html">Sostienici</a></li>' +
@@ -487,6 +487,10 @@
     }
 
     // Transizione "a logo" quando si apre una pagina interna
+    function hidePageTransition() {
+      var pt = document.getElementById("page-transition");
+      if (pt) { pt.classList.remove("on"); }
+    }
     function pageTransition(go) {
       var pt = document.getElementById("page-transition");
       if (!pt) {
@@ -497,7 +501,13 @@
       }
       requestAnimationFrame(function () { pt.classList.add("on"); });
       setTimeout(go, 650);
+      // sicurezza: se la navigazione non avviene (stessa pagina/anchor o errore) l'overlay non resta bloccato
+      setTimeout(hidePageTransition, 3000);
     }
+    // Col tasto Indietro/Avanti la pagina può tornare dalla cache del browser (bfcache) con l'overlay ancora attivo:
+    // il logo continuerebbe a girare coprendo tutto. Lo nascondiamo al ripristino della pagina.
+    window.addEventListener("pageshow", hidePageTransition);
+    window.addEventListener("popstate", hidePageTransition);
 
     // Animazione al clic + transizione sui link interni
     document.addEventListener("click", function (e) {

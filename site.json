@@ -14,6 +14,7 @@
         { "page": "concorsi.html", "label": "Concorsi" },
         { "page": "galleria.html", "label": "Galleria" },
         { "page": "teatro.html", "label": "Teatro" },
+        { "page": "genitori.html", "label": "Scuola e Genitori" },
         { "page": "sostienici.html", "label": "Sostienici" },
         { "page": "lavora-con-noi.html", "label": "Lavora con noi" },
         { "page": "news.html", "label": "News" },
