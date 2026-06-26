@@ -33,9 +33,21 @@
 
   var NAV = [
     { page: "home",     label: "Home",             href: "index.html" },
-    { page: "chi",      label: "Chi siamo",        href: "chi-siamo.html" },
-    { page: "offerta",  label: "Offerta formativa",href: "offerta-formativa.html" },
+    { page: "chi",      label: "Chi siamo",        href: "chi-siamo.html", children: [
+      { label: "La nostra identità", href: "chi-siamo.html" },
+      { label: "La nostra mission",  href: "chi-siamo.html#mission" },
+      { label: "Corpo docenti",      href: "docenti.html" }
+    ] },
+    { page: "offerta",  label: "Offerta formativa",href: "offerta-formativa.html", children: [
+      { label: "Scuola dell'Infanzia",   href: "offerta-formativa.html#infanzia" },
+      { label: "Scuola Primaria",        href: "offerta-formativa.html#primaria" },
+      { label: "Secondaria di I grado",  href: "offerta-formativa.html#secondaria" },
+      { label: "PTOF",                   href: "ptof.html" },
+      { label: "Rette",                  href: "rette.html" },
+      { label: "Erasmus",                href: "erasmus.html" }
+    ] },
     { page: "vita",     label: "Vita scolastica",  href: "vita-scolastica.html" },
+    { page: "galleria", label: "Galleria",         href: "galleria.html" },
     { page: "teatro",   label: "Teatro",           href: "teatro.html" },
     { page: "sostieni", label: "Sostienici",       href: "sostienici.html" },
     { page: "news",     label: "News",             href: "news.html" },
@@ -65,6 +77,13 @@
   function navList() {
     return NAV.map(function (n) {
       var act = n.page === current ? ' class="active"' : "";
+      if (n.children && n.children.length) {
+        var sub = n.children.map(function (c) {
+          return '<li><a href="' + c.href + '">' + c.label + "</a></li>";
+        }).join("");
+        return '<li class="has-sub"><a href="' + n.href + '"' + act + ">" + n.label + "</a>" +
+               '<ul class="submenu">' + sub + "</ul></li>";
+      }
       return '<li><a href="' + n.href + '"' + act + ">" + n.label + "</a></li>";
     }).join("");
   }
@@ -406,23 +425,14 @@
       .then(function (site) {
         if (!site || !Array.isArray(site.nav)) { return; }
         var items = site.nav.filter(function (n) { return n && n.page && n.label; });
-        var nl = document.getElementById("navLinks");
-        if (nl) {
-          nl.innerHTML = items.map(function (n) {
-            var act = n.page === currentFile ? ' class="active"' : "";
-            return '<li><a href="' + n.page + '"' + act + ">" + n.label + "</a></li>";
-          }).join("") + '<li><a href="contatti.html" class="btn btn--primary">Iscriviti</a></li>';
-        }
+        // Il menu in alto è gestito staticamente (con tendine) da NAV: non lo riscriviamo qui.
         var fs = document.getElementById("footScuola");
         if (fs) {
           fs.innerHTML = items.filter(function (n) {
             return n.page !== "index.html" && n.page !== "contatti.html";
           }).map(function (n) {
             return '<li><a href="' + n.page + '">' + n.label + "</a></li>";
-          }).join("") +
-          '<li><a href="docenti.html">Corpo docenti</a></li>' +
-          '<li><a href="erasmus.html">Erasmus</a></li>' +
-          '<li><a href="galleria.html">Galleria foto</a></li>';
+          }).join("");
         }
       })
       .catch(function () {});
