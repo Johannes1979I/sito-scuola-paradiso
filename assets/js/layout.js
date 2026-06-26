@@ -286,8 +286,10 @@
       entries.forEach(function (en) {
         if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    }, { threshold: 0, rootMargin: "0px 0px -80px 0px" });
     reveals.forEach(function (el) { io.observe(el); });
+    // rete di sicurezza: se per qualunque motivo qualcosa non viene rivelato, dopo 2,5s mostra tutto
+    setTimeout(function () { reveals.forEach(function (el) { el.classList.add("in"); }); }, 2500);
   } else {
     reveals.forEach(function (el) { el.classList.add("in"); });
   }
