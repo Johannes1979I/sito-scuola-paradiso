@@ -7,12 +7,15 @@
         { "page": "offerta-formativa.html", "label": "Offerta formativa" },
         { "page": "ptof.html", "label": "PTOF" },
         { "page": "rette.html", "label": "Rette" },
+        { "page": "open-day.html", "label": "Open Day" },
+        { "page": "iscrizioni.html", "label": "Come iscriversi" },
         { "page": "vita-scolastica.html", "label": "Vita scolastica" },
         { "page": "erasmus.html", "label": "Erasmus" },
         { "page": "concorsi.html", "label": "Concorsi" },
         { "page": "galleria.html", "label": "Galleria" },
         { "page": "teatro.html", "label": "Teatro" },
         { "page": "sostienici.html", "label": "Sostienici" },
+        { "page": "lavora-con-noi.html", "label": "Lavora con noi" },
         { "page": "news.html", "label": "News" },
         { "page": "contatti.html", "label": "Contatti" }
     ]

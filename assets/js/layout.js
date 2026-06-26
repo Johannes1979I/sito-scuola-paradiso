@@ -45,9 +45,11 @@
       { label: "Secondaria di I grado",  href: "offerta-formativa.html#secondaria" },
       { label: "PTOF",                   href: "ptof.html" },
       { label: "Rette",                  href: "rette.html" },
+      { label: "Come iscriversi",        href: "iscrizioni.html" },
       { label: "Erasmus",                href: "erasmus.html" },
       { label: "Concorsi",               href: "concorsi.html" }
     ] },
+    { page: "openday",  label: "Open Day",         href: "open-day.html" },
     { page: "vita",     label: "Vita scolastica",  href: "vita-scolastica.html" },
     { page: "galleria", label: "Galleria",         href: "galleria.html" },
     { page: "teatro",   label: "Teatro",           href: "teatro.html" },
@@ -126,12 +128,15 @@
       '<div><h4>Scuola</h4><ul class="footer-links" id="footScuola">' +
         '<li><a href="chi-siamo.html">Chi siamo</a></li>' +
         '<li><a href="offerta-formativa.html">Offerta formativa</a></li>' +
+        '<li><a href="open-day.html">Open Day</a></li>' +
+        '<li><a href="iscrizioni.html">Come iscriversi</a></li>' +
         '<li><a href="docenti.html">Corpo docenti</a></li>' +
         '<li><a href="vita-scolastica.html">Vita scolastica</a></li>' +
         '<li><a href="teatro.html">Teatro di fine anno</a></li>' +
         '<li><a href="erasmus.html">Erasmus</a></li>' +
         '<li><a href="galleria.html">Galleria foto</a></li>' +
         '<li><a href="sostienici.html">Sostienici</a></li>' +
+        '<li><a href="lavora-con-noi.html">Lavora con noi</a></li>' +
         '<li><a href="news.html">News ed eventi</a></li></ul></div>' +
       '<div><h4>Area documenti</h4><ul class="footer-links">' +
         '<li><a href="modulistica.html">Modulistica</a></li>' +
