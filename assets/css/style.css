@@ -831,6 +831,7 @@ html.no-intro #paradiso-intro { display: none !important; }
 .footer-social svg { width: 20px; height: 20px; }
 .footer-meta { display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .site-hits { font-size: .85rem; opacity: .8; }
+.cookie-bar[hidden] { display: none; }
 .cookie-bar { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 1400; max-width: 780px; margin: 0 auto; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; justify-content: space-between; background: var(--white); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--sh-lg); padding: 16px 20px; }
 .cookie-bar p { margin: 0; font-size: .92rem; color: var(--ink); flex: 1 1 320px; }
 .cookie-bar a { color: var(--blu); text-decoration: underline; }
