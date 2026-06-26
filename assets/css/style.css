@@ -868,3 +868,35 @@ html.no-intro #paradiso-intro { display: none !important; }
   .nav-links .submenu a { padding: 10px 16px; font-size: 1rem; color: var(--muted); }
   .nav-links .has-sub > a::after { display: none; }
 }
+
+/* ---------- Contatore visite ---------- */
+.site-hits { height: 20px; vertical-align: middle; border-radius: 4px; }
+
+/* ---------- Citazione Papa Francesco (Mission) ---------- */
+.papa-quote { margin: 38px auto 0; max-width: 720px; text-align: center; border: none; padding: 0; }
+.papa-quote p { font-family: "Fraunces", Georgia, serif; font-size: clamp(1.3rem, 2.4vw, 1.9rem); font-style: italic; color: var(--blu); line-height: 1.32; }
+.papa-quote cite { display: block; margin-top: 14px; font-style: normal; font-size: .9rem; color: var(--muted); }
+
+/* ---------- 40 anni (anniversario) ---------- */
+.anniv { text-align: center; }
+.anniv-badge { display: inline-block; font-weight: 700; letter-spacing: .16em; color: var(--blu); background: var(--bg-blu); padding: 9px 20px; border-radius: 999px; font-size: .9rem; }
+.anniv h2 { margin-top: 18px; font-size: clamp(1.9rem, 4.2vw, 3rem); }
+.anniv-num { color: var(--arancio); font-style: italic; }
+.anniv-sub { max-width: 640px; margin: 14px auto 0; color: var(--muted); }
+.anniv-journey { margin-top: 26px; }
+.anniv-journey svg { width: 100%; height: auto; max-width: 1000px; overflow: visible; }
+.aj-road-bg { fill: none; stroke: var(--line); stroke-width: 6; stroke-linecap: round; }
+.aj-road { fill: none; stroke: var(--blu); stroke-width: 6; stroke-linecap: round; stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: ajDraw 3s var(--ease) forwards; }
+@keyframes ajDraw { to { stroke-dashoffset: 0; } }
+.aj-stop circle { fill: var(--white); stroke: var(--blu); stroke-width: 4; opacity: 0; transform: scale(0); transform-origin: center; transform-box: fill-box; animation: ajPop .55s var(--ease) forwards; animation-delay: var(--d); }
+.aj-stop text { fill: var(--ink); font-size: 17px; font-weight: 700; text-anchor: middle; font-family: "Fraunces", serif; opacity: 0; animation: ajFade .55s ease forwards; animation-delay: var(--d); }
+.aj-stop--now circle { stroke: var(--arancio); }
+.aj-stop--now text { fill: var(--arancio); }
+@keyframes ajPop { to { opacity: 1; transform: scale(1); } }
+@keyframes ajFade { to { opacity: 1; } }
+.aj-traveler circle { fill: var(--giallo); }
+.aj-traveler text { font-size: 18px; }
+@media (prefers-reduced-motion: reduce) {
+  .aj-road { animation: none; stroke-dashoffset: 0; }
+  .aj-stop circle, .aj-stop text { animation: none; opacity: 1; transform: none; }
+}

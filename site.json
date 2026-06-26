@@ -3,6 +3,7 @@
         { "page": "index.html", "label": "Home" },
         { "page": "chi-siamo.html", "label": "Chi siamo" },
         { "page": "docenti.html", "label": "Docenti" },
+        { "page": "eroi.html", "label": "I nostri eroi" },
         { "page": "offerta-formativa.html", "label": "Offerta formativa" },
         { "page": "ptof.html", "label": "PTOF" },
         { "page": "rette.html", "label": "Rette" },

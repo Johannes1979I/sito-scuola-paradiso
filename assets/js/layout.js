@@ -23,9 +23,9 @@
     // Canale chat PROVVISORIO (da decidere: WhatsApp Business o altro)
     whatsapp: "393405416568",
     whatsappMsg: "Salve, vorrei alcune informazioni sulla scuola.",
-    // Social — DA COMPLETARE con gli URL reali dei profili (lascia "" per nascondere l'icona)
-    facebook: "",
-    instagram: "",
+    // Social ufficiali della scuola
+    facebook: "https://www.facebook.com/scuolasantamariadelparadisoviterbo/",
+    instagram: "https://www.instagram.com/scuolasantamariadelparadiso/",
     youtube: "",
     // Claim "Scuola e Famiglie unite"
     claim: "Scuola e Famiglie, unite per crescere insieme."
@@ -36,7 +36,8 @@
     { page: "chi",      label: "Chi siamo",        href: "chi-siamo.html", children: [
       { label: "La nostra identità", href: "chi-siamo.html" },
       { label: "La nostra mission",  href: "chi-siamo.html#mission" },
-      { label: "Corpo docenti",      href: "docenti.html" }
+      { label: "Corpo docenti",      href: "docenti.html" },
+      { label: "I nostri eroi",      href: "eroi.html" }
     ] },
     { page: "offerta",  label: "Offerta formativa",href: "offerta-formativa.html", children: [
       { label: "Scuola dell'Infanzia",   href: "offerta-formativa.html#infanzia" },
@@ -143,7 +144,10 @@
         "<li>" + I.mail + ' <a href="mailto:' + CFG.email + '">' + CFG.email + "</a></li></ul></div>" +
     '</div><div class="footer-bottom">' +
       "<span>© 2026 Scuola Paritaria " + CFG.nome + " · Viterbo</span>" +
-      '<span class="footer-meta"><span class="site-hits" id="siteHits" hidden></span><a href="privacy.html">Privacy Policy</a> · <a href="contatti.html">Contatti</a></span>' +
+      '<span class="footer-meta"><img class="site-hits" id="siteHits" alt="Contatore visite del sito" ' +
+        'src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fjohannes1979i.github.io%2Fsito-scuola-paradiso%2F&count_bg=%2313449b&title_bg=%230c2c6b&title=Visite&edge_flat=true" ' +
+        'onerror="this.style.display=\'none\'" loading="lazy">' +
+        '<a href="privacy.html">Privacy Policy</a> · <a href="contatti.html">Contatti</a></span>' +
     "</div></div></footer>";
 
   /* ----------------------------------------------------------
