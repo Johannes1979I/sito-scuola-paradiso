@@ -264,6 +264,37 @@ h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); }
   .theatre-banner__body { max-width: none; }
 }
 
+/* ---------- Video in evidenza (copertina cliccabile con play) ---------- */
+.theatre-video {
+  position: relative; display: block; aspect-ratio: 16 / 9; border-radius: var(--r-xl); overflow: hidden;
+  box-shadow: var(--sh); background: #0b1f47; cursor: pointer; isolation: isolate;
+}
+.theatre-video img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease, filter .4s ease; }
+.theatre-video::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,24,58,.05) 0%, rgba(8,24,58,.12) 55%, rgba(8,24,58,.55) 100%); transition: background .4s ease; }
+.theatre-video:hover img, .theatre-video:focus-visible img { transform: scale(1.05); filter: brightness(1.04); }
+.tv-play {
+  position: absolute; z-index: 2; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: clamp(60px, 9vw, 84px); height: clamp(60px, 9vw, 84px); border-radius: 50%;
+  display: grid; place-items: center; color: var(--blu);
+  background: rgba(255,255,255,.94); box-shadow: 0 14px 38px rgba(8,24,58,.45);
+  transition: transform .3s cubic-bezier(.2,.8,.2,1), background .3s ease;
+}
+.tv-play svg { width: 42%; height: 42%; margin-left: 8%; }
+.theatre-video:hover .tv-play, .theatre-video:focus-visible .tv-play { transform: translate(-50%, -50%) scale(1.1); background: #fff; }
+.tv-tag {
+  position: absolute; z-index: 2; left: 16px; bottom: 14px;
+  display: inline-flex; align-items: center; gap: 7px; padding: 8px 15px; border-radius: 100px;
+  font-weight: 600; font-size: .9rem; color: #fff; background: rgba(8,24,58,.55); backdrop-filter: blur(4px);
+}
+.tv-tag::before { content: "▶"; font-size: .72em; }
+.tv-credits { list-style: none; margin: 22px 0 0; padding: 20px 0 0; border-top: 1px solid var(--line); display: grid; gap: 12px; }
+.tv-credits li { display: grid; grid-template-columns: minmax(120px, 200px) 1fr; gap: 6px 18px; align-items: baseline; }
+.tv-credits li span { font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; color: var(--blu); font-weight: 600; }
+.tv-credits li strong { color: var(--ink, #1b2438); font-weight: 600; }
+@media (max-width: 600px) {
+  .tv-credits li { grid-template-columns: 1fr; gap: 2px; }
+}
+
 /* ---------- Galleria placeholder (foto/video in arrivo) ---------- */
 .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .gallery-ph {

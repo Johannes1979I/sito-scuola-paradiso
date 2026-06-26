@@ -399,7 +399,7 @@
       Array.prototype.forEach.call(document.querySelectorAll(".lm-backdrop"), function (b) { if (b.parentNode) { b.parentNode.removeChild(b); } });
       cur = null;
       var media = "";
-      if (o.embed) { media = '<div class="lm-frame"><iframe src="' + o.embed + '" loading="lazy" allowfullscreen></iframe></div>'; }
+      if (o.embed) { media = '<div class="lm-frame"><iframe src="' + o.embed + '" loading="lazy" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>'; }
       else if (o.image) { media = '<div class="lm-frame lm-frame--img"><img src="' + o.image + '" alt=""></div>'; }
       else if (o.content) { var src = document.querySelector(o.content); media = '<div class="lm-rich">' + (src ? src.innerHTML : '<p>Contenuto non disponibile.</p>') + '</div>'; }
       var m = document.createElement("div");
