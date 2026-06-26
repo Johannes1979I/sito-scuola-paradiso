@@ -9,13 +9,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=15">
+<link rel="stylesheet" href="assets/css/style.css?v=17">
 <script>if(/[?&]edit=1/.test(location.search)){document.documentElement.classList.add('no-intro');}</script>
 </head>
 <body data-page="home">
 
 <!-- Intro "paradisiaca": il logo riempie la pagina e si smaterializza (≤4s). Vedi assets/audio/LEGGIMI.txt per l'audio. -->
 <div id="paradiso-intro" aria-hidden="true">
+  <div class="pi-cover">
+    <span class="pc-years">1986 — 2026</span>
+    <strong class="pc-num">40</strong>
+    <span class="pc-slogan">anni insieme</span>
+  </div>
   <div class="pi-sky"></div>
   <div class="pi-rays"></div>
   <div class="pi-flash"></div>
@@ -34,6 +39,36 @@
   </div>
 </div>
 <audio id="intro-audio" src="assets/audio/intro.mp3" preload="auto"></audio>
+
+<!-- ============ 40 ANNI (quarantennale) — in primo piano ============ -->
+<section class="section anniv anniv--top reveal" id="anniversario">
+  <div class="container">
+    <div class="anniv-head">
+      <span class="anniv-badge">1986 — 2026 · Quarantennale</span>
+      <h2>Da <span class="anniv-num">40</span> anni cresciamo insieme</h2>
+      <p class="anniv-sub">Quarant'anni di scuola, di volti e di sogni: un cammino educativo che continua, con lo stesso cuore di sempre.</p>
+    </div>
+    <div class="anniv-journey">
+      <svg viewBox="0 0 1000 200" role="img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet">
+        <title>Il percorso della scuola dal 1986 al 2026</title>
+        <path class="aj-road-bg" d="M40,150 C140,150 170,90 270,90 S400,150 500,150 S630,90 730,90 S860,140 960,140"/>
+        <path id="ajRoad" class="aj-road" d="M40,150 C140,150 170,90 270,90 S400,150 500,150 S630,90 730,90 S860,140 960,140"/>
+        <g class="aj-stop" style="--d:.3s"><circle cx="40" cy="150" r="8"/><text x="40" y="180">1986</text></g>
+        <g class="aj-stop" style="--d:.9s"><circle cx="270" cy="90" r="8"/><text x="270" y="66">1996</text></g>
+        <g class="aj-stop" style="--d:1.5s"><circle cx="500" cy="150" r="8"/><text x="500" y="180">2006</text></g>
+        <g class="aj-stop" style="--d:2.1s"><circle cx="730" cy="90" r="8"/><text x="730" y="66">2016</text></g>
+        <g class="aj-stop aj-stop--now" style="--d:2.7s"><circle cx="960" cy="140" r="11"/><text x="960" y="172">2026</text></g>
+        <g class="aj-traveler">
+          <circle r="17"/>
+          <text dy="6" text-anchor="middle">🎓</text>
+          <animateMotion dur="9s" repeatCount="indefinite" rotate="0" calcMode="linear">
+            <mpath xlink:href="#ajRoad" href="#ajRoad"/>
+          </animateMotion>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
 
 <!-- ============ HERO ============ -->
 <section class="hero">
@@ -114,36 +149,6 @@
       <div class="nc-dots" aria-hidden="true"></div>
     </div>
     <div class="reveal" style="text-align:center;margin-top:30px"><a href="news.html" class="btn btn--ghost">Vedi tutte le news</a></div>
-  </div>
-</section>
-
-<!-- ============ 40 ANNI (anniversario) ============ -->
-<section class="section anniv reveal" id="anniversario">
-  <div class="container">
-    <div class="anniv-head">
-      <span class="anniv-badge">1986 — 2026</span>
-      <h2>Da <span class="anniv-num">40</span> anni cresciamo insieme</h2>
-      <p class="anniv-sub">Quarant'anni di scuola, di volti e di sogni: un cammino educativo che continua, con lo stesso cuore di sempre.</p>
-    </div>
-    <div class="anniv-journey">
-      <svg viewBox="0 0 1000 200" role="img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet">
-        <title>Il percorso della scuola dal 1986 al 2026</title>
-        <path class="aj-road-bg" d="M40,150 C140,150 170,90 270,90 S400,150 500,150 S630,90 730,90 S860,140 960,140"/>
-        <path id="ajRoad" class="aj-road" d="M40,150 C140,150 170,90 270,90 S400,150 500,150 S630,90 730,90 S860,140 960,140"/>
-        <g class="aj-stop" style="--d:.3s"><circle cx="40" cy="150" r="8"/><text x="40" y="180">1986</text></g>
-        <g class="aj-stop" style="--d:.9s"><circle cx="270" cy="90" r="8"/><text x="270" y="66">1996</text></g>
-        <g class="aj-stop" style="--d:1.5s"><circle cx="500" cy="150" r="8"/><text x="500" y="180">2006</text></g>
-        <g class="aj-stop" style="--d:2.1s"><circle cx="730" cy="90" r="8"/><text x="730" y="66">2016</text></g>
-        <g class="aj-stop aj-stop--now" style="--d:2.7s"><circle cx="960" cy="140" r="11"/><text x="960" y="172">2026</text></g>
-        <g class="aj-traveler">
-          <circle r="17"/>
-          <text dy="6" text-anchor="middle">🎓</text>
-          <animateMotion dur="9s" repeatCount="indefinite" rotate="0" calcMode="linear">
-            <mpath xlink:href="#ajRoad" href="#ajRoad"/>
-          </animateMotion>
-        </g>
-      </svg>
-    </div>
   </div>
 </section>
 
@@ -263,6 +268,6 @@
   </div>
 </section>
 
-<script src="assets/js/layout.js?v=15"></script>
+<script src="assets/js/layout.js?v=16"></script>
 </body>
 </html>

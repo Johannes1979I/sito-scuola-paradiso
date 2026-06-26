@@ -535,8 +535,8 @@
             au.volume = 0.9;
             var p = au.play(); if (p && p.catch) { p.catch(function () {}); }
           }
-          setTimeout(fadeAudio, 2200);
-          setTimeout(function () { if (intro && intro.parentNode) { intro.remove(); } }, 4300);
+          setTimeout(fadeAudio, 3800);
+          setTimeout(function () { if (intro && intro.parentNode) { intro.remove(); } }, 5900);
           // salta-intro col clic (armato dopo 700ms per non scattare sul clic d'ingresso)
           setTimeout(function () {
             intro.addEventListener("click", function () {

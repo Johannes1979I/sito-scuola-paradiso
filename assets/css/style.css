@@ -327,8 +327,8 @@ body.lm-open { overflow: hidden; }
 .lm-note { margin: 0; padding: 16px 22px 0; color: #5a6678; line-height: 1.55; }
 .lm-frame { flex: 1 1 auto; min-height: 0; margin: 18px 22px 22px; border-radius: 16px; overflow: hidden; background: #f4f7fc; border: 1px solid #e6edf6; }
 .lm-frame iframe { width: 100%; height: min(72vh, 680px); border: 0; display: block; }
-.lm-frame--img { display: grid; place-items: center; background: #0b1220; padding: 8px; }
-.lm-frame--img img { max-width: 100%; max-height: 80vh; display: block; border-radius: 8px; }
+.lm-frame--img { display: grid; place-items: center; background: #0b1220; padding: 8px; flex: 0 0 auto; min-height: 200px; }
+.lm-frame--img img { max-width: 100%; max-height: 80vh; width: auto; height: auto; object-fit: contain; display: block; border-radius: 8px; }
 .lm-foot { padding: 0 22px 22px; display: flex; justify-content: flex-end; }
 /* Contenuto testuale nel modale (pagine portate dentro al sito) */
 .lm-rich { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 6px 24px 24px; color: #33415c; line-height: 1.62; }
@@ -391,6 +391,26 @@ html.no-intro #paradiso-intro { display: none !important; }
 #paradiso-intro > * { grid-area: 1 / 1; }
 #paradiso-intro .pi-sky, #paradiso-intro .pi-flash, #paradiso-intro .pi-sparks { place-self: stretch; }
 #paradiso-intro .pi-rays, #paradiso-intro .pi-ring, #paradiso-intro .pi-logo { place-self: center; }
+
+/* Splash "40 anni" mostrato PRIMA del logo */
+#paradiso-intro .pi-cover {
+  z-index: 5; place-self: stretch; display: grid; place-content: center; justify-items: center; gap: 4px; text-align: center;
+  background: linear-gradient(150deg, var(--blu) 0%, var(--blu-scuro) 100%); color: #fff;
+}
+#paradiso-intro .pi-cover .pc-years { font-weight: 700; letter-spacing: .32em; font-size: clamp(.85rem, 2.4vw, 1.15rem); opacity: .92; }
+#paradiso-intro .pi-cover .pc-num { font-family: "Fraunces", Georgia, serif; font-weight: 700; font-size: clamp(5.5rem, 26vw, 14rem); line-height: .85; color: var(--giallo); text-shadow: 0 0 50px rgba(255,194,60,.45); }
+#paradiso-intro .pi-cover .pc-slogan { font-family: "Fraunces", Georgia, serif; font-style: italic; font-size: clamp(1.5rem, 5vw, 2.6rem); }
+#paradiso-intro.play .pi-cover { animation: piCover 1.7s ease forwards; }
+@keyframes piCover { 0% { opacity: 1; transform: scale(1); } 62% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(.97); visibility: hidden; } }
+/* lo scenario del logo parte dopo lo splash (~1.6s) */
+#paradiso-intro.play .pi-sky,
+#paradiso-intro.play .pi-flash,
+#paradiso-intro.play .pi-ring,
+#paradiso-intro.play .pi-logo { animation-delay: 1.6s; animation-fill-mode: both; }
+#paradiso-intro.play .pi-ring.r2 { animation-delay: 1.78s; }
+#paradiso-intro.play .pi-rays { animation-delay: 1.6s, 1.6s; animation-fill-mode: both, both; }
+#paradiso-intro.play .pi-sparks i { animation-delay: calc(1.6s + var(--d)); }
+#paradiso-intro.play { animation-delay: 4.5s; }
 
 #paradiso-intro .pi-sky {
   background: radial-gradient(circle at 50% 46%, rgba(255,255,255,.97), rgba(255,255,255,0) 55%);
@@ -476,7 +496,7 @@ html.no-intro #paradiso-intro { display: none !important; }
   50%      { transform: scale(1.045); filter: drop-shadow(0 0 46px rgba(195,220,255,.85)); }
 }
 .pi-enter {
-  position: absolute; left: 50%; bottom: 13%; transform: translateX(-50%);
+  position: absolute; left: 50%; bottom: 13%; transform: translateX(-50%); z-index: 8;
   display: inline-flex; align-items: center; gap: 11px; white-space: nowrap;
   font-family: "Inter", system-ui, sans-serif; font-weight: 600; font-size: 1.02rem; color: var(--blu);
   background: rgba(255,255,255,.82); border: 1px solid rgba(19,68,155,.22); border-radius: 100px;
@@ -882,7 +902,13 @@ html.no-intro #paradiso-intro { display: none !important; }
 .anniv { text-align: center; }
 .anniv-badge { display: inline-block; font-weight: 700; letter-spacing: .16em; color: var(--blu); background: var(--bg-blu); padding: 9px 20px; border-radius: 999px; font-size: .9rem; }
 .anniv h2 { margin-top: 18px; font-size: clamp(1.9rem, 4.2vw, 3rem); }
-.anniv-num { color: var(--arancio); font-style: italic; }
+.anniv-num { color: var(--arancio); font-style: italic; animation: anniGlow 2.8s ease-in-out infinite; }
+@keyframes anniGlow { 0%, 100% { text-shadow: 0 0 0 rgba(255,122,60,0); } 50% { text-shadow: 0 0 26px rgba(255,122,60,.5); } }
+/* Quarantennale "in primo piano" (banda in cima alla home) */
+.anniv--top { background: linear-gradient(180deg, var(--bg-blu) 0%, var(--white) 100%); border-bottom: 1px solid var(--line); }
+.anniv--top .anniv-badge { background: var(--blu); color: #fff; }
+.anniv--top h2 { font-size: clamp(2rem, 4.8vw, 3.4rem); }
+@media (prefers-reduced-motion: reduce) { .anniv-num { animation: none; } }
 .anniv-sub { max-width: 640px; margin: 14px auto 0; color: var(--muted); }
 .anniv-journey { margin-top: 26px; }
 .anniv-journey svg { width: 100%; height: auto; max-width: 1000px; overflow: visible; }
