@@ -392,25 +392,123 @@ html.no-intro #paradiso-intro { display: none !important; }
 #paradiso-intro .pi-sky, #paradiso-intro .pi-flash, #paradiso-intro .pi-sparks { place-self: stretch; }
 #paradiso-intro .pi-rays, #paradiso-intro .pi-ring, #paradiso-intro .pi-logo { place-self: center; }
 
-/* Splash "40 anni" mostrato PRIMA del logo */
+/* ===== Splash "40 anni": copertina cinematografica mostrata PRIMA del logo ===== */
 #paradiso-intro .pi-cover {
-  z-index: 5; place-self: stretch; display: grid; place-content: center; justify-items: center; gap: 4px; text-align: center;
-  background: linear-gradient(150deg, var(--blu) 0%, var(--blu-scuro) 100%); color: #fff;
+  z-index: 5; place-self: stretch; position: relative; overflow: hidden; isolation: isolate;
+  display: grid; place-items: center; color: #fff;
 }
-#paradiso-intro .pi-cover .pc-years { font-weight: 700; letter-spacing: .32em; font-size: clamp(.85rem, 2.4vw, 1.15rem); opacity: .92; }
-#paradiso-intro .pi-cover .pc-num { font-family: "Fraunces", Georgia, serif; font-weight: 700; font-size: clamp(5.5rem, 26vw, 14rem); line-height: .85; color: var(--giallo); text-shadow: 0 0 50px rgba(255,194,60,.45); }
-#paradiso-intro .pi-cover .pc-slogan { font-family: "Fraunces", Georgia, serif; font-style: italic; font-size: clamp(1.5rem, 5vw, 2.6rem); }
-#paradiso-intro.play .pi-cover { animation: piCover 1.7s ease forwards; }
-@keyframes piCover { 0% { opacity: 1; transform: scale(1); } 62% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(.97); visibility: hidden; } }
-/* lo scenario del logo parte dopo lo splash (~1.6s) */
+/* sfondo: foto del chiostro con lento zoom (Ken Burns) */
+#paradiso-intro .pi-cover .pc-bg {
+  position: absolute; inset: -4%; z-index: 0;
+  background: #0b1f47 url("../../uploads/chiostro-e92c03.webp") center 40% / cover no-repeat;
+  transform: scale(1.08);
+}
+#paradiso-intro.play .pi-cover .pc-bg { animation: pcKen 3s ease-out forwards; }
+@keyframes pcKen { from { transform: scale(1.08); } to { transform: scale(1.2); } }
+/* velo blu scuro + vignettatura per leggibilità ed eleganza */
+#paradiso-intro .pi-cover .pc-veil {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    radial-gradient(125% 90% at 50% 44%, rgba(8,24,58,.12) 0%, rgba(8,24,58,.58) 54%, rgba(5,16,42,.93) 100%),
+    linear-gradient(180deg, rgba(8,22,54,.74) 0%, rgba(8,22,54,.42) 40%, rgba(5,14,40,.88) 100%);
+}
+/* alone dorato dietro al numero */
+#paradiso-intro .pi-cover .pc-glow {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: 0;
+  background: radial-gradient(40% 44% at 50% 50%, rgba(255,196,80,.36) 0%, rgba(255,196,80,0) 70%);
+}
+#paradiso-intro.play .pi-cover .pc-glow { animation: pcGlow 3s ease forwards; }
+@keyframes pcGlow { 0% { opacity: 0; } 32% { opacity: 1; } 78% { opacity: .9; } 100% { opacity: 0; } }
+/* pulviscolo dorato che sale */
+#paradiso-intro .pi-cover .pc-dust { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+#paradiso-intro .pi-cover .pc-dust i {
+  position: absolute; left: var(--x); top: var(--y); width: 6px; height: 6px; border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, #ffe6a6 42%, rgba(255,200,90,0) 72%);
+  transform: scale(var(--s,1)); opacity: 0;
+}
+#paradiso-intro.play .pi-cover .pc-dust i { animation: pcDust 3.1s ease-in-out var(--d,0s) infinite; }
+@keyframes pcDust {
+  0% { opacity: 0; transform: translateY(10px) scale(calc(var(--s,1) * .4)); }
+  22% { opacity: .9; }
+  60% { opacity: .5; }
+  100% { opacity: 0; transform: translateY(-42px) scale(calc(var(--s,1) * 1.1)); }
+}
+/* cornice dorata a doppia linea con fregi a rombo */
+#paradiso-intro .pi-cover .pc-frame {
+  position: absolute; z-index: 4; inset: clamp(14px, 3.2vw, 38px); pointer-events: none;
+  border: 1px solid rgba(255,214,140,.42);
+  box-shadow: inset 0 0 0 6px rgba(0,0,0,0), inset 0 0 0 7px rgba(255,214,140,.14);
+}
+#paradiso-intro .pi-cover .pc-frame::before,
+#paradiso-intro .pi-cover .pc-frame::after {
+  content: "◆"; position: absolute; left: 50%; transform: translateX(-50%);
+  color: var(--giallo); font-size: 13px; line-height: 1; text-shadow: 0 0 10px rgba(255,196,80,.75);
+}
+#paradiso-intro .pi-cover .pc-frame::before { top: -7px; }
+#paradiso-intro .pi-cover .pc-frame::after { bottom: -7px; }
+/* contenuto centrale */
+#paradiso-intro .pi-cover .pc-inner {
+  position: relative; z-index: 5; display: grid; justify-items: center; text-align: center; padding: 7vh 7vw;
+}
+#paradiso-intro .pi-cover .pc-school {
+  font-family: "Inter", system-ui, sans-serif; font-weight: 600; letter-spacing: .26em; text-transform: uppercase;
+  font-size: clamp(.58rem, 1.7vw, .82rem); color: rgba(255,228,176,.92); text-indent: .26em;
+  margin-bottom: clamp(10px, 2.4vh, 22px);
+}
+#paradiso-intro .pi-cover .pc-years {
+  display: inline-flex; align-items: center; gap: clamp(12px, 2.4vw, 22px);
+  font-family: "Inter", system-ui, sans-serif; font-weight: 600; letter-spacing: .34em; text-indent: .34em;
+  font-size: clamp(.8rem, 2.3vw, 1.15rem); color: #fff;
+}
+#paradiso-intro .pi-cover .pc-years::before,
+#paradiso-intro .pi-cover .pc-years::after {
+  content: ""; width: clamp(26px, 9vw, 96px); height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,214,140,.95));
+}
+#paradiso-intro .pi-cover .pc-years::after { transform: scaleX(-1); }
+#paradiso-intro .pi-cover .pc-num {
+  font-family: "Fraunces", Georgia, serif; font-weight: 700; line-height: .82;
+  font-size: clamp(7rem, 33vw, 19rem); margin: clamp(2px, 1vh, 10px) 0;
+  background: linear-gradient(96deg, #c98a2a 0%, #ffdf8e 30%, #fff6d8 47%, #ffd873 60%, #c98a2a 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+  filter: drop-shadow(0 6px 26px rgba(0,0,0,.45)) drop-shadow(0 0 34px rgba(255,196,80,.45));
+}
+#paradiso-intro .pi-cover .pc-slogan {
+  font-family: "Fraunces", Georgia, serif; font-style: italic; font-weight: 500;
+  font-size: clamp(1.6rem, 6vw, 3.2rem); color: #fff; text-shadow: 0 2px 18px rgba(0,0,0,.55);
+  margin-top: clamp(4px, 1.2vh, 14px);
+}
+#paradiso-intro .pi-cover .pc-kicker {
+  font-family: "Inter", system-ui, sans-serif; font-weight: 600; letter-spacing: .42em; text-transform: uppercase;
+  text-indent: .42em; font-size: clamp(.6rem, 1.7vw, .8rem); color: rgba(255,214,140,.95);
+  margin-top: clamp(12px, 2.6vh, 26px); padding: 7px 18px; border: 1px solid rgba(255,214,140,.4); border-radius: 100px;
+}
+/* entrate scaglionate (solo con .play; senza .play resta una locandina statica) */
+#paradiso-intro.play .pi-cover .pc-school { animation: pcUp .9s cubic-bezier(.2,.7,.2,1) both; }
+#paradiso-intro.play .pi-cover .pc-years  { animation: pcUp .9s cubic-bezier(.2,.7,.2,1) .18s both; }
+#paradiso-intro.play .pi-cover .pc-num    { animation: pcPop 1s cubic-bezier(.2,.8,.2,1) .3s both, pcSheen 3.6s ease-in-out .3s infinite; }
+#paradiso-intro.play .pi-cover .pc-slogan { animation: pcUp .9s cubic-bezier(.2,.7,.2,1) .64s both; }
+#paradiso-intro.play .pi-cover .pc-kicker { animation: pcUp .9s cubic-bezier(.2,.7,.2,1) .84s both; }
+@keyframes pcUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pcSheen { 0% { background-position: 120% 0; } 100% { background-position: -60% 0; } }
+@keyframes pcPop {
+  0%   { opacity: 0; transform: scale(.7); filter: blur(16px) drop-shadow(0 6px 26px rgba(0,0,0,.45)); }
+  55%  { opacity: 1; transform: scale(1.06); }
+  100% { opacity: 1; transform: scale(1); filter: blur(0) drop-shadow(0 6px 26px rgba(0,0,0,.45)) drop-shadow(0 0 34px rgba(255,196,80,.45)); }
+}
+/* la copertina resta in primo piano poi sfuma lasciando spazio al logo */
+#paradiso-intro.play .pi-cover { animation: piCover 2.9s ease forwards; }
+@keyframes piCover { 0% { opacity: 1; transform: scale(1); } 82% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(1.04); visibility: hidden; } }
+/* lo scenario del logo parte dopo la copertina (~2.6s) */
 #paradiso-intro.play .pi-sky,
 #paradiso-intro.play .pi-flash,
 #paradiso-intro.play .pi-ring,
-#paradiso-intro.play .pi-logo { animation-delay: 1.6s; animation-fill-mode: both; }
-#paradiso-intro.play .pi-ring.r2 { animation-delay: 1.78s; }
-#paradiso-intro.play .pi-rays { animation-delay: 1.6s, 1.6s; animation-fill-mode: both, both; }
-#paradiso-intro.play .pi-sparks i { animation-delay: calc(1.6s + var(--d)); }
-#paradiso-intro.play { animation-delay: 4.5s; }
+#paradiso-intro.play .pi-logo { animation-delay: 2.6s; animation-fill-mode: both; }
+#paradiso-intro.play .pi-ring.r2 { animation-delay: 2.78s; }
+#paradiso-intro.play .pi-rays { animation-delay: 2.6s, 2.6s; animation-fill-mode: both, both; }
+#paradiso-intro.play .pi-sparks i { animation-delay: calc(2.6s + var(--d)); }
+#paradiso-intro.play { animation-delay: 6s; }
 
 #paradiso-intro .pi-sky {
   background: radial-gradient(circle at 50% 46%, rgba(255,255,255,.97), rgba(255,255,255,0) 55%);
@@ -479,6 +577,9 @@ html.no-intro #paradiso-intro { display: none !important; }
   #paradiso-intro { animation: piFade .5s ease .9s forwards; }
   #paradiso-intro .pi-logo, #paradiso-intro .pi-rays, #paradiso-intro .pi-ring,
   #paradiso-intro .pi-flash, #paradiso-intro .pi-sparks i { animation: none; opacity: 1; }
+  #paradiso-intro .pi-cover .pc-bg, #paradiso-intro .pi-cover .pc-glow, #paradiso-intro .pi-cover .pc-num,
+  #paradiso-intro .pi-cover .pc-school, #paradiso-intro .pi-cover .pc-years, #paradiso-intro .pi-cover .pc-slogan,
+  #paradiso-intro .pi-cover .pc-kicker, #paradiso-intro .pi-cover .pc-dust i { animation: none !important; opacity: 1 !important; }
 }
 
 /* L'animazione completa parte solo con .play (così l'audio può partire al clic se l'autoplay è bloccato) */
