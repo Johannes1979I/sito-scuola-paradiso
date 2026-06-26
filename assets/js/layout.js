@@ -143,7 +143,7 @@
         "<li>" + I.tel + ' <a href="tel:' + CFG.telRaw + '">' + CFG.tel + "</a></li>" +
         "<li>" + I.mail + ' <a href="mailto:' + CFG.email + '">' + CFG.email + "</a></li></ul></div>" +
     '</div><div class="footer-bottom">' +
-      '<span>© 2026 Scuola Paritaria ' + CFG.nome + ' · Viterbo<span class="site-hits" id="siteHits" hidden></span></span>' +
+      '<span>© 2026 Scuola Paritaria ' + CFG.nome + ' · Viterbo<span class="site-hits" id="siteHits"> · Visite: …</span></span>' +
       '<span class="footer-meta"><a href="privacy.html">Privacy Policy</a> · <a href="contatti.html">Contatti</a></span>' +
     "</div></div></footer>";
 
@@ -206,7 +206,8 @@
     }
   })();
 
-  // Contatore visite anonimo (counterapi.dev) — incrementa e mostra il totale
+  // Contatore visite anonimo (counterapi.dev) — l'elemento è già visibile ("Visite: …"),
+  // qui sostituiamo i puntini con il numero reale appena disponibile.
   (function () {
     var el = document.getElementById("siteHits");
     if (!el) { return; }
@@ -214,12 +215,12 @@
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (d) {
         if (d && typeof d.count === "number") {
-          el.textContent = "  ·  Visite: " + d.count.toLocaleString("it-IT");
-          el.hidden = false;
+          el.textContent = " · Visite: " + d.count.toLocaleString("it-IT");
         }
       })
       .catch(function () {});
   })();
+
 
   /* ----------------------------------------------------------
      INTERAZIONI
