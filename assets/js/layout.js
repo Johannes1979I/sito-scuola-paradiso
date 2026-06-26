@@ -44,11 +44,13 @@
       { label: "Scuola Primaria",        href: "offerta-formativa.html#primaria" },
       { label: "Secondaria di I grado",  href: "offerta-formativa.html#secondaria" },
       { label: "PTOF",                   href: "ptof.html" },
-      { label: "Erasmus",                href: "erasmus.html" },
-      { label: "Concorsi",               href: "concorsi.html" }
+      { label: "Erasmus",                href: "erasmus.html" }
     ] },
     { page: "openday",  label: "Open Day",         href: "open-day.html" },
-    { page: "vita",     label: "Vita scolastica",  href: "vita-scolastica.html" },
+    { page: "vita",     label: "Vita scolastica",  href: "vita-scolastica.html", children: [
+      { label: "Calendario e servizi",   href: "vita-scolastica.html" },
+      { label: "Concorsi",               href: "concorsi.html" }
+    ] },
     { page: "galleria", label: "Galleria",         href: "galleria.html" },
     { page: "teatro",   label: "Teatro",           href: "teatro.html" },
     { page: "genitori", label: "Scuola e Genitori",href: "genitori.html" },
@@ -124,7 +126,7 @@
       '<div><div class="footer-brand"><img src="assets/img/logo.png" alt="Logo"><strong>' + CFG.nome + "</strong></div>" +
         "<p>Scuola Paritaria a Viterbo. Un cammino educativo dall'Infanzia alla Secondaria di I grado, con al centro la persona, i valori e la gioia di crescere insieme.</p>" +
         '<p class="footer-claim">' + CFG.claim + "</p>" + socialHTML + "</div>" +
-      '<div><h4>Scuola</h4><ul class="footer-links" id="footScuola">' +
+      '<div class="footer-col"><h4>Scuola</h4><ul class="footer-links" id="footScuola">' +
         '<li><a href="chi-siamo.html">Chi siamo</a></li>' +
         '<li><a href="offerta-formativa.html">Offerta formativa</a></li>' +
         '<li><a href="open-day.html">Open Day</a></li>' +
@@ -138,13 +140,13 @@
         '<li><a href="sostienici.html">Sostienici</a></li>' +
         '<li><a href="lavora-con-noi.html">Lavora con noi</a></li>' +
         '<li><a href="news.html">News ed eventi</a></li></ul></div>' +
-      '<div><h4>Area documenti</h4><ul class="footer-links">' +
+      '<div class="footer-col"><h4>Area documenti</h4><ul class="footer-links">' +
         '<li><a href="modulistica.html">Modulistica</a></li>' +
         '<li><a href="modulistica.html#richieste">Richieste documentali</a></li>' +
         '<li><a href="albo.html">Albo</a></li>' +
         '<li><a href="amministrazione-trasparente.html">Amministrazione Trasparente</a></li>' +
         '<li><a href="privacy.html">Privacy Policy</a></li></ul></div>' +
-      '<div><h4>Contatti</h4><ul class="footer-contact">' +
+      '<div class="footer-col"><h4>Contatti</h4><ul class="footer-contact">' +
         "<li>" + I.pin + " " + CFG.indirizzo + "</li>" +
         "<li>" + I.tel + ' <a href="tel:' + CFG.telRaw + '">' + CFG.tel + "</a></li>" +
         "<li>" + I.mail + ' <a href="mailto:' + CFG.email + '">' + CFG.email + "</a></li></ul></div>" +
@@ -195,6 +197,11 @@
      ---------------------------------------------------------- */
   document.body.insertAdjacentHTML("afterbegin", headerHTML);
   document.body.insertAdjacentHTML("beforeend", footerHTML + chatHTML + logoBadgeHTML + cookieHTML);
+
+  // Footer a fisarmonica: su mobile gli elenchi si aprono/chiudono cliccando il titolo della colonna
+  Array.prototype.forEach.call(document.querySelectorAll(".footer-col h4"), function (h) {
+    h.addEventListener("click", function () { h.parentNode.classList.toggle("open"); });
+  });
 
   // Banner cookie: visibile finché non si accetta (ricordato in localStorage)
   (function () {

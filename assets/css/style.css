@@ -320,6 +320,25 @@ a.trust-badge:hover, a.trust-badge:focus-visible { transform: translateY(-3px); 
 .trust-badge .tb-txt strong { color: var(--ink); font-size: .98rem; line-height: 1.2; }
 .trust-badge .tb-txt span { color: var(--muted); font-size: .82rem; }
 
+/* ---------- Titoli: bilanciamento righe (evita preposizioni spezzate e parole orfane) ---------- */
+h1, h2, h3, .display { text-wrap: balance; }
+.lead { text-wrap: pretty; }
+
+/* ---------- Footer a fisarmonica su mobile (elenchi che si aprono/chiudono al clic) ---------- */
+@media (max-width: 760px) {
+  .footer-col h4 { cursor: pointer; display: flex; align-items: center; justify-content: space-between; user-select: none; }
+  .footer-col h4::after {
+    content: ""; width: 9px; height: 9px; margin-right: 6px;
+    border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+    transform: rotate(45deg); transition: transform .3s ease; opacity: .65;
+  }
+  .footer-col.open h4::after { transform: rotate(-135deg); }
+  .footer-col .footer-links, .footer-col .footer-contact {
+    overflow: hidden; max-height: 0; transition: max-height .35s ease;
+  }
+  .footer-col.open .footer-links, .footer-col.open .footer-contact { max-height: 760px; }
+}
+
 /* ---------- Galleria placeholder (foto/video in arrivo) ---------- */
 .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .gallery-ph {
