@@ -871,7 +871,7 @@ html.no-intro #paradiso-intro { display: none !important; }
 }
 
 /* ---------- Contatore visite ---------- */
-.site-hits { height: 20px; vertical-align: middle; border-radius: 4px; }
+.site-hits { opacity: .85; white-space: nowrap; }
 
 /* ---------- Citazione Papa Francesco (Mission) ---------- */
 .papa-quote { margin: 38px auto 0; max-width: 720px; text-align: center; border: none; padding: 0; }
