@@ -50,6 +50,7 @@
     { page: "vita",     label: "Vita scolastica",  href: "vita-scolastica.html", children: [
       { label: "Calendario e servizi",   href: "vita-scolastica.html" },
       { label: "Il Giornale della scuola",href: "vita-scolastica.html#giornale" },
+      { label: "Radio SMP",              href: "vita-scolastica.html#radio" },
       { label: "Concorsi",               href: "concorsi.html" }
     ] },
     { page: "galleria", label: "Galleria",         href: "galleria.html" },
