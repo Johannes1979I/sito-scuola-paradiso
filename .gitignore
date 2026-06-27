@@ -14,3 +14,6 @@ desktop.ini
 
 # Server locale (solo sviluppo, non va online)
 dev-router.php
+
+# Config locale IDE/preview (non committare)
+.claude/

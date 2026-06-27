@@ -49,6 +49,7 @@
     { page: "openday",  label: "Open Day",         href: "open-day.html" },
     { page: "vita",     label: "Vita scolastica",  href: "vita-scolastica.html", children: [
       { label: "Calendario e servizi",   href: "vita-scolastica.html" },
+      { label: "Il Giornale della scuola",href: "vita-scolastica.html#giornale" },
       { label: "Concorsi",               href: "concorsi.html" }
     ] },
     { page: "galleria", label: "Galleria",         href: "galleria.html" },
