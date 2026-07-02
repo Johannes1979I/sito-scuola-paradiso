@@ -1149,23 +1149,28 @@ html.no-intro #paradiso-intro { display: none !important; }
 .anniv-sub { max-width: 640px; margin: 14px auto 0; color: var(--muted); }
 .anniv-journey { margin-top: 26px; }
 .anniv-journey svg { width: 100%; height: auto; max-width: 1000px; overflow: visible; }
-.aj-road-bg { fill: none; stroke: var(--line); stroke-width: 6; stroke-linecap: round; }
-.aj-road { fill: none; stroke: var(--blu); stroke-width: 6; stroke-linecap: round; stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: ajDraw 3s var(--ease) forwards; }
+.aj-road { fill: none; stroke: url(#ajRoadGrad); stroke-width: 5; stroke-linecap: round; stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: ajDraw 3.2s var(--ease) .2s forwards; }
+.aj-road-glow { fill: none; stroke: #ffdd7a; stroke-width: 15; stroke-linecap: round; opacity: .14; stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: ajDraw 3.2s var(--ease) .2s forwards; }
 @keyframes ajDraw { to { stroke-dashoffset: 0; } }
-.aj-stop circle { fill: var(--white); stroke: var(--blu); stroke-width: 4; opacity: 0; transform: scale(0); transform-origin: center; transform-box: fill-box; animation: ajPop .55s var(--ease) forwards; animation-delay: var(--d); }
-.aj-stop text { fill: var(--ink); font-size: 17px; font-weight: 700; text-anchor: middle; font-family: "Fraunces", serif; opacity: 0; animation: ajFade .55s ease forwards; animation-delay: var(--d); }
-.aj-stop .aj-name { font-size: 13px; font-weight: 500; fill: var(--muted); font-family: "Inter", sans-serif; }
-.aj-stop--now .aj-name { fill: var(--arancio); }
-.aj-arrow { fill: var(--blu); }
-.aj-stop--now circle { stroke: var(--arancio); }
-.aj-stop--now text { fill: var(--arancio); }
+.aj-node { fill: #0b2036; stroke: #ffdd7a; stroke-width: 2.5; opacity: 0; transform: scale(0); transform-origin: center; transform-box: fill-box; animation: ajPop .6s var(--ease) forwards; animation-delay: var(--d); }
+.aj-node-dot { fill: #ffe6a0; opacity: 0; animation: ajFade .6s ease forwards; animation-delay: var(--d); }
+.aj-yr { fill: #ffe08a; font-size: 20px; font-weight: 700; text-anchor: middle; font-family: "Fraunces", serif; opacity: 0; animation: ajFade .6s ease forwards; animation-delay: var(--d); }
+.aj-nm { fill: #e9ddc2; font-size: 15px; font-weight: 500; text-anchor: middle; font-family: "Inter", sans-serif; opacity: 0; animation: ajFade .6s ease forwards; animation-delay: var(--d); }
+.aj-start { text-anchor: start; }
 @keyframes ajPop { to { opacity: 1; transform: scale(1); } }
 @keyframes ajFade { to { opacity: 1; } }
-.aj-traveler circle { fill: var(--giallo); }
-.aj-traveler text { font-size: 18px; }
+.aj-tw { animation: ajTwinkle 3s ease-in-out infinite; animation-delay: var(--d); }
+@keyframes ajTwinkle { 0%, 100% { opacity: .3; } 50% { opacity: 1; } }
+.aj-starburst { transform-box: fill-box; transform-origin: center; animation: ajPulse 3.6s ease-in-out infinite; }
+@keyframes ajPulse { 0%, 100% { transform: scale(1); opacity: .9; } 50% { transform: scale(1.09); opacity: 1; } }
+.aj-orb-core { fill: #fff6d8; }
+.aj-orb-glow { fill: #ffdd7a; opacity: .28; }
+.aj-cross { stroke: #ffe6a0; stroke-width: 2.4; stroke-linecap: round; }
+.aj-win { fill: #ffd27a; opacity: .9; }
 @media (prefers-reduced-motion: reduce) {
-  .aj-road { animation: none; stroke-dashoffset: 0; }
-  .aj-stop circle, .aj-stop text { animation: none; opacity: 1; transform: none; }
+  .aj-road, .aj-road-glow { animation: none; stroke-dashoffset: 0; }
+  .aj-node, .aj-node-dot, .aj-yr, .aj-nm { animation: none; opacity: 1; transform: none; }
+  .aj-tw, .aj-starburst { animation: none; }
 }
 
 /* ---------- I nostri eroi (card con foto + video) ---------- */
