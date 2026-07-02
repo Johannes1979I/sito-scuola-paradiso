@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=27">
+<link rel="stylesheet" href="assets/css/style.css?v=28">
 <!-- SEO auto: gestito dal pannello SEO, non modificare a mano -->
 <link rel="canonical" href="https://johannes1979i.github.io/sito-scuola-paradiso/open-day.html">
 <meta property="og:type" content="website">
@@ -23,6 +23,11 @@
 <meta name="twitter:description" content="Open Day della Scuola Santa Maria del Paradiso di Viterbo: vieni a conoscere ambienti, docenti e metodo. Oltre alle date in programma, puoi prenotare una visita quando vuoi.">
 <meta name="twitter:image" content="https://johannes1979i.github.io/sito-scuola-paradiso/assets/img/logo.png">
 <!-- /SEO auto -->
+<!-- PWA -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#13449b">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<!-- /PWA -->
 </head>
 <body data-page="openday">
 
@@ -90,6 +95,31 @@
 </section>
 
 <!-- PRENOTA / CTA -->
+<section class="section" id="prenota-form">
+  <div class="container">
+    <div class="section-head center mx-auto reveal">
+      <span class="eyebrow">Prenota online</span>
+      <h2>Prenota la tua visita o l'Open Day</h2>
+      <p class="lead">Compila il modulo: ti ricontatteremo per confermare giorno e orario.</p>
+    </div>
+    <div class="form-card reveal" style="max-width:720px;margin:0 auto">
+      <form data-form="Prenotazione Open Day" novalidate>
+        <div class="form-row">
+          <div class="field"><label for="od-nome">Nome e cognome</label><input id="od-nome" name="nome" type="text" required placeholder="Il tuo nome"></div>
+          <div class="field"><label for="od-tel">Telefono</label><input id="od-tel" name="telefono" type="tel" required placeholder="Il tuo numero"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="od-email">Email</label><input id="od-email" name="email" type="email" required placeholder="nome@email.it"></div>
+          <div class="field"><label for="od-data">Giorno preferito</label><input id="od-data" name="giorno_preferito" type="date"></div>
+        </div>
+        <div class="field"><label for="od-msg">Messaggio (facoltativo)</label><textarea id="od-msg" name="messaggio" placeholder="Es. quanti bambini, età, scuola di interesse…"></textarea></div>
+        <label class="consent"><input type="checkbox" required> Ho letto e accetto l'<a href="privacy.html" style="color:var(--blu)">informativa sulla privacy</a>.</label>
+        <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center">Invia la richiesta</button>
+      </form>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="prenota" style="padding-top:0">
   <div class="container">
     <div class="cta-band reveal">
@@ -112,6 +142,6 @@
   </div>
 </section>
 
-<script src="assets/js/layout.js?v=30"></script>
+<script src="assets/js/layout.js?v=31"></script>
 </body>
 </html>

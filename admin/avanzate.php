@@ -54,10 +54,16 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
     if (preg_match('/\b((?:G|UA|GT)-[A-Z0-9\-]+)\b/i', $ga, $m)) { $ga = strtoupper($m[1]); }
     $cookieText = trim((string)($_POST['cookieText'] ?? ''));
     $headCode   = trim((string)($_POST['headCode'] ?? ''));
+    $formEndpoint = trim((string)($_POST['formEndpoint'] ?? ''));
+    $formKey      = trim((string)($_POST['formKey'] ?? ''));
+    $formEmail    = trim((string)($_POST['formEmail'] ?? ''));
 
     $js = (string)file_get_contents($JS);
     $js = write_cfg_field($js, 'ga', $ga);
     $js = write_cfg_field($js, 'cookieText', $cookieText);
+    $js = write_cfg_field($js, 'formEndpoint', $formEndpoint);
+    $js = write_cfg_field($js, 'formKey', $formKey);
+    $js = write_cfg_field($js, 'formEmail', $formEmail);
     $okJs = file_put_contents($JS, $js) !== false;
 
     foreach ($pages as $p) { apply_headcode($ROOT, $p, $headCode); }
@@ -70,6 +76,9 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
 $js = (string)file_get_contents($JS);
 $ga = read_cfg_field($js, 'ga');
 $cookieText = read_cfg_field($js, 'cookieText');
+$formEndpoint = read_cfg_field($js, 'formEndpoint');
+$formKey = read_cfg_field($js, 'formKey');
+$formEmail = read_cfg_field($js, 'formEmail');
 $headCode = (string)($adv['headCode'] ?? '');
 ?>
 <!DOCTYPE html>
@@ -118,6 +127,14 @@ $headCode = (string)($adv['headCode'] ?? '');
       <h3>🍪 Testo del banner cookie</h3>
       <p class="av-hint">Mostrato solo se Analytics è attivo. Lascia vuoto per il testo predefinito.</p>
       <div class="av-field"><textarea name="cookieText" style="min-height:70px;font-family:inherit;font-size:.92rem"><?= h($cookieText) ?></textarea></div>
+    </div>
+
+    <div class="av-sec">
+      <h3>📩 Moduli — invio email</h3>
+      <p class="av-hint">Rende i moduli del sito (contatti, pre-iscrizione, Open Day) <b>realmente invianti</b>. Consigliato un servizio gratuito: <b>Web3Forms</b> (endpoint <code>https://api.web3forms.com/submit</code> + Access Key, si ottiene con la sola email su web3forms.com) oppure <b>Formspree</b> (endpoint <code>https://formspree.io/f/xxxxxx</code>). Se lasci vuoto l'endpoint, i moduli aprono il programma di posta col messaggio già compilato verso l'indirizzo qui sotto.</p>
+      <div class="av-field"><label>Endpoint del servizio</label><input type="text" name="formEndpoint" value="<?= h($formEndpoint) ?>" placeholder="https://api.web3forms.com/submit"></div>
+      <div class="av-field"><label>Access Key (solo Web3Forms)</label><input type="text" name="formKey" value="<?= h($formKey) ?>" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"></div>
+      <div class="av-field"><label>Email per il fallback (se endpoint vuoto)</label><input type="text" name="formEmail" value="<?= h($formEmail) ?>" placeholder="segreteria@scuolasantamariadelparadiso.it"></div>
     </div>
 
     <div class="av-sec">

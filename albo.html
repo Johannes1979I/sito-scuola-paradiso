@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=27">
+<link rel="stylesheet" href="assets/css/style.css?v=28">
 <!-- SEO auto: gestito dal pannello SEO, non modificare a mano -->
 <link rel="canonical" href="https://johannes1979i.github.io/sito-scuola-paradiso/albo.html">
 <meta property="og:type" content="website">
@@ -23,6 +23,11 @@
 <meta name="twitter:description" content="Albo della Scuola Santa Maria del Paradiso: comunicazioni e pubblicazioni ufficiali.">
 <meta name="twitter:image" content="https://johannes1979i.github.io/sito-scuola-paradiso/assets/img/logo.png">
 <!-- /SEO auto -->
+<!-- PWA -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#13449b">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<!-- /PWA -->
 </head>
 <body data-page="albo">
 
@@ -34,6 +39,14 @@
       <h1>Albo</h1>
       <p class="lead">Comunicazioni e pubblicazioni ufficiali della scuola, a disposizione delle famiglie e della comunità.</p>
     </div>
+  </div>
+</section>
+
+<!-- DOCUMENTI DINAMICI (gestiti dal pannello Documenti) -->
+<section class="section" id="doc-dinamici" data-doc-list data-doc-category="Albo,Circolari,PTOF,Bilanci,Amministrazione trasparente" hidden style="padding-bottom:0">
+  <div class="container" style="max-width:880px">
+    <div class="section-head center mx-auto reveal"><span class="eyebrow">Documenti</span><h2>Documenti aggiornati</h2></div>
+    <div class="doc-list" data-doc-grid></div>
   </div>
 </section>
 
@@ -123,6 +136,6 @@
   </div>
 </section>
 
-<script src="assets/js/layout.js?v=30"></script>
+<script src="assets/js/layout.js?v=31"></script>
 </body>
 </html>

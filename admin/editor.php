@@ -109,6 +109,9 @@ function h(?string $s): string { return htmlspecialchars((string)$s, ENT_QUOTES,
       </span>
       <span class="tgrp">
         <select class="tbtn tbtn--txt" id="insType" title="Cosa inserire">
+          <option value="text">🔤 Testo</option>
+          <option value="heading">🔠 Titolo</option>
+          <option value="subheading">🔡 Sottotitolo</option>
           <option value="media">🖼️ Media</option>
           <option value="box">▭ Riquadro</option>
           <option value="banner">🎟️ Banner</option>
@@ -122,6 +125,7 @@ function h(?string $s): string { return htmlspecialchars((string)$s, ENT_QUOTES,
       </span>
       <span class="tgrp">
         <button class="tbtn tbtn--txt" id="btnSections" type="button" title="Inserisci una sezione già pronta">🧱 Sezioni</button>
+        <button class="tbtn tbtn--txt" id="btnDelete" type="button" title="Elimina l'elemento selezionato (clicca prima la casella di testo o l'elemento)">🗑️ Elimina</button>
       </span>
       <span class="tgrp">
         <button class="tbtn tbtn--txt" id="btnStyle" type="button" title="Stile ed effetti dell'elemento selezionato">🎨 Stile &amp; effetti</button>

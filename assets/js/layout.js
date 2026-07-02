@@ -31,6 +31,13 @@
     // Analytics & cookie (impostabili dal pannello Avanzate)
     ga: "",
     cookieText: "",
+    // Moduli — invio email (impostabili dal pannello Avanzate).
+    // formEndpoint = URL del servizio (Formspree "https://formspree.io/f/xxx" o Web3Forms
+    // "https://api.web3forms.com/submit"); formKey = access_key (solo Web3Forms);
+    // formEmail = indirizzo per il fallback mailto se non c'è endpoint.
+    formEndpoint: "",
+    formKey: "",
+    formEmail: "",
     // Claim "Scuola e Famiglie unite"
     claim: "Scuola e Famiglie, unite per crescere insieme."
   };
@@ -99,7 +106,8 @@
     }).join("");
   }
   var headerHTML =
-    '<header class="header" id="header"><div class="container"><nav class="nav">' +
+    '<a class="skip-link" href="#contenuto-principale">Salta al contenuto</a>' +
+    '<header class="header" id="header"><div class="container"><nav class="nav" aria-label="Navigazione principale">' +
       '<a href="index.html" class="brand">' +
         '<img src="' + CFG.logo + '" alt="Logo ' + CFG.nome + '">' +
         '<span class="brand-txt"><strong>' + CFG.nome + "</strong><span>" + CFG.sottotitolo + "</span></span>" +
@@ -109,7 +117,7 @@
       "</ul>" +
       '<div class="nav-cta">' +
         '<a href="iscrizioni.html" class="btn btn--primary">Iscriviti</a>' +
-        '<button class="burger" id="burger" aria-label="Apri menu" aria-expanded="false"><span></span></button>' +
+        '<button class="burger" id="burger" aria-label="Apri menu" aria-expanded="false" aria-controls="navLinks"><span></span></button>' +
       "</div>" +
     "</nav></div></header>";
 
@@ -203,6 +211,8 @@
      ---------------------------------------------------------- */
   document.body.insertAdjacentHTML("afterbegin", headerHTML);
   document.body.insertAdjacentHTML("beforeend", footerHTML + chatHTML + logoBadgeHTML + cookieHTML);
+  // Bersaglio dello skip-link (accessibilità): un ancoraggio focalizzabile subito dopo l'header
+  (function () { var hd = document.getElementById("header"); if (hd && !document.getElementById("contenuto-principale")) { hd.insertAdjacentHTML("afterend", '<span id="contenuto-principale" tabindex="-1"></span>'); } })();
 
   // Footer a fisarmonica: su mobile gli elenchi si aprono/chiudono cliccando il titolo della colonna
   Array.prototype.forEach.call(document.querySelectorAll(".footer-col h4"), function (h) {
@@ -300,16 +310,160 @@
     reveals.forEach(function (el) { el.classList.add("in"); });
   }
 
-  // Form contatti (demo)
-  var form = document.getElementById("contactForm");
-  if (form) {
-    form.addEventListener("submit", function (ev) {
-      ev.preventDefault();
-      var note = document.getElementById("formNote");
-      if (note) { note.hidden = false; note.scrollIntoView({ behavior: "smooth", block: "center" }); }
-      form.reset();
-    });
-  }
+  // Moduli funzionanti (contatti / pre-iscrizione / Open Day): invio via endpoint
+  // configurato (Formspree/Web3Forms) o fallback mailto. Ogni <form data-form="Oggetto">.
+  (function () {
+    if (new URLSearchParams(location.search).get("edit") === "1") { return; }
+    function noteEl(form) {
+      var n = form.querySelector("[data-form-note]");
+      if (!n) { n = document.createElement("p"); n.setAttribute("data-form-note", ""); form.appendChild(n); }
+      return n;
+    }
+    function say(form, ok, msg) {
+      var n = noteEl(form);
+      n.hidden = false;
+      n.className = "form-note " + (ok ? "form-note--ok" : "form-note--err");
+      n.textContent = msg;
+      n.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    function attach(form) {
+      form.addEventListener("submit", function (ev) {
+        ev.preventDefault();
+        if (form.checkValidity && !form.checkValidity()) { form.reportValidity(); return; }
+        var subject = form.getAttribute("data-form") || "Messaggio dal sito";
+        var endpoint = (CFG.formEndpoint || "").trim();
+        var btn = form.querySelector("[type=submit]");
+        if (endpoint) {
+          var fd = new FormData(form);
+          if (CFG.formKey) { fd.append("access_key", CFG.formKey); }
+          fd.append("subject", subject + " — " + CFG.nome);
+          fd.append("pagina", location.href);
+          var old = btn ? btn.textContent : "";
+          if (btn) { btn.disabled = true; btn.textContent = "Invio in corso…"; }
+          fetch(endpoint, { method: "POST", headers: { "Accept": "application/json" }, body: fd })
+            .then(function (r) { return r.ok; })
+            .then(function (ok) {
+              if (ok) { form.reset(); say(form, true, "✅ Messaggio inviato! Ti risponderemo al più presto."); }
+              else { say(form, false, "⚠️ Invio non riuscito. Riprova, oppure scrivici a " + (CFG.email || "") + "."); }
+            })
+            .catch(function () { say(form, false, "⚠️ Errore di rete: controlla la connessione e riprova."); })
+            .then(function () { if (btn) { btn.disabled = false; btn.textContent = old; } });
+        } else {
+          var to = (CFG.formEmail || CFG.email || "").trim();
+          var lines = [];
+          Array.prototype.forEach.call(form.elements, function (el) {
+            if (!el.name || el.type === "submit" || el.type === "hidden") { return; }
+            if (el.type === "checkbox" && !el.checked) { return; }
+            var lab = (el.labels && el.labels[0]) ? el.labels[0].textContent.trim().replace(/\s+/g, " ") : el.name;
+            lines.push(lab + ": " + (el.type === "checkbox" ? "sì" : el.value));
+          });
+          var href = "mailto:" + to + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(lines.join("\n"));
+          window.location.href = href;
+          say(form, true, "📧 Si aprirà il tuo programma di posta col messaggio già pronto: premi Invia. (Per l'invio automatico, configura un servizio dal pannello Avanzate.)");
+        }
+      });
+    }
+    document.querySelectorAll("form[data-form]").forEach(attach);
+  })();
+
+  // Avvisi/News dinamici: popola #news-feed da news.json (salta in editor)
+  (function () {
+    if (new URLSearchParams(location.search).get("edit") === "1") { return; }
+    var host = document.getElementById("news-feed");
+    if (!host) { return; }
+    var grid = host.querySelector("[data-news-grid]") || host;
+    var months = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"];
+    function fmt(d) { var t = d ? new Date(d) : null; return (t && !isNaN(t.getTime())) ? (t.getDate() + " " + months[t.getMonth()] + " " + t.getFullYear()) : (d || ""); }
+    function esc(s) { return String(s || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;"); }
+    fetch("news.json", { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (items) {
+        items = (items || []).filter(function (n) { return n && n.published; });
+        items.sort(function (a, b) { return String(b.date || "").localeCompare(String(a.date || "")); });
+        var limit = parseInt(host.getAttribute("data-limit"), 10) || 0;
+        if (limit > 0) { items = items.slice(0, limit); }
+        if (!items.length) { host.hidden = true; return; }
+        host.hidden = false;
+        grid.innerHTML = items.map(function (n) {
+          var media = n.image ? '<div class="ni-media"><img src="' + esc(n.image) + '" alt="' + esc(n.title) + '"></div>' : "";
+          return '<article class="news-item">' + media +
+            '<div class="ni-body"><span class="date">' + fmt(n.date) + '</span><h3>' + (n.title || "") + '</h3>' +
+            '<div class="ni-text">' + (n.body || "") + '</div></div></article>';
+        }).join("");
+      })
+      .catch(function () { host.hidden = true; });
+  })();
+
+  // Documenti dinamici: popola [data-doc-list] da documents.json (aprono nel modale .lm-*)
+  (function () {
+    if (new URLSearchParams(location.search).get("edit") === "1") { return; }
+    var hosts = document.querySelectorAll("[data-doc-list]");
+    if (!hosts.length) { return; }
+    function esc(s) { return String(s || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;"); }
+    fetch("documents.json", { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (all) {
+        all = (all || []).filter(function (d) { return d && d.published && d.url; });
+        Array.prototype.forEach.call(hosts, function (host) {
+          var cats = (host.getAttribute("data-doc-category") || "").split(",").map(function (s) { return s.trim(); }).filter(Boolean);
+          var items = cats.length ? all.filter(function (d) { return cats.indexOf(d.category || "") >= 0; }) : all.slice();
+          var grid = host.querySelector("[data-doc-grid]") || host;
+          if (!items.length) { host.hidden = true; return; }
+          host.hidden = false;
+          var FICO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>';
+          var GO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+          grid.innerHTML = items.map(function (d) {
+            return '<a class="doc-item" href="' + esc(d.url) + '" data-modal data-modal-title="' + esc(d.title) + '" data-modal-embed="' + esc(d.url) + '" data-modal-download="' + esc(d.url) + '" target="_blank" rel="noopener">' +
+              '<span class="fico">' + FICO + '</span>' +
+              '<span class="meta"><strong>' + (d.title || "") + '</strong>' + (d.category ? '<span>' + esc(d.category) + '</span>' : '') + '</span>' +
+              '<span class="go">Apri ' + GO + '</span></a>';
+          }).join("");
+        });
+      })
+      .catch(function () { Array.prototype.forEach.call(hosts, function (h) { h.hidden = true; }); });
+  })();
+
+  // Eventi/agenda dinamici: popola [data-events] da events.json (solo i prossimi, salvo data-show-past)
+  (function () {
+    if (new URLSearchParams(location.search).get("edit") === "1") { return; }
+    var host = document.querySelector("[data-events]");
+    if (!host) { return; }
+    var months = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"];
+    function esc(s) { return String(s || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;"); }
+    var todayStr = new Date().toISOString().slice(0, 10);
+    fetch("events.json", { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (all) {
+        all = (all || []).filter(function (e) { return e && e.published && e.date; });
+        if (!host.hasAttribute("data-show-past")) { all = all.filter(function (e) { return String(e.date) >= todayStr; }); }
+        all.sort(function (a, b) { return String(a.date).localeCompare(String(b.date)); });
+        var limit = parseInt(host.getAttribute("data-limit"), 10) || 0;
+        if (limit > 0) { all = all.slice(0, limit); }
+        var grid = host.querySelector("[data-events-grid]") || host;
+        if (!all.length) { host.hidden = true; return; }
+        host.hidden = false;
+        grid.innerHTML = all.map(function (e) {
+          var t = new Date(e.date); var ok = !isNaN(t.getTime());
+          var day = ok ? t.getDate() : ""; var mon = ok ? months[t.getMonth()].slice(0, 3) : "";
+          return '<div class="ev-item"><div class="ev-date"><span class="ev-d">' + day + '</span><span class="ev-m">' + mon + '</span></div>' +
+            '<div class="ev-body"><h3>' + (e.title || "") + '</h3>' +
+            '<div class="ev-meta">' + (e.time ? '🕒 ' + esc(e.time) + '  ' : '') + (e.place ? '📍 ' + esc(e.place) : '') + '</div>' +
+            (e.description ? '<p>' + (e.description) + '</p>' : '') + '</div></div>';
+        }).join("");
+      })
+      .catch(function () { host.hidden = true; });
+  })();
+
+  // PWA: registra il service worker (offline + installabile). Salta in editor e su file://
+  (function () {
+    if (new URLSearchParams(location.search).get("edit") === "1") { return; }
+    if (location.protocol === "file:") { return; }
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("sw.js").catch(function () {});
+      });
+    }
+  })();
 
   /* --- Runtime di editing condiviso (usato dal sito e dal pannello editor) --- */
   window.EditRuntime = {
@@ -516,9 +670,10 @@
   (function () {
     if (new URLSearchParams(location.search).get("edit") === "1") { return; }
     var finePointer = window.matchMedia && window.matchMedia("(pointer: fine)").matches;
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     // Cursore-logo: appare quando il mouse si FERMA
-    if (finePointer) {
+    if (finePointer && !reduceMotion) {
       var lc = document.createElement("div");
       lc.id = "logo-cursor";
       document.body.appendChild(lc);
@@ -542,6 +697,7 @@
       if (pt) { pt.classList.remove("on"); }
     }
     function pageTransition(go) {
+      if (reduceMotion) { go(); return; }
       var pt = document.getElementById("page-transition");
       if (!pt) {
         pt = document.createElement("div");
@@ -561,12 +717,14 @@
 
     // Animazione al clic + transizione sui link interni
     document.addEventListener("click", function (e) {
-      var r = document.createElement("div");
-      r.className = "logo-ripple";
-      r.style.left = e.clientX + "px";
-      r.style.top = e.clientY + "px";
-      document.body.appendChild(r);
-      setTimeout(function () { r.remove(); }, 700);
+      if (!reduceMotion) {
+        var r = document.createElement("div");
+        r.className = "logo-ripple";
+        r.style.left = e.clientX + "px";
+        r.style.top = e.clientY + "px";
+        document.body.appendChild(r);
+        setTimeout(function () { r.remove(); }, 700);
+      }
 
       var a = e.target.closest("a[href]");
       if (a) {
@@ -580,6 +738,7 @@
     if (document.body.getAttribute("data-page") === "home") {
       var intro = document.getElementById("paradiso-intro");
       var au = document.getElementById("intro-audio");
+      if (intro && reduceMotion) { intro.remove(); intro = null; }
       if (intro) {
         var started = false;
         var fadeAudio = function () {

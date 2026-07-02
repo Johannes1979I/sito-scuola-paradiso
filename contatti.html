@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=27">
+<link rel="stylesheet" href="assets/css/style.css?v=28">
 <!-- SEO auto: gestito dal pannello SEO, non modificare a mano -->
 <link rel="canonical" href="https://johannes1979i.github.io/sito-scuola-paradiso/contatti.html">
 <meta property="og:type" content="website">
@@ -23,6 +23,11 @@
 <meta name="twitter:description" content="Contatta la Scuola Paritaria Santa Maria del Paradiso a Viterbo: indirizzo, telefono, email, orari di segreteria e modulo di contatto.">
 <meta name="twitter:image" content="https://johannes1979i.github.io/sito-scuola-paradiso/assets/img/logo.png">
 <!-- /SEO auto -->
+<!-- PWA -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#13449b">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<!-- /PWA -->
 </head>
 <body data-page="contatti">
 
@@ -75,7 +80,7 @@
         <div class="form-card">
           <h2 style="font-size:1.8rem;margin-bottom:8px">Scrivici un messaggio</h2>
           <p style="color:var(--muted);margin-bottom:26px">Compila il modulo: ti risponderemo il prima possibile.</p>
-          <form id="contactForm" novalidate>
+          <form id="contactForm" data-form="Richiesta di contatto dal sito" novalidate>
             <div class="form-row">
               <div class="field"><label for="nome">Nome</label><input id="nome" name="nome" type="text" required placeholder="Il tuo nome"></div>
               <div class="field"><label for="cognome">Cognome</label><input id="cognome" name="cognome" type="text" required placeholder="Il tuo cognome"></div>
@@ -84,7 +89,6 @@
             <div class="field"><label for="messaggio">Messaggio</label><textarea id="messaggio" name="messaggio" required placeholder="Come possiamo aiutarti?"></textarea></div>
             <label class="consent"><input type="checkbox" required> Ho letto e accetto l'<a href="privacy.html" style="color:var(--blu)">informativa sulla privacy</a> e acconsento al trattamento dei dati.</label>
             <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center">Invia messaggio</button>
-            <p id="formNote" hidden style="margin-top:18px;padding:14px 18px;background:color-mix(in srgb,var(--verde) 14%,#fff);color:#0b7a5b;border-radius:12px;font-size:.95rem">✅ Grazie! Il modulo è una dimostrazione: collega qui il servizio di invio email per renderlo operativo.</p>
           </form>
         </div>
       </div>
@@ -92,6 +96,6 @@
   </div>
 </section>
 
-<script src="assets/js/layout.js?v=30"></script>
+<script src="assets/js/layout.js?v=31"></script>
 </body>
 </html>

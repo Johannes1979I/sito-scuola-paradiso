@@ -73,7 +73,7 @@ function h(?string $s): string { return htmlspecialchars((string)$s, ENT_QUOTES,
 <?php else: ?>
   <div class="topbar">
     <span class="brand"><img src="../assets/img/logo.png" alt="">Pannello contenuti</span>
-    <span class="topactions"><a href="branding.php">🎨 Branding</a><a href="seo.php">🔍 SEO</a><a href="backup.php">💾 Backup</a><a href="avanzate.php">⚙️ Avanzate</a><a href="../index.html" target="_blank">Vedi il sito ↗</a><a href="?logout=1" class="logout">Esci</a></span>
+    <span class="topactions"><a href="branding.php">🎨 Branding</a><a href="seo.php">🔍 SEO</a><a href="backup.php">💾 Backup</a><a href="news.php">📰 News</a><a href="documenti.php">🗂️ Documenti</a><a href="eventi.php">📅 Eventi</a><a href="avanzate.php">⚙️ Avanzate</a><a href="../index.html" target="_blank">Vedi il sito ↗</a><a href="?logout=1" class="logout">Esci</a></span>
   </div>
 
   <div class="wrap">

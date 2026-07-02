@@ -22,6 +22,7 @@
   var mediaTitle = document.getElementById("mediaTitle");
   var mediaSpin = document.getElementById("mediaSpin");
 
+  var btnDelete = document.getElementById("btnDelete");
   var btnSections = document.getElementById("btnSections");
   var secModal = document.getElementById("secModal");
   var secGrid = document.getElementById("secGrid");
@@ -166,6 +167,7 @@
     var x = FD.createElement("button");
     x.className = "ed-chrome ed-remove";
     x.type = "button";
+    x.setAttribute("contenteditable", "false");
     x.textContent = "✕";
     x.title = "Rimuovi";
     x.addEventListener("click", function (e) {
@@ -552,6 +554,7 @@
   btnInsert.addEventListener("click", function () { if (insertMode) { exitInsertMode(); } else { enterInsertMode(); } });
   if (btnMove) { btnMove.addEventListener("click", function () { if (moveMode) { exitMoveMode(); } else { enterMoveMode(); } }); }
   if (btnSections) { btnSections.addEventListener("click", openSections); }
+  if (btnDelete) { btnDelete.addEventListener("click", deleteSelected); }
   if (secClose) { secClose.addEventListener("click", closeSections); }
   if (secModal) { secModal.addEventListener("click", function (e) { if (e.target === secModal) { closeSections(); } }); }
   if (edDevices) { edDevices.addEventListener("click", function (e) { var b = e.target.closest(".dvbtn"); if (b) { setDevice(b.dataset.dev); } }); }
@@ -716,7 +719,10 @@
 
   function makeGraphicEl(type) {
     var d;
-    if (type === "divider") { d = FD.createElement("hr"); d.className = "gx-divider"; }
+    if (type === "text") { d = FD.createElement("p"); d.className = "gx-text"; d.textContent = "Nuovo testo. Clicca per modificarlo."; }
+    else if (type === "heading") { d = FD.createElement("h2"); d.textContent = "Nuovo titolo"; }
+    else if (type === "subheading") { d = FD.createElement("h3"); d.textContent = "Nuovo sottotitolo"; }
+    else if (type === "divider") { d = FD.createElement("hr"); d.className = "gx-divider"; }
     else if (type === "spacer") { d = FD.createElement("div"); d.className = "gx-spacer"; }
     else if (type === "banner") { d = FD.createElement("div"); d.className = "gx-banner"; d.innerHTML = "<h3>Titolo del banner</h3><p>Sottotitolo o messaggio.</p>"; }
     else { d = FD.createElement("div"); d.className = "gx-box"; d.innerHTML = "<h3>Titolo del riquadro</h3><p>Testo del riquadro. Clicca per modificarlo.</p>"; }
@@ -727,12 +733,33 @@
     c.parentNode.insertBefore(el, c.nextSibling);
     var container = findContainer(el) || el.parentNode;
     addRemoveBtn(el, container);
-    el.querySelectorAll("h1,h2,h3,h4,p,li").forEach(function (t) {
+    var edMe = [];
+    if (/^(H1|H2|H3|H4|H5|P|LI|BLOCKQUOTE)$/.test(el.tagName)) { edMe.push(el); }
+    el.querySelectorAll("h1,h2,h3,h4,p,li").forEach(function (t) { edMe.push(t); });
+    edMe.forEach(function (t) {
       t.setAttribute("contenteditable", "true"); t.classList.add("ed-editable");
       t.addEventListener("input", function () { refreshBlockDirty(container); });
     });
     refreshBlockDirty(container);
     exitInsertMode();
+  }
+
+  /* ---------- ELIMINA elemento (casella di testo, riquadro, immagine…) ---------- */
+  function deleteSelected() {
+    var el = selectedEl;
+    if (!el || ER.isSystem(el) || el === FD.body) {
+      window.alert("Prima clicca la casella di testo (o l'elemento) da eliminare: comparirà un bordo arancione.");
+      return;
+    }
+    var txt = (el.textContent || "").replace(/\s+/g, " ").trim().slice(0, 70);
+    if (!window.confirm("Eliminare questo elemento (" + el.tagName.toLowerCase() + ")?" + (txt ? "\n\n« " + txt + " »" : ""))) { return; }
+    var container = findContainer(el) || el.parentElement;
+    el.classList.remove("ed-selected");
+    selectedEl = null;
+    el.remove();
+    if (container && !ER.isSystem(container) && container.tagName !== "BODY") { refreshBlockDirty(container); }
+    else { markDirty(); }
+    if (inspectorOpen) { fillInspector(); }
   }
 
   /* ---------- LIBRERIA SEZIONI (modelli pronti) ---------- */

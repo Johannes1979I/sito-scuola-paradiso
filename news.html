@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=27">
+<link rel="stylesheet" href="assets/css/style.css?v=28">
 <!-- SEO auto: gestito dal pannello SEO, non modificare a mano -->
 <link rel="canonical" href="https://johannes1979i.github.io/sito-scuola-paradiso/news.html">
 <meta property="og:type" content="website">
@@ -23,6 +23,11 @@
 <meta name="twitter:description" content="Avvisi, eventi e novità dalla Scuola Santa Maria del Paradiso di Viterbo.">
 <meta name="twitter:image" content="https://johannes1979i.github.io/sito-scuola-paradiso/assets/img/logo.png">
 <!-- /SEO auto -->
+<!-- PWA -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#13449b">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<!-- /PWA -->
 </head>
 <body data-page="news">
 
@@ -34,6 +39,17 @@
       <h1>Avvisi e novità<br>dalla nostra comunità</h1>
       <p class="lead">Comunicazioni, eventi e momenti significativi della vita della scuola.</p>
     </div>
+  </div>
+</section>
+
+<!-- FEED AVVISI DINAMICI (gestiti dal pannello News) -->
+<section class="section" id="news-feed" data-limit="0" hidden>
+  <div class="container">
+    <div class="section-head center mx-auto reveal">
+      <span class="eyebrow">Ultimi avvisi</span>
+      <h2>Avvisi e comunicazioni</h2>
+    </div>
+    <div class="news-feed-grid" data-news-grid></div>
   </div>
 </section>
 
@@ -114,6 +130,6 @@
   <p>Per la secondaria di primo grado podio più alto per <strong>Elena Bocchino</strong>, seguita a ruota da <strong>Raffaele Maria Zappa</strong>. La commissione (costituita dalle docenti Laura Ruggeri, Laura Sabatini e Loretta Landi) nell'assegnare i premi ha messo in evidenza il coinvolgimento personale, sulla base di vere e vissute esperienze, espresso dai ragazzi nei loro testi rispetto alla tematica del concorso, incentrata sul perdono.</p>
   <p>La premiazione si è tenuta presso Palazzo Bugiotti alla presenza del governatore del Serra Club di Viterbo, Marcello Bonotto, e del Presidente, Beatrice Valiserra. Ciliegina sulla torta: l'elaborato di Elena Bocchino ha conquistato anche il <strong>terzo posto a livello nazionale</strong>: la studentessa sarà premiata in una cerimonia a Matera.</p>
 </div>
-<script src="assets/js/layout.js?v=30"></script>
+<script src="assets/js/layout.js?v=31"></script>
 </body>
 </html>

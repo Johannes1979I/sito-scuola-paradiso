@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=27">
+<link rel="stylesheet" href="assets/css/style.css?v=28">
 <!-- SEO auto: gestito dal pannello SEO, non modificare a mano -->
 <link rel="canonical" href="https://johannes1979i.github.io/sito-scuola-paradiso/iscrizioni.html">
 <meta property="og:type" content="website">
@@ -23,6 +23,11 @@
 <meta name="twitter:description" content="Come iscriversi alla Scuola Santa Maria del Paradiso di Viterbo: quando, quali documenti servono e come completare l&#039;iscrizione. La segreteria ti accompagna passo dopo passo.">
 <meta name="twitter:image" content="https://johannes1979i.github.io/sito-scuola-paradiso/assets/img/logo.png">
 <!-- /SEO auto -->
+<!-- PWA -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#13449b">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<!-- /PWA -->
 </head>
 <body data-page="iscrizioni">
 
@@ -100,6 +105,37 @@
 </section>
 
 <!-- CTA -->
+<section class="section" id="preiscrizione">
+  <div class="container">
+    <div class="section-head center mx-auto reveal">
+      <span class="eyebrow">Pre-iscrizione online</span>
+      <h2>Richiedi la pre-iscrizione</h2>
+      <p class="lead">Inviaci i dati: la segreteria ti ricontatterà per completare l'iscrizione.</p>
+    </div>
+    <div class="form-card reveal" style="max-width:720px;margin:0 auto">
+      <form data-form="Richiesta di pre-iscrizione" novalidate>
+        <div class="form-row">
+          <div class="field"><label for="is-figlio">Nome e cognome del bambino/ragazzo</label><input id="is-figlio" name="alunno" type="text" required placeholder="Nome dell'alunno"></div>
+          <div class="field"><label for="is-ordine">Scuola</label><select id="is-ordine" name="ordine" required>
+            <option value="">Scegli…</option>
+            <option>Scuola dell'Infanzia</option>
+            <option>Scuola Primaria</option>
+            <option>Secondaria di I grado</option>
+          </select></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="is-genitore">Nome del genitore</label><input id="is-genitore" name="genitore" type="text" required placeholder="Il tuo nome"></div>
+          <div class="field"><label for="is-tel">Telefono</label><input id="is-tel" name="telefono" type="tel" required placeholder="Il tuo numero"></div>
+        </div>
+        <div class="field"><label for="is-email">Email</label><input id="is-email" name="email" type="email" required placeholder="nome@email.it"></div>
+        <div class="field"><label for="is-msg">Note (facoltativo)</label><textarea id="is-msg" name="messaggio" placeholder="Eventuali informazioni utili…"></textarea></div>
+        <label class="consent"><input type="checkbox" required> Ho letto e accetto l'<a href="privacy.html" style="color:var(--blu)">informativa sulla privacy</a>.</label>
+        <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center">Invia la pre-iscrizione</button>
+      </form>
+    </div>
+  </div>
+</section>
+
 <section class="section" style="padding-top:0">
   <div class="container">
     <div class="cta-band reveal">
@@ -122,6 +158,6 @@
   </div>
 </section>
 
-<script src="assets/js/layout.js?v=30"></script>
+<script src="assets/js/layout.js?v=31"></script>
 </body>
 </html>
