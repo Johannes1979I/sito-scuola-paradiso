@@ -739,11 +739,13 @@
       var intro = document.getElementById("paradiso-intro");
       var au = document.getElementById("intro-audio");
       if (intro && reduceMotion) { intro.remove(); intro = null; }
-      // L'intro parte solo al PRIMO avvio della sessione: tornando in home durante la navigazione NON riparte.
-      var introSeen = false; try { introSeen = sessionStorage.getItem("intro-seen") === "1"; } catch (e) {}
-      if (intro && introSeen) { intro.remove(); intro = null; }
+      // L'intro parte al PRIMO avvio del sito (arrivo da un link esterno, dai preferiti o indirizzo
+      // digitato: referrer vuoto o di un altro sito). NON riparte quando si torna alla home navigando
+      // tra le pagine interne o ricaricando (referrer dello stesso dominio).
+      var fromInternal = false;
+      try { fromInternal = !!document.referrer && document.referrer.indexOf(location.origin) === 0; } catch (e) {}
+      if (intro && fromInternal) { intro.remove(); intro = null; }
       if (intro) {
-        try { sessionStorage.setItem("intro-seen", "1"); } catch (e) {}
         var started = false;
         var fadeAudio = function () {
           if (!au) { return; }
