@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=31">
+<link rel="stylesheet" href="assets/css/style.css?v=32">
 <script>if(/[?&]edit=1/.test(location.search)){document.documentElement.classList.add('no-intro');}</script>
 <!-- SEO auto: gestito dal pannello SEO, non modificare a mano -->
 <link rel="canonical" href="https://johannes1979i.github.io/sito-scuola-paradiso/">
@@ -83,18 +83,33 @@
     <div class="anniv-head">
       <span class="anniv-badge">1986 — 2026 · Quarantennale</span>
       <h2>Da <span class="anniv-num">40</span> anni cresciamo insieme</h2>
-      <p class="anniv-sub">Quarant'anni di scuola, di volti e di sogni: un cammino educativo che continua, con lo stesso cuore di sempre.</p>
+      <p class="anniv-sub">Dalla <strong>Beata Angelina</strong> alla <strong>Santa Maria del Paradiso</strong>: un'unica storia educativa che continua a crescere, con lo stesso cuore di sempre.</p>
     </div>
     <div class="anniv-journey">
-      <svg viewBox="0 0 1000 200" role="img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet">
-        <title>Il percorso della scuola dal 1986 al 2026</title>
-        <path class="aj-road-bg" d="M40,150 C140,150 170,90 270,90 S400,150 500,150 S630,90 730,90 S860,140 960,140"/>
-        <path id="ajRoad" class="aj-road" d="M40,150 C140,150 170,90 270,90 S400,150 500,150 S630,90 730,90 S860,140 960,140"/>
-        <g class="aj-stop" style="--d:.3s"><circle cx="40" cy="150" r="8"/><text x="40" y="180">1986</text></g>
-        <g class="aj-stop" style="--d:.9s"><circle cx="270" cy="90" r="8"/><text x="270" y="66">1996</text></g>
-        <g class="aj-stop" style="--d:1.5s"><circle cx="500" cy="150" r="8"/><text x="500" y="180">2006</text></g>
-        <g class="aj-stop" style="--d:2.1s"><circle cx="730" cy="90" r="8"/><text x="730" y="66">2016</text></g>
-        <g class="aj-stop aj-stop--now" style="--d:2.7s"><circle cx="960" cy="140" r="11"/><text x="960" y="172">2026</text></g>
+      <svg viewBox="0 0 1000 280" role="img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet">
+        <title>Il percorso della scuola: dalla fondazione come Beata Angelina (1986) a oggi come Santa Maria del Paradiso</title>
+        <defs>
+          <marker id="ajArrow" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+            <path class="aj-arrow" d="M1,1 L11,6 L1,11 Z"/>
+          </marker>
+        </defs>
+        <path class="aj-road-bg" d="M70,212 L892,68"/>
+        <path id="ajRoad" class="aj-road" d="M70,212 L892,68" pathLength="1400" marker-end="url(#ajArrow)"/>
+        <g class="aj-stop" style="--d:.3s">
+          <circle cx="70" cy="212" r="9"/>
+          <text x="70" y="246">1986</text>
+          <text class="aj-name" x="70" y="266">Beata Angelina</text>
+        </g>
+        <g class="aj-stop" style="--d:1s">
+          <circle cx="360" cy="161" r="9"/>
+          <text x="360" y="138">2000</text>
+          <text class="aj-name" x="360" y="118">Santa Maria del Paradiso</text>
+        </g>
+        <g class="aj-stop aj-stop--now" style="--d:1.7s">
+          <circle cx="892" cy="68" r="12"/>
+          <text x="892" y="46">2026</text>
+          <text class="aj-name" x="892" y="26">oggi</text>
+        </g>
         <g class="aj-traveler">
           <circle r="17"/>
           <text dy="6" text-anchor="middle">🎓</text>
@@ -376,6 +391,6 @@
   </div>
 </section>
 
-<script src="assets/js/layout.js?v=35"></script>
+<script src="assets/js/layout.js?v=36"></script>
 </body>
 </html>

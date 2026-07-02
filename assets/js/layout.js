@@ -54,19 +54,32 @@
       { label: "Scuola dell'Infanzia",   href: "offerta-formativa.html#infanzia" },
       { label: "Scuola Primaria",        href: "offerta-formativa.html#primaria" },
       { label: "Secondaria di I grado",  href: "offerta-formativa.html#secondaria" },
-      { label: "PTOF",                   href: "ptof.html" },
+      { label: "Corsi pomeridiani",      href: "offerta-formativa.html#corsi-pomeridiani" },
       { label: "Erasmus",                href: "erasmus.html" }
     ] },
-    { page: "openday",  label: "Open Day",         href: "open-day.html" },
-    { page: "vita",     label: "Vita scolastica",  href: "vita-scolastica.html", children: [
-      { label: "Calendario e servizi",   href: "vita-scolastica.html" },
-      { label: "Il Giornale della scuola",href: "vita-scolastica.html#giornale" },
-      { label: "Radio SMP",              href: "vita-scolastica.html#radio" },
-      { label: "Concorsi",               href: "concorsi.html" }
+    { page: "servizi",  label: "Servizi alle famiglie", href: "vita-scolastica.html#mensa", children: [
+      { label: "Mensa",       href: "vita-scolastica.html#mensa" },
+      { label: "Permanenza",  href: "vita-scolastica.html#permanenza" },
+      { label: "Doposcuola",  href: "vita-scolastica.html#doposcuola" }
     ] },
-    { page: "galleria", label: "Galleria",         href: "galleria.html" },
-    { page: "teatro",   label: "Teatro",           href: "teatro.html" },
-    { page: "genitori", label: "Scuola e Genitori",href: "genitori.html" },
+    { page: "vita",     label: "Vita scolastica",  href: "vita-scolastica.html", children: [
+      { label: "Calendario e servizi",    href: "vita-scolastica.html" },
+      { label: "Il Giornale della scuola",href: "vita-scolastica.html#giornale" },
+      { label: "Radio SMP",               href: "vita-scolastica.html#radio" },
+      { label: "Concorsi",                href: "concorsi.html" },
+      { label: "Galleria",                href: "galleria.html" },
+      { label: "Associazione genitori",   href: "genitori.html" },
+      { label: "Eventi e spettacoli",     href: "teatro.html" }
+    ] },
+    { page: "documenti", label: "Area documenti",  href: "area-documenti.html", children: [
+      { label: "PTOF",                        href: "ptof.html" },
+      { label: "PEI",                         href: "area-documenti.html#pei" },
+      { label: "Regolamento",                 href: "area-documenti.html#regolamento" },
+      { label: "Patto di corresponsabilità",  href: "area-documenti.html#patto" },
+      { label: "Modulistica",                 href: "modulistica.html" },
+      { label: "Albo",                        href: "albo.html" },
+      { label: "Amministrazione trasparente", href: "amministrazione-trasparente.html" }
+    ] },
     { page: "sostieni", label: "Sostienici",       href: "sostienici.html" },
     { page: "news",     label: "News",             href: "news.html" },
     { page: "contatti", label: "Contatti",         href: "contatti.html" }
@@ -155,11 +168,10 @@
         '<li><a href="lavora-con-noi.html">Lavora con noi</a></li>' +
         '<li><a href="news.html">News ed eventi</a></li></ul></div>' +
       '<div class="footer-col"><h4>Area documenti</h4><ul class="footer-links">' +
+        '<li><a href="area-documenti.html">Tutti i documenti</a></li>' +
         '<li><a href="modulistica.html">Modulistica</a></li>' +
-        '<li><a href="modulistica.html#richieste">Richieste documentali</a></li>' +
         '<li><a href="albo.html">Albo</a></li>' +
-        '<li><a href="amministrazione-trasparente.html">Amministrazione Trasparente</a></li>' +
-        '<li><a href="privacy.html">Privacy Policy</a></li></ul></div>' +
+        '<li><a href="amministrazione-trasparente.html">Amministrazione Trasparente</a></li></ul></div>' +
       '<div class="footer-col"><h4>Contatti</h4><ul class="footer-contact">' +
         "<li>" + I.pin + " " + CFG.indirizzo + "</li>" +
         "<li>" + I.tel + ' <a href="tel:' + CFG.telRaw + '">' + CFG.tel + "</a></li>" +

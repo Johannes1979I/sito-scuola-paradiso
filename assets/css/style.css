@@ -1014,6 +1014,9 @@ html.no-intro #paradiso-intro { display: none !important; }
 .doc-item .meta span { font-size: .88rem; color: var(--muted); }
 .doc-item .go { flex-shrink: 0; display: inline-flex; align-items: center; gap: 7px; font-weight: 600; color: var(--blu); white-space: nowrap; }
 .doc-item .go svg { width: 16px; height: 16px; }
+.doc-item--soon { cursor: default; opacity: .72; }
+.doc-item--soon:hover { transform: none; box-shadow: var(--sh-sm); border-color: var(--line); }
+.go--soon { background: #f1f5fb; color: #7a879e; padding: 6px 13px; border-radius: 100px; font-size: .8rem; font-weight: 600; white-space: nowrap; }
 
 /* Sezione con ancora (offset header sticky) */
 [id] { scroll-margin-top: 96px; }
@@ -1143,6 +1146,9 @@ html.no-intro #paradiso-intro { display: none !important; }
 @keyframes ajDraw { to { stroke-dashoffset: 0; } }
 .aj-stop circle { fill: var(--white); stroke: var(--blu); stroke-width: 4; opacity: 0; transform: scale(0); transform-origin: center; transform-box: fill-box; animation: ajPop .55s var(--ease) forwards; animation-delay: var(--d); }
 .aj-stop text { fill: var(--ink); font-size: 17px; font-weight: 700; text-anchor: middle; font-family: "Fraunces", serif; opacity: 0; animation: ajFade .55s ease forwards; animation-delay: var(--d); }
+.aj-stop .aj-name { font-size: 13px; font-weight: 500; fill: var(--muted); font-family: "Inter", sans-serif; }
+.aj-stop--now .aj-name { fill: var(--arancio); }
+.aj-arrow { fill: var(--blu); }
 .aj-stop--now circle { stroke: var(--arancio); }
 .aj-stop--now text { fill: var(--arancio); }
 @keyframes ajPop { to { opacity: 1; transform: scale(1); } }
