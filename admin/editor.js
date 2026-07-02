@@ -22,13 +22,24 @@
   var mediaTitle = document.getElementById("mediaTitle");
   var mediaSpin = document.getElementById("mediaSpin");
 
+  var btnSections = document.getElementById("btnSections");
+  var secModal = document.getElementById("secModal");
+  var secGrid = document.getElementById("secGrid");
+  var secClose = document.getElementById("secClose");
+  var edHilite = document.getElementById("edHilite");
+  var edFont = document.getElementById("edFont");
+  var edDevices = document.getElementById("edDevices");
+  var frameWrap = document.querySelector(".ed-frame-wrap");
+  var INS_HINT_DEFAULT = insHint ? insHint.innerHTML : "";
+
   var FD, ER;                       // documento e runtime dell'iframe
-  var dirty = { texts: {}, images: {}, blocks: {}, styles: {}, fx: {}, order: {} };
+  var dirty = { texts: {}, images: {}, blocks: {}, styles: {}, fx: {}, order: {}, alts: {} };
   var activeEl = null;              // elemento testo attualmente in modifica
   var savedRange = null;            // selezione salvata (per colore/link)
   var mediaMode = "browse";         // browse | replace | insert | insert-at
   var mediaTarget = null;
   var insertMode = false;
+  var pendingSection = null;        // HTML della sezione da inserire (libreria sezioni)
   var lastHover = null;
   var moveMode = false;
   var dragSrc = null;
@@ -56,7 +67,7 @@
     c.querySelectorAll("[data-ed-key],[data-ed-img],[data-ed-oi]").forEach(function (n) {
       n.removeAttribute("data-ed-key"); n.removeAttribute("data-ed-img"); n.removeAttribute("data-ed-oi");
     });
-    ["ed-editable", "ed-img", "ed-hl"].forEach(function (cl) {
+    ["ed-editable", "ed-img", "ed-img-noalt", "ed-hl"].forEach(function (cl) {
       c.querySelectorAll("." + cl).forEach(function (n) {
         n.classList.remove(cl); if (!n.classList.length) { n.removeAttribute("class"); }
       });
@@ -107,7 +118,36 @@
         e.preventDefault(); e.stopPropagation();
         openMedia("replace", img);
       });
+      addAltBadge(img);
     });
+  }
+  /* Badge "testo alternativo" (accessibilità + SEO) su ogni immagine modificabile */
+  function altKeyFor(img) { return img.dataset.edImg || ER.domKey(img); }
+  function addAltBadge(img) {
+    var parent = img.parentElement;
+    if (!parent || parent.querySelector(":scope > .ed-alt-badge")) { return; }
+    if (FD.defaultView.getComputedStyle(parent).position === "static") { parent.style.position = "relative"; }
+    var badge = FD.createElement("button");
+    badge.type = "button"; badge.className = "ed-chrome ed-alt-badge";
+    function sync() {
+      var a = (img.getAttribute("alt") || "").trim();
+      badge.classList.toggle("noalt", !a);
+      badge.textContent = a ? "alt ✓" : "⚠ alt";
+      badge.title = a ? ('Testo alternativo: "' + a + '" — clicca per modificarlo')
+                      : "Manca il testo alternativo (accessibilità e SEO) — clicca per aggiungerlo";
+      img.classList.toggle("ed-img-noalt", !a);
+    }
+    badge.addEventListener("click", function (e) {
+      e.preventDefault(); e.stopPropagation();
+      var val = window.prompt("Testo alternativo dell'immagine (descrizione per accessibilità e motori di ricerca):", img.getAttribute("alt") || "");
+      if (val === null) { return; }
+      val = val.trim();
+      img.setAttribute("alt", val);
+      dirty.alts[altKeyFor(img)] = val;
+      markDirty(); sync();
+    });
+    parent.appendChild(badge);
+    sync();
   }
 
   /* ---------- gallerie (aggiungi/rimuovi media) ---------- */
@@ -208,9 +248,11 @@
   }
   function exitInsertMode() {
     insertMode = false;
+    pendingSection = null;
     if (lastHover) { lastHover.classList.remove("ed-insert-hover"); lastHover = null; }
     if (FD && FD.body) { FD.body.classList.remove("ed-inserting"); }
     insHint.hidden = true;
+    if (INS_HINT_DEFAULT) { insHint.innerHTML = INS_HINT_DEFAULT; }
     btnInsert.classList.remove("active");
   }
   function onInsMove(e) {
@@ -224,6 +266,7 @@
     var c = insCandidate(e.target);
     if (!c) { return; }
     e.preventDefault(); e.stopPropagation();
+    if (pendingSection) { insertSectionAt(c, pendingSection); pendingSection = null; return; }
     var t = insType ? insType.value : "media";
     if (t === "media") { openMedia("insert-at", c); }
     else { insertGraphicAt(c, t); }
@@ -423,6 +466,20 @@
     updateToolbarState();
   });
   edColor.addEventListener("input", function () { exec("foreColor", edColor.value); syncActiveDirty(); });
+  if (edHilite) {
+    edHilite.addEventListener("input", function () {
+      frame.contentWindow.focus(); restoreSelection();
+      try { FD.execCommand("styleWithCSS", false, true); } catch (e) {}
+      if (!FD.execCommand("hiliteColor", false, edHilite.value)) { FD.execCommand("backColor", false, edHilite.value); }
+      syncActiveDirty();
+    });
+  }
+  if (edFont) {
+    edFont.addEventListener("change", function () {
+      if (!edFont.value) { return; }
+      exec("fontSize", edFont.value); syncActiveDirty(); edFont.selectedIndex = 0;
+    });
+  }
 
   /* ---------- libreria media ---------- */
   function openMedia(mode, target) {
@@ -494,7 +551,11 @@
   btnMedia.addEventListener("click", function () { openMedia("browse", null); });
   btnInsert.addEventListener("click", function () { if (insertMode) { exitInsertMode(); } else { enterInsertMode(); } });
   if (btnMove) { btnMove.addEventListener("click", function () { if (moveMode) { exitMoveMode(); } else { enterMoveMode(); } }); }
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape") { if (insertMode) { exitInsertMode(); } if (moveMode) { exitMoveMode(); } } });
+  if (btnSections) { btnSections.addEventListener("click", openSections); }
+  if (secClose) { secClose.addEventListener("click", closeSections); }
+  if (secModal) { secModal.addEventListener("click", function (e) { if (e.target === secModal) { closeSections(); } }); }
+  if (edDevices) { edDevices.addEventListener("click", function (e) { var b = e.target.closest(".dvbtn"); if (b) { setDevice(b.dataset.dev); } }); }
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") { if (insertMode) { exitInsertMode(); } if (moveMode) { exitMoveMode(); } if (secModal && secModal.classList.contains("open")) { closeSections(); } } });
   mediaClose.addEventListener("click", closeMedia);
   modal.addEventListener("click", function (e) { if (e.target === modal) { closeMedia(); } });
 
@@ -504,11 +565,11 @@
     fetch("save.php", {
       method: "POST",
       headers: { "Content-Type": "application/json", "X-CSRF-Token": CFG.csrf },
-      body: JSON.stringify({ page: CFG.page, texts: dirty.texts, images: dirty.images, blocks: dirty.blocks, styles: dirty.styles, fx: dirty.fx, order: dirty.order })
+      body: JSON.stringify({ page: CFG.page, texts: dirty.texts, images: dirty.images, blocks: dirty.blocks, styles: dirty.styles, fx: dirty.fx, order: dirty.order, alts: dirty.alts })
     })
       .then(function (r) { return r.json(); })
       .then(function (res) {
-        if (res.ok) { mergeDirtyIntoSaved(); dirty = { texts: {}, images: {}, blocks: {}, styles: {}, fx: {}, order: {} }; setStatus("salvato ✓", "saved"); }
+        if (res.ok) { mergeDirtyIntoSaved(); dirty = { texts: {}, images: {}, blocks: {}, styles: {}, fx: {}, order: {}, alts: {} }; setStatus("salvato ✓", "saved"); }
         else { setStatus("errore: " + (res.error || "?"), "dirty"); btnSave.disabled = false; }
       })
       .catch(function () { setStatus("errore di rete", "dirty"); btnSave.disabled = false; });
@@ -538,6 +599,9 @@
       ".ed-drop-before{box-shadow:inset 0 5px 0 -1px #1fc196!important}" +
       ".ed-drop-after{box-shadow:inset 0 -5px 0 -1px #1fc196!important}" +
       ".ed-ghost{position:fixed;z-index:99999;pointer-events:none;opacity:.85;margin:0!important;border-radius:10px;overflow:hidden;box-shadow:0 18px 50px rgba(15,28,51,.35);transform:rotate(1.5deg)}" +
+      ".ed-alt-badge{position:absolute;top:6px;left:6px;z-index:9;padding:3px 8px;border:none;border-radius:100px;font-size:.7rem;font-weight:700;cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,.22);background:#1fc196;color:#fff}" +
+      ".ed-alt-badge.noalt{background:#f5a623;color:#3a2a00}" +
+      ".ed-img-noalt{outline:2px dashed #f5a623!important;outline-offset:2px}" +
       ".ed-selected{outline:2px solid #ff7a3c!important;outline-offset:2px}";
     var st = FD.createElement("style");
     st.textContent = css;
@@ -604,7 +668,7 @@
     rememberStyle(prop, val);
   }
   function mergeDirtyIntoSaved() {
-    ["texts", "images", "blocks", "order"].forEach(function (b) { saved[b] = saved[b] || {}; Object.keys(dirty[b]).forEach(function (k) { saved[b][k] = dirty[b][k]; }); });
+    ["texts", "images", "blocks", "order", "alts"].forEach(function (b) { saved[b] = saved[b] || {}; Object.keys(dirty[b]).forEach(function (k) { saved[b][k] = dirty[b][k]; }); });
     ["styles", "fx"].forEach(function (b) { saved[b] = saved[b] || {}; Object.keys(dirty[b]).forEach(function (k) { saved[b][k] = Object.assign({}, saved[b][k], dirty[b][k]); }); });
   }
   function onSelect(e) { if (insertMode || moveMode) { return; } selectEl(e.target); }
@@ -669,6 +733,62 @@
     });
     refreshBlockDirty(container);
     exitInsertMode();
+  }
+
+  /* ---------- LIBRERIA SEZIONI (modelli pronti) ---------- */
+  var SECTIONS = [
+    { ico: "📛", name: "Intestazione sezione", desc: "Etichetta, titolo e sottotitolo centrati.",
+      html: '<div class="section-head center mx-auto"><span class="eyebrow">Etichetta</span><h2>Titolo della sezione</h2><p class="lead">Sottotitolo descrittivo: spiega in poche parole di cosa si tratta.</p></div>' },
+    { ico: "🎟️", name: "Fascia invito (CTA)", desc: "Banner colorato con titolo, testo e pulsanti.",
+      html: '<div class="cta-band"><div class="cta-inner"><div><span class="eyebrow" style="background:rgba(255,255,255,.16);color:#fff">Invito</span><h2>Titolo dell\'invito</h2><p>Un breve messaggio che invita le famiglie a compiere un\'azione: prenotare, iscriversi, contattare la scuola.</p><div class="actions" style="margin-top:26px"><a href="#" class="btn btn--warm">Azione principale</a><a href="#" class="btn btn--light">Azione secondaria</a></div></div></div></div>' },
+    { ico: "▤", name: "Due colonne", desc: "Testo a sinistra, contenuto a destra.",
+      html: '<div class="split" style="align-items:center"><div><span class="eyebrow">Etichetta</span><h2>Titolo a due colonne</h2><p class="lead" style="margin:16px 0">Testo introduttivo della colonna di sinistra.</p><p style="color:#38465e">Descrivi qui il contenuto in modo più esteso.</p></div><div><h3>Colonna di destra</h3><p>Contenuto della seconda colonna: testo, un\'immagine o un video.</p></div></div>' },
+    { ico: "🔳", name: "Tre riquadri", desc: "Griglia di tre box affiancati.",
+      html: '<div class="grid grid-3"><div class="gx-box"><h3>Riquadro 1</h3><p>Testo del primo riquadro.</p></div><div class="gx-box"><h3>Riquadro 2</h3><p>Testo del secondo riquadro.</p></div><div class="gx-box"><h3>Riquadro 3</h3><p>Testo del terzo riquadro.</p></div></div>' },
+    { ico: "❝", name: "Citazione", desc: "Frase in evidenza con autore.",
+      html: '<blockquote class="gx-quote"><p>«La frase o citazione che vuoi mettere in evidenza.»</p><cite>— Autore della citazione</cite></blockquote>' }
+  ];
+  function insertSectionAt(c, html) {
+    var wrap = FD.createElement("div");
+    wrap.innerHTML = html;
+    var el = wrap.firstElementChild;
+    if (!el) { return; }
+    c.parentNode.insertBefore(el, c.nextSibling);
+    var container = findContainer(el) || el.parentNode;
+    addRemoveBtn(el, container);
+    el.querySelectorAll("h1,h2,h3,h4,h5,p,li,cite").forEach(function (t) {
+      if (t.querySelector("h1,h2,h3,h4,h5,p,li")) { return; }
+      t.setAttribute("contenteditable", "true"); t.classList.add("ed-editable");
+      t.addEventListener("input", function () { refreshBlockDirty(container); });
+    });
+    refreshBlockDirty(container);
+    exitInsertMode();
+  }
+  function buildSections() {
+    if (!secGrid || secGrid.childElementCount) { return; }
+    SECTIONS.forEach(function (s) {
+      var card = document.createElement("button");
+      card.type = "button"; card.className = "sec-card";
+      card.innerHTML = '<div class="sec-ico">' + s.ico + '</div><h4>' + s.name + '</h4><p>' + s.desc + '</p>';
+      card.addEventListener("click", function () { pickSection(s); });
+      secGrid.appendChild(card);
+    });
+  }
+  function openSections() { buildSections(); secModal.classList.add("open"); }
+  function closeSections() { secModal.classList.remove("open"); }
+  function pickSection(s) {
+    closeSections();
+    pendingSection = s.html;
+    enterInsertMode();
+    insHint.innerHTML = "🧱 Clicca il punto della pagina dove inserire la sezione «" + s.name + "» — premi <b>ESC</b> per annullare";
+  }
+  /* ---------- ANTEPRIMA RESPONSIVE ---------- */
+  function setDevice(dev) {
+    if (!frameWrap) { return; }
+    frameWrap.classList.remove("dev-tablet", "dev-mobile");
+    if (dev === "tablet") { frameWrap.classList.add("dev-tablet"); }
+    else if (dev === "mobile") { frameWrap.classList.add("dev-mobile"); }
+    if (edDevices) { edDevices.querySelectorAll(".dvbtn").forEach(function (b) { b.classList.toggle("active", b.dataset.dev === dev); }); }
   }
 
   if (btnStyle) {

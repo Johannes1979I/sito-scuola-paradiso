@@ -6,6 +6,9 @@ admin/config.php
 Thumbs.db
 desktop.ini
 
+# Snapshot/versioni locali dell'editor (non vanno online)
+backups/
+
 # Backup e temporanei
 *.bak
 *.bak-*

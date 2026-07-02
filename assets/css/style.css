@@ -367,6 +367,9 @@ h1, h2, h3, .display { text-wrap: balance; }
 .gx-banner { background: linear-gradient(135deg, var(--blu) 0%, var(--blu-scuro) 100%); color: #fff; border-radius: var(--r-lg); padding: 34px; margin: 24px 0; text-align: center; }
 .gx-banner h3 { color: #fff; }
 .gx-banner p { color: rgba(255,255,255,.9); margin-top: 8px; }
+.gx-quote { margin: 26px 0; padding: 8px 26px; border-left: 5px solid var(--blu); background: rgba(19,68,155,.04); border-radius: 0 var(--r-lg) var(--r-lg) 0; }
+.gx-quote p { font-size: 1.25rem; font-style: italic; color: #26364f; line-height: 1.5; }
+.gx-quote cite { display: block; margin-top: 10px; font-style: normal; font-weight: 600; color: var(--blu); }
 .gx-divider { height: 2px; background: var(--line); border: 0; margin: 34px 0; border-radius: 2px; }
 .gx-spacer { height: 48px; }
 
@@ -420,6 +423,17 @@ body.lm-open { overflow: hidden; }
 .lm-doc .lm-doc-txt small { color: #8290a8; font-weight: 500; }
 .lm-source { display: none; }
 @media (max-width: 600px) { .lm-card { border-radius: 18px; } .lm-frame { margin: 14px; } .lm-frame iframe { height: 66vh; } .lm-rich { padding: 4px 16px 18px; } }
+
+/* ===== Banner cookie (consenso GDPR) ===== */
+.cookie-banner { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 1500; max-width: 760px; margin: 0 auto; background: #fff; border: 1px solid #e4ebf5; border-radius: 16px; box-shadow: 0 20px 60px rgba(8, 20, 45, .28); padding: 15px 18px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; transform: translateY(160%); transition: transform .4s cubic-bezier(.2, .8, .2, 1); }
+.cookie-banner.show { transform: none; }
+.cookie-banner p { margin: 0; flex: 1 1 300px; font-size: .88rem; color: #33415c; line-height: 1.5; }
+.cookie-banner p a { color: var(--blu); font-weight: 600; }
+.cookie-banner .ck-btns { display: flex; gap: 10px; margin-left: auto; }
+.cookie-banner .ck-no { background: #f1f5fb; color: #56657f; border: none; padding: 10px 16px; border-radius: 100px; font-weight: 600; cursor: pointer; }
+.cookie-banner .ck-yes { background: var(--blu); color: #fff; border: none; padding: 10px 18px; border-radius: 100px; font-weight: 600; cursor: pointer; }
+.cookie-banner .ck-yes:hover { background: var(--blu-scuro); }
+@media (max-width: 520px) { .cookie-banner .ck-btns { width: 100%; } .cookie-banner .ck-yes, .cookie-banner .ck-no { flex: 1; } }
 
 /* ============================================================
    CURSORE-LOGO (quando il mouse si ferma) + animazione al clic

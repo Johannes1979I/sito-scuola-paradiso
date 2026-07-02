@@ -37,7 +37,79 @@ $dest = dirname(__DIR__) . '/uploads/' . $name;
 if (!move_uploaded_file($f['tmp_name'], $dest)) {
     http_response_code(500); echo json_encode(['error' => 'salvataggio fallito']); exit;
 }
+
+/* --- Ottimizzazione immagini raster (side-effect isolato: se fallisce, resta l'originale).
+   Ridimensiona il lato lungo a max 1600px e ricomprime; preserva la trasparenza PNG.
+   GIF (possibile animazione) e SVG NON vengono toccati. --- */
+if (in_array($ext, ['jpg', 'png', 'webp'], true) && function_exists('imagecreatetruecolor')) {
+    try { optimize_image($dest, $ext); } catch (\Throwable $e) { /* teniamo l'originale */ }
+}
+
 $type = in_array($ext, ['mp4', 'webm', 'mov'], true) ? 'video'
     : (in_array($ext, ['mp3', 'wav', 'ogg', 'm4a', 'aac'], true) ? 'audio'
     : ($ext === 'pdf' ? 'pdf' : 'image'));
-echo json_encode(['ok' => true, 'url' => 'uploads/' . $name, 'type' => $type, 'mime' => $mime]);
+$out = ['ok' => true, 'url' => 'uploads/' . $name, 'type' => $type, 'mime' => $mime];
+if ($type === 'image') {
+    $dim = @getimagesize($dest);
+    if ($dim) { $out['w'] = $dim[0]; $out['h'] = $dim[1]; }
+    $out['bytes'] = @filesize($dest) ?: null;
+}
+echo json_encode($out);
+
+/* Ridimensiona+comprime un'immagine sul posto. Tiene il risultato solo se è più
+   leggero dell'originale (o se è stato necessario ridimensionare). */
+function optimize_image(string $path, string $ext): void
+{
+    $MAX = 1600;   // lato lungo massimo (px)
+    $Q   = 82;     // qualità JPEG/WebP
+    $info = @getimagesize($path);
+    if (!$info) { return; }
+    [$w, $h] = $info;
+    if ($w < 1 || $h < 1) { return; }
+
+    switch ($ext) {
+        case 'jpg':  $src = @imagecreatefromjpeg($path); break;
+        case 'png':  $src = @imagecreatefrompng($path); break;
+        case 'webp': $src = function_exists('imagecreatefromwebp') ? @imagecreatefromwebp($path) : false; break;
+        default:     return;
+    }
+    if (!$src) { return; }
+
+    $scale = min(1.0, $MAX / max($w, $h));
+    $needResize = ($scale < 1.0);
+    $nw = max(1, (int)round($w * $scale));
+    $nh = max(1, (int)round($h * $scale));
+
+    $dstImg = $src;
+    if ($needResize) {
+        $tmp = imagecreatetruecolor($nw, $nh);
+        if ($ext === 'png' || $ext === 'webp') {
+            imagealphablending($tmp, false);
+            imagesavealpha($tmp, true);
+            $transparent = imagecolorallocatealpha($tmp, 0, 0, 0, 127);
+            imagefilledrectangle($tmp, 0, 0, $nw, $nh, $transparent);
+        }
+        imagecopyresampled($tmp, $src, 0, 0, 0, 0, $nw, $nh, $w, $h);
+        $dstImg = $tmp;
+    }
+
+    $tmpFile = $path . '.opt';
+    $ok = false;
+    switch ($ext) {
+        case 'jpg':  $ok = imagejpeg($dstImg, $tmpFile, $Q); break;
+        case 'webp': $ok = function_exists('imagewebp') ? imagewebp($dstImg, $tmpFile, $Q) : false; break;
+        case 'png':  imagesavealpha($dstImg, true); $ok = imagepng($dstImg, $tmpFile, 8); break;
+    }
+    if ($dstImg !== $src) { imagedestroy($dstImg); }
+    imagedestroy($src);
+
+    if (!$ok || !is_file($tmpFile)) { if (is_file($tmpFile)) { @unlink($tmpFile); } return; }
+
+    $origSize = @filesize($path);
+    $newSize  = @filesize($tmpFile);
+    if ($needResize || ($newSize && $origSize && $newSize < $origSize)) {
+        @rename($tmpFile, $path);
+    } else {
+        @unlink($tmpFile);
+    }
+}

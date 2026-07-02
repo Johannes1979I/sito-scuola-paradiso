@@ -23,6 +23,28 @@ function h(?string $s): string { return htmlspecialchars((string)$s, ENT_QUOTES,
 <link rel="icon" href="../assets/img/favicon.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="admin.css?v=<?= filemtime(__DIR__ . '/admin.css') ?>">
+<style>
+  /* Anteprima responsive (Modulo C) */
+  .ed-devices { display: inline-flex; gap: 2px; background: #eef2f8; border-radius: 100px; padding: 3px; margin-right: 6px; }
+  .dvbtn { border: none; background: transparent; padding: 6px 10px; border-radius: 100px; cursor: pointer; font-size: .95rem; line-height: 1; }
+  .dvbtn.active { background: #fff; box-shadow: 0 2px 6px rgba(15, 28, 51, .15); }
+  #edFrame { transition: width .35s cubic-bezier(.2, .8, .2, 1); }
+  .ed-frame-wrap.dev-tablet, .ed-frame-wrap.dev-mobile { display: grid; place-items: start center; background: #e9eef6; overflow: auto; }
+  .ed-frame-wrap.dev-tablet #edFrame, .ed-frame-wrap.dev-mobile #edFrame { margin: 18px auto; border-radius: 22px; box-shadow: 0 20px 60px rgba(15, 28, 51, .28); border: 1px solid #d7e0ee; height: calc(100% - 36px); }
+  .ed-frame-wrap.dev-tablet #edFrame { width: 820px; max-width: 96%; }
+  .ed-frame-wrap.dev-mobile #edFrame { width: 402px; max-width: 96%; }
+  /* Evidenziatore testo */
+  .tcolor-wrap { display: inline-flex; align-items: center; gap: 1px; cursor: pointer; }
+  .tcolor-ic { font-size: .95rem; }
+  /* Modale sezioni */
+  .sec-hint { margin: 0 0 14px; color: #5a6678; font-size: .9rem; line-height: 1.5; }
+  .sec-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
+  .sec-card { border: 1px solid #e4ebf5; border-radius: 14px; padding: 15px; cursor: pointer; background: #fff; transition: transform .15s, box-shadow .15s, border-color .15s; text-align: left; }
+  .sec-card:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(15, 28, 51, .14); border-color: #9cc0ff; }
+  .sec-card .sec-ico { font-size: 1.5rem; }
+  .sec-card h4 { margin: 8px 0 4px; font-family: "Fraunces", serif; font-size: 1.02rem; color: #13449b; }
+  .sec-card p { margin: 0; font-size: .82rem; color: #5a6678; line-height: 1.45; }
+</style>
 </head>
 <body class="ed-body">
 
@@ -34,6 +56,11 @@ function h(?string $s): string { return htmlspecialchars((string)$s, ENT_QUOTES,
         <span class="ed-status" id="edStatus">pronto</span>
       </div>
       <div class="ed-right">
+        <span class="ed-devices" id="edDevices" title="Anteprima responsive">
+          <button class="dvbtn active" data-dev="desktop" type="button" title="Desktop">🖥️</button>
+          <button class="dvbtn" data-dev="tablet" type="button" title="Tablet">▭</button>
+          <button class="dvbtn" data-dev="mobile" type="button" title="Telefono">📱</button>
+        </span>
         <button class="btn btn--ghost" id="btnMedia" type="button">🖼️ Libreria media</button>
         <button class="btn btn--ok" id="btnSave" type="button" disabled>Salva modifiche</button>
       </div>
@@ -53,6 +80,7 @@ function h(?string $s): string { return htmlspecialchars((string)$s, ENT_QUOTES,
         <button class="tbtn tbtn--txt" data-cmd="formatBlock" data-val="h2" title="Titolo">Titolo</button>
         <button class="tbtn tbtn--txt" data-cmd="formatBlock" data-val="h3" title="Sottotitolo">Sottot.</button>
         <button class="tbtn tbtn--txt" data-cmd="formatBlock" data-val="p" title="Paragrafo">¶</button>
+        <button class="tbtn tbtn--txt" data-cmd="formatBlock" data-val="blockquote" title="Citazione">❝</button>
       </span>
       <span class="tgrp">
         <button class="tbtn" data-cmd="insertUnorderedList" title="Elenco puntato">• ≡</button>
@@ -67,7 +95,17 @@ function h(?string $s): string { return htmlspecialchars((string)$s, ENT_QUOTES,
         <button class="tbtn" data-cmd="createLink" title="Inserisci link">🔗</button>
         <button class="tbtn" data-cmd="unlink" title="Rimuovi link">⛓️‍💥</button>
         <input class="tcolor" type="color" id="edColor" title="Colore testo" value="#13449b">
+        <label class="tcolor-wrap" title="Evidenzia testo"><span class="tcolor-ic">🖍️</span><input class="tcolor" type="color" id="edHilite" value="#fff3a3"></label>
         <button class="tbtn" data-cmd="removeFormat" title="Pulisci formattazione">🧹</button>
+      </span>
+      <span class="tgrp">
+        <select class="tbtn tbtn--txt" id="edFont" title="Dimensione del testo">
+          <option value="">Dimensione…</option>
+          <option value="2">Piccolo</option>
+          <option value="3">Normale</option>
+          <option value="5">Grande</option>
+          <option value="6">Molto grande</option>
+        </select>
       </span>
       <span class="tgrp">
         <select class="tbtn tbtn--txt" id="insType" title="Cosa inserire">
@@ -81,6 +119,9 @@ function h(?string $s): string { return htmlspecialchars((string)$s, ENT_QUOTES,
       </span>
       <span class="tgrp">
         <button class="tbtn tbtn--txt" id="btnMove" type="button" title="Trascina le caselle per riordinarle">↕ Sposta</button>
+      </span>
+      <span class="tgrp">
+        <button class="tbtn tbtn--txt" id="btnSections" type="button" title="Inserisci una sezione già pronta">🧱 Sezioni</button>
       </span>
       <span class="tgrp">
         <button class="tbtn tbtn--txt" id="btnStyle" type="button" title="Stile ed effetti dell'elemento selezionato">🎨 Stile &amp; effetti</button>
@@ -152,6 +193,20 @@ function h(?string $s): string { return htmlspecialchars((string)$s, ENT_QUOTES,
       </div>
       <div class="modal-body">
         <div class="media-grid" id="mediaGrid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modale libreria sezioni -->
+  <div class="modal" id="secModal">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3>Aggiungi una sezione</h3>
+        <button class="modal-x" id="secClose" type="button">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="sec-hint">Scegli un modello, poi <b>clicca il punto della pagina</b> dove inserirlo. Tutti i testi restano modificabili. Premi <b>ESC</b> per annullare.</p>
+        <div class="sec-grid" id="secGrid"></div>
       </div>
     </div>
   </div>

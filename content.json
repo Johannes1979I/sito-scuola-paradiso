@@ -1,1 +1,10 @@
-{}
+{
+    "index.html": {
+        "texts": [],
+        "images": [],
+        "blocks": [],
+        "styles": [],
+        "fx": [],
+        "order": []
+    }
+}

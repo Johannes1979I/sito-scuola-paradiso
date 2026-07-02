@@ -19,7 +19,7 @@ if ($page === '' || !preg_match('/\.html$/', $page) || !is_file(dirname(__DIR__)
 
 $content = read_content();
 $cur = $content[$page] ?? [];
-$stringBuckets = ['texts', 'images', 'blocks'];
+$stringBuckets = ['texts', 'images', 'blocks', 'alts'];
 $objectBuckets = ['styles', 'fx'];   // valori = oggetti {prop: valore}
 foreach (array_merge($stringBuckets, $objectBuckets) as $bucket) {
     if (!isset($cur[$bucket]) || !is_array($cur[$bucket])) { $cur[$bucket] = []; }
@@ -63,4 +63,14 @@ $content[$page] = $cur;
 if (!write_content($content)) {
     http_response_code(500); echo json_encode(['error' => 'write failed (permessi?)']); exit;
 }
+// Snapshot per la cronologia versioni (ripristinabile dal pannello Backup). Non deve mai rompere il salvataggio.
+try {
+    $bdir = dirname(__DIR__) . '/backups';
+    if (!is_dir($bdir)) { @mkdir($bdir, 0775, true); }
+    if (is_dir($bdir) && is_writable($bdir)) {
+        @copy(content_path(), $bdir . '/content-' . date('Ymd-His') . '.json');
+        $snaps = glob($bdir . '/content-*.json') ?: [];
+        if (count($snaps) > 40) { sort($snaps); foreach (array_slice($snaps, 0, count($snaps) - 40) as $old) { @unlink($old); } }
+    }
+} catch (\Throwable $e) { /* log-and-ignore */ }
 echo json_encode(['ok' => true, 'page' => $page]);

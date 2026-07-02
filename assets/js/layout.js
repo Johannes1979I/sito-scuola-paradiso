@@ -12,6 +12,7 @@
   var CFG = {
     nome: "Santa Maria del Paradiso",
     sottotitolo: "Scuola Paritaria · Viterbo",
+    logo: "assets/img/logo.png",
     indirizzo: "Via del Paradiso, 22 — 01100 Viterbo (VT)",
     tel: "0761 308770",
     telRaw: "+390761308770",
@@ -27,6 +28,9 @@
     facebook: "https://www.facebook.com/scuolasantamariadelparadisoviterbo/",
     instagram: "https://www.instagram.com/scuolasantamariadelparadiso/",
     youtube: "",
+    // Analytics & cookie (impostabili dal pannello Avanzate)
+    ga: "",
+    cookieText: "",
     // Claim "Scuola e Famiglie unite"
     claim: "Scuola e Famiglie, unite per crescere insieme."
   };
@@ -97,7 +101,7 @@
   var headerHTML =
     '<header class="header" id="header"><div class="container"><nav class="nav">' +
       '<a href="index.html" class="brand">' +
-        '<img src="assets/img/logo.png" alt="Logo ' + CFG.nome + '">' +
+        '<img src="' + CFG.logo + '" alt="Logo ' + CFG.nome + '">' +
         '<span class="brand-txt"><strong>' + CFG.nome + "</strong><span>" + CFG.sottotitolo + "</span></span>" +
       "</a>" +
       '<ul class="nav-links" id="navLinks">' + navList() +
@@ -125,7 +129,7 @@
 
   var footerHTML =
     '<footer class="footer"><div class="container"><div class="footer-grid">' +
-      '<div><div class="footer-brand"><img src="assets/img/logo.png" alt="Logo"><strong>' + CFG.nome + "</strong></div>" +
+      '<div><div class="footer-brand"><img src="' + CFG.logo + '" alt="Logo"><strong>' + CFG.nome + "</strong></div>" +
         "<p>Scuola Paritaria a Viterbo. Un cammino educativo dall'Infanzia alla Secondaria di I grado, con al centro la persona, i valori e la gioia di crescere insieme.</p>" +
         '<p class="footer-claim">' + CFG.claim + "</p>" + socialHTML + "</div>" +
       '<div class="footer-col"><h4>Scuola</h4><ul class="footer-links" id="footScuola">' +
@@ -351,6 +355,7 @@
       });
       Object.keys(pd.blocks || {}).forEach(function (k) { var el = self.resolveKey(k, doc); if (el) { el.innerHTML = pd.blocks[k]; } });
       Object.keys(pd.images || {}).forEach(function (k) { var el = self.resolveKey(k, doc); if (el && el.tagName === "IMG") { el.setAttribute("src", pd.images[k]); } });
+      Object.keys(pd.alts || {}).forEach(function (k) { var el = self.resolveKey(k, doc); if (el && el.tagName === "IMG") { el.setAttribute("alt", pd.alts[k]); } });
       Object.keys(pd.texts || {}).forEach(function (k) { var el = self.resolveKey(k, doc); if (el) { el.innerHTML = pd.texts[k]; } });
       Object.keys(pd.styles || {}).forEach(function (k) {
         var el = self.resolveKey(k, doc); if (!el) { return; }
@@ -395,6 +400,40 @@
       .then(function (r) { return r.ok ? r.json() : {}; })
       .then(function (all) { window.EditRuntime.applyOverrides(document, (all && all[page]) || {}, true); })
       .catch(function () {});
+  })();
+
+  /* --- Cookie consent + Google Analytics (caricato SOLO dopo consenso — GDPR) --- */
+  (function () {
+    if (new URLSearchParams(location.search).get("edit") === "1") { return; }
+    var GA = (CFG.ga || "").trim();
+    if (!GA) { return; }                 // nessuna analitica configurata → nessun banner (solo cookie tecnici)
+    function loadGA() {
+      var s = document.createElement("script"); s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { window.dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag("js", new Date());
+      gtag("config", GA, { anonymize_ip: true });
+    }
+    var consent = null; try { consent = localStorage.getItem("cookie-consent"); } catch (e) {}
+    if (consent === "yes") { loadGA(); return; }
+    if (consent === "no") { return; }
+    function set(v) { try { localStorage.setItem("cookie-consent", v); } catch (e) {} }
+    function build() {
+      var b = document.createElement("div");
+      b.className = "cookie-banner";
+      var txt = CFG.cookieText || "Usiamo cookie tecnici necessari e, con il tuo consenso, cookie di statistica (Google Analytics) per migliorare il sito.";
+      b.innerHTML = "<p>" + txt + ' <a href="privacy.html">Informativa</a></p>' +
+        '<div class="ck-btns"><button class="ck-no" type="button">Solo necessari</button>' +
+        '<button class="ck-yes" type="button">Accetta</button></div>';
+      document.body.appendChild(b);
+      setTimeout(function () { b.classList.add("show"); }, 30);
+      b.querySelector(".ck-yes").addEventListener("click", function () { set("yes"); b.remove(); loadGA(); });
+      b.querySelector(".ck-no").addEventListener("click", function () { set("no"); b.remove(); });
+    }
+    if (document.body) { build(); } else { document.addEventListener("DOMContentLoaded", build); }
   })();
 
   /* --- Modale/lightbox uniforme del sito: apri documenti/immagini DENTRO il sito via [data-modal] --- */

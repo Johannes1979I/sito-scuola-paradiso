@@ -1,0 +1,153 @@
+{
+    "global": {
+        "base": "https://johannes1979i.github.io/sito-scuola-paradiso",
+        "siteName": "Scuola Santa Maria del Paradiso",
+        "ogDefault": "assets/img/logo.png"
+    },
+    "pages": {
+        "albo.html": {
+            "title": "Albo — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Albo della Scuola Santa Maria del Paradiso: comunicazioni e pubblicazioni ufficiali.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "amministrazione-trasparente.html": {
+            "title": "Amministrazione Trasparente — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Amministrazione Trasparente della Scuola Santa Maria del Paradiso: bilancio sociale, decreti e documenti.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "chi-siamo.html": {
+            "title": "Chi siamo — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "La nostra identità: una comunità educativa di ispirazione cristiana a Viterbo, dalla Scuola dell'Infanzia alla Secondaria di I grado.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "concorsi.html": {
+            "title": "Concorsi — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "I concorsi a cui partecipa la Scuola Santa Maria del Paradiso di Viterbo: «Le Vie d'Europa» e altre iniziative, con i ragazzi premiati nelle varie edizioni.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "concorso-vie-europa.html": {
+            "title": "Le Vie d'Europa — Concorsi — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Il concorso «Le Vie d'Europa» della Scuola Santa Maria del Paradiso di Viterbo: i ragazzi premiati nelle varie edizioni, con foto, video e testi.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "contatti.html": {
+            "title": "Contatti — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Contatta la Scuola Paritaria Santa Maria del Paradiso a Viterbo: indirizzo, telefono, email, orari di segreteria e modulo di contatto.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "docenti.html": {
+            "title": "Corpo docenti — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Il corpo docenti della Scuola Santa Maria del Paradiso di Viterbo: insegnanti della Scuola dell'Infanzia, Primaria e Secondaria di I grado.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "erasmus.html": {
+            "title": "Erasmus — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Il progetto Erasmus della Scuola Santa Maria del Paradiso di Viterbo: esperienze e scambi che aprono i ragazzi all'Europa.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "eroi.html": {
+            "title": "I nostri eroi — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "I nostri eroi: ex studenti della Scuola Santa Maria del Paradiso di Viterbo che hanno raggiunto grandi traguardi.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "galleria.html": {
+            "title": "Galleria foto — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Galleria fotografica della Scuola Santa Maria del Paradiso di Viterbo: momenti di vita scolastica, eventi e attività.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "genitori.html": {
+            "title": "Scuola e Genitori — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Scuola e Genitori: le attività che le famiglie vivono dentro la nostra scuola, dal Coro dei Genitori alla Band dei Genitori. Una comunità educativa che cresce insieme.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "index.html": {
+            "title": "Scuola Santa Maria del Paradiso — Scuola Paritaria · Viterbo",
+            "desc": "Scuola Paritaria Santa Maria del Paradiso a Viterbo: un cammino educativo dalla Scuola dell'Infanzia alla Secondaria di I grado, con al centro la persona, i valori e la gioia di imparare.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "iscrizioni.html": {
+            "title": "Come iscriversi — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Come iscriversi alla Scuola Santa Maria del Paradiso di Viterbo: quando, quali documenti servono e come completare l'iscrizione. La segreteria ti accompagna passo dopo passo.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "lavora-con-noi.html": {
+            "title": "Lavora con noi — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Lavora con noi: invia la tua candidatura spontanea alla Scuola Santa Maria del Paradiso di Viterbo. Cerchiamo persone che condividano la nostra passione educativa.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "modulistica.html": {
+            "title": "Modulistica — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Moduli e documenti da scaricare della Scuola Santa Maria del Paradiso: iscrizioni, deleghe, autorizzazioni e altro.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "news.html": {
+            "title": "News e avvisi — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Avvisi, eventi e novità dalla Scuola Santa Maria del Paradiso di Viterbo.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "offerta-formativa.html": {
+            "title": "Offerta formativa — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "I tre percorsi della Scuola Santa Maria del Paradiso: Scuola dell'Infanzia, Scuola Primaria e Secondaria di I grado.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "open-day.html": {
+            "title": "Open Day — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Open Day della Scuola Santa Maria del Paradiso di Viterbo: vieni a conoscere ambienti, docenti e metodo. Oltre alle date in programma, puoi prenotare una visita quando vuoi.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "privacy.html": {
+            "title": "Privacy Policy — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Informativa sulla privacy della Scuola Santa Maria del Paradiso di Viterbo.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "ptof.html": {
+            "title": "PTOF — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Piano Triennale dell'Offerta Formativa (PTOF) della Scuola Santa Maria del Paradiso di Viterbo.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "rette.html": {
+            "title": "Rette — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Rette e contributi della Scuola Santa Maria del Paradiso di Viterbo: Infanzia, Primaria e Secondaria di I grado.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "sostienici.html": {
+            "title": "Sostienici — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Sostieni la Scuola Santa Maria del Paradiso: 5x1000, Coop per la Scuola e Amazon Un Click per la Scuola.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "teatro.html": {
+            "title": "Teatro di fine anno — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Gli spettacoli teatrali di fine anno della Scuola Santa Maria del Paradiso: rappresentazioni con fine educativo che coinvolgono tutti gli studenti, adattamenti del Prof. Gianluca Zappa.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "vita-scolastica.html": {
+            "title": "Vita scolastica — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Calendario, mensa, materiale scolastico, didattica digitale e informazioni utili per le famiglie della Scuola Santa Maria del Paradiso.",
+            "ogImage": "",
+            "keywords": ""
+        }
+    }
+}
