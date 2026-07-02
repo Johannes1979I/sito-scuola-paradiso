@@ -875,6 +875,14 @@ html.no-intro #paradiso-intro { display: none !important; }
 .ev-item .ev-body .ev-meta { font-size: .85rem; color: #8290a8; margin-bottom: 6px; }
 .ev-item .ev-body p { margin: 0; color: #38465e; }
 
+/* ===== Galleria spettacolo (Teatro) ===== */
+.show-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+.show-gallery figure { margin: 0; }
+.show-gallery a { display: block; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--sh-sm); }
+.show-gallery img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform .3s ease; background: #eef2f8; }
+.show-gallery a:hover img { transform: scale(1.04); }
+.show-gallery figcaption { margin-top: 10px; font-size: .9rem; color: #38465e; line-height: 1.45; text-align: center; }
+
 /* ===== Accessibilità (skip-link, focus da tastiera, riduzione movimento) ===== */
 .skip-link { position: fixed; top: -80px; left: 12px; z-index: 100000; background: var(--blu); color: #fff; padding: 12px 18px; border-radius: 0 0 12px 12px; font-weight: 600; text-decoration: none; transition: top .2s ease; }
 .skip-link:focus { top: 0; }
