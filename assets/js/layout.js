@@ -138,7 +138,7 @@
   var footerHTML =
     '<footer class="footer"><div class="container"><div class="footer-grid">' +
       '<div><div class="footer-brand"><img src="' + CFG.logo + '" alt="Logo"><strong>' + CFG.nome + "</strong></div>" +
-        "<p>Scuola Paritaria a Viterbo. Un cammino educativo dall'Infanzia alla Secondaria di I grado, con al centro la persona, i valori e la gioia di crescere insieme.</p>" +
+        "<p>Scuola Paritaria a Viterbo — Infanzia, Primaria e Secondaria di I grado.</p>" +
         '<p class="footer-claim">' + CFG.claim + "</p>" + socialHTML + "</div>" +
       '<div class="footer-col"><h4>Scuola</h4><ul class="footer-links" id="footScuola">' +
         '<li><a href="chi-siamo.html">Chi siamo</a></li>' +

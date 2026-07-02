@@ -793,20 +793,20 @@ html.no-intro #paradiso-intro { display: none !important; }
 /* ============================================================
    FOOTER
    ============================================================ */
-.footer { background: var(--ink); color: #c7d2e2; padding: 72px 0 32px; }
+.footer { background: var(--ink); color: #c7d2e2; padding: 44px 0 26px; }
 .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.2fr; gap: 40px; }
 .footer h4 { color: #fff; font-family: "Inter", sans-serif; font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 20px; font-weight: 700; }
-.footer-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.footer-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
 .footer-brand img { width: 50px; height: 50px; border-radius: 50%; background: #fff; }
 .footer-brand strong { font-family: "Fraunces", serif; font-size: 1.15rem; color: #fff; }
-.footer p { font-size: .94rem; line-height: 1.7; }
+.footer p { font-size: .92rem; line-height: 1.5; }
 .footer-links li { margin-bottom: 11px; }
 .footer-links a { font-size: .94rem; transition: color .2s, padding .2s; }
 .footer-links a:hover { color: #fff; padding-left: 5px; }
 .footer-contact li { display: flex; gap: 11px; margin-bottom: 13px; font-size: .94rem; align-items: flex-start; }
 .footer-contact svg { width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px; color: var(--blu-chiaro); }
 .footer-contact a:hover { color: #fff; }
-.footer-bottom { margin-top: 52px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,.1); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: .85rem; color: #8a99b3; }
+.footer-bottom { margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.1); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: .85rem; color: #8a99b3; }
 .footer-bottom a:hover { color: #fff; }
 
 /* ============================================================
@@ -1066,7 +1066,7 @@ html.no-intro #paradiso-intro { display: none !important; }
 }
 
 /* ---------- Social, claim, contatore e banner cookie ---------- */
-.footer-claim { margin-top: 14px; font-weight: 600; color: #fff; opacity: .95; }
+.footer-claim { margin-top: 10px; font-weight: 600; color: #fff; opacity: .95; }
 .footer-social { display: flex; gap: 10px; margin-top: 16px; }
 .footer-social a { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.12); color: #fff; transition: background .2s, transform .2s; }
 .footer-social a:hover { background: rgba(255,255,255,.25); transform: translateY(-2px); }
