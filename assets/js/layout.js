@@ -178,7 +178,7 @@
         "<li>" + I.mail + ' <a href="mailto:' + CFG.email + '">' + CFG.email + "</a></li></ul></div>" +
     '</div><div class="footer-bottom">' +
       '<span>© 2026 Scuola Paritaria ' + CFG.nome + ' · Viterbo<span class="site-hits" id="siteHits"> · Visite: …</span></span>' +
-      '<span class="footer-meta"><a href="privacy.html">Privacy Policy</a> · <a href="contatti.html">Contatti</a></span>' +
+      '<span class="footer-meta"><a href="privacy.html">Privacy Policy</a> · <a href="contatti.html">Contatti</a><span class="footer-powered"> · powered by <strong>GP1-HS</strong></span></span>' +
     "</div></div></footer>";
 
   /* ----------------------------------------------------------
