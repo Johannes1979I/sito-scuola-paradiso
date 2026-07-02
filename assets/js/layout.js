@@ -739,7 +739,11 @@
       var intro = document.getElementById("paradiso-intro");
       var au = document.getElementById("intro-audio");
       if (intro && reduceMotion) { intro.remove(); intro = null; }
+      // L'intro parte solo al PRIMO avvio della sessione: tornando in home durante la navigazione NON riparte.
+      var introSeen = false; try { introSeen = sessionStorage.getItem("intro-seen") === "1"; } catch (e) {}
+      if (intro && introSeen) { intro.remove(); intro = null; }
       if (intro) {
+        try { sessionStorage.setItem("intro-seen", "1"); } catch (e) {}
         var started = false;
         var fadeAudio = function () {
           if (!au) { return; }
