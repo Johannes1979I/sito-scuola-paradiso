@@ -214,9 +214,14 @@
   // Bersaglio dello skip-link (accessibilità): un ancoraggio focalizzabile subito dopo l'header
   (function () { var hd = document.getElementById("header"); if (hd && !document.getElementById("contenuto-principale")) { hd.insertAdjacentHTML("afterend", '<span id="contenuto-principale" tabindex="-1"></span>'); } })();
 
-  // Footer a fisarmonica: su mobile gli elenchi si aprono/chiudono cliccando il titolo della colonna
+  // Footer a fisarmonica: gli elenchi si aprono/chiudono cliccando il titolo della colonna (compatto di default)
   Array.prototype.forEach.call(document.querySelectorAll(".footer-col h4"), function (h) {
-    h.addEventListener("click", function () { h.parentNode.classList.toggle("open"); });
+    h.setAttribute("tabindex", "0");
+    h.setAttribute("role", "button");
+    h.setAttribute("aria-expanded", "false");
+    function toggle() { var open = h.parentNode.classList.toggle("open"); h.setAttribute("aria-expanded", open ? "true" : "false"); }
+    h.addEventListener("click", toggle);
+    h.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } });
   });
 
   // Banner cookie: visibile finché non si accetta (ricordato in localStorage)
