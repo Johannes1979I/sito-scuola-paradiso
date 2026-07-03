@@ -1148,16 +1148,16 @@ html.no-intro #paradiso-intro { display: none !important; }
 .anniv--top .anniv-badge { background: var(--blu); color: #fff; }
 .anniv--top h2 { font-size: clamp(2rem, 4.8vw, 3.4rem); }
 @media (prefers-reduced-motion: reduce) { .anniv-num { animation: none; } }
-.anniv-sub { max-width: 640px; margin: 14px auto 0; color: var(--muted); }
+.anniv-sub { max-width: 640px; margin: 14px auto 0; color: var(--muted); font-size: 1.1em; }
 .anniv-journey { margin-top: 26px; }
-.anniv-journey svg { width: 100%; height: auto; max-width: 1000px; overflow: visible; }
+.anniv-journey svg { width: 100%; height: auto; max-width: 1050px; overflow: visible; }
 .aj-road { fill: none; stroke: url(#ajRoadGrad); stroke-width: 5; stroke-linecap: round; stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: ajDraw 3.2s var(--ease) .2s forwards; }
 .aj-road-glow { fill: none; stroke: #ffdd7a; stroke-width: 15; stroke-linecap: round; opacity: .14; stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: ajDraw 3.2s var(--ease) .2s forwards; }
 @keyframes ajDraw { to { stroke-dashoffset: 0; } }
 .aj-node { fill: #0b2036; stroke: #ffdd7a; stroke-width: 2.5; opacity: 0; transform: scale(0); transform-origin: center; transform-box: fill-box; animation: ajPop .6s var(--ease) forwards; animation-delay: var(--d); }
 .aj-node-dot { fill: #ffe6a0; opacity: 0; animation: ajFade .6s ease forwards; animation-delay: var(--d); }
-.aj-yr { fill: #ffe08a; font-size: 20px; font-weight: 700; text-anchor: middle; font-family: "Fraunces", serif; opacity: 0; animation: ajFade .6s ease forwards; animation-delay: var(--d); }
-.aj-nm { fill: #e9ddc2; font-size: 15px; font-weight: 500; text-anchor: middle; font-family: "Inter", sans-serif; opacity: 0; animation: ajFade .6s ease forwards; animation-delay: var(--d); }
+.aj-yr { fill: #ffe08a; font-size: 22px; font-weight: 700; text-anchor: middle; font-family: "Fraunces", serif; opacity: 0; animation: ajFade .6s ease forwards; animation-delay: var(--d); }
+.aj-nm { fill: #e9ddc2; font-size: 16.5px; font-weight: 500; text-anchor: middle; font-family: "Inter", sans-serif; opacity: 0; animation: ajFade .6s ease forwards; animation-delay: var(--d); }
 .aj-start { text-anchor: start; }
 @keyframes ajPop { to { opacity: 1; transform: scale(1); } }
 @keyframes ajFade { to { opacity: 1; } }
