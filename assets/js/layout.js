@@ -31,9 +31,9 @@
     // Analytics & cookie (impostabili dal pannello Avanzate)
     ga: "",
     cookieText: "",
-    // Contatore visite conforme GDPR (GoatCounter): metti qui il codice del sito,
-    // es. "scuolasmparadiso" per scuolasmparadiso.goatcounter.com. Vuoto = nessun contatore.
-    goatcounter: "",
+    // Contatore visite conforme GDPR (GoatCounter): codice del sito
+    // (scuolasmparadiso.goatcounter.com). Vuoto = nessun contatore.
+    goatcounter: "scuolasmparadiso",
     // Moduli — invio email (impostabili dal pannello Avanzate).
     // formEndpoint = URL del servizio (Formspree "https://formspree.io/f/xxx" o Web3Forms
     // "https://api.web3forms.com/submit"); formKey = access_key (solo Web3Forms);
