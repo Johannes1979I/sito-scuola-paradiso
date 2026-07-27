@@ -31,6 +31,9 @@
     // Analytics & cookie (impostabili dal pannello Avanzate)
     ga: "",
     cookieText: "",
+    // Contatore visite conforme GDPR (GoatCounter): metti qui il codice del sito,
+    // es. "scuolasmparadiso" per scuolasmparadiso.goatcounter.com. Vuoto = nessun contatore.
+    goatcounter: "",
     // Moduli — invio email (impostabili dal pannello Avanzate).
     // formEndpoint = URL del servizio (Formspree "https://formspree.io/f/xxx" o Web3Forms
     // "https://api.web3forms.com/submit"); formKey = access_key (solo Web3Forms);
@@ -252,17 +255,26 @@
     }
   })();
 
-  // Contatore visite anonimo (counterapi.dev) — l'elemento è già visibile ("Visite: …"),
-  // qui sostituiamo i puntini con il numero reale appena disponibile.
+  // Contatore visite conforme GDPR (GoatCounter): niente cookie, non conserva l'IP.
+  // Si attiva solo se CFG.goatcounter è valorizzato; altrimenti nessuna richiesta a terzi.
   (function () {
     var el = document.getElementById("siteHits");
     if (!el) { return; }
-    fetch("https://api.counterapi.dev/v1/scuolasmparadiso/sito/up")
+    var code = (CFG.goatcounter || "").trim();
+    if (!code) { el.textContent = ""; return; }
+    var base = "https://" + code + ".goatcounter.com";
+    // conteggio della visita (script cookieless di GoatCounter)
+    var s = document.createElement("script");
+    s.async = true; s.src = "//gc.zgo.at/count.js";
+    s.setAttribute("data-goatcounter", base + "/count");
+    document.body.appendChild(s);
+    // visualizzazione del totale visite
+    fetch(base + "/counter/TOTAL.json")
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (d) {
-        if (d && typeof d.count === "number") {
-          el.textContent = " · Visite: " + d.count.toLocaleString("it-IT");
-        }
+        if (!d || d.count == null) { return; }
+        var n = parseInt(String(d.count).replace(/[^0-9]/g, ""), 10);
+        if (!isNaN(n)) { el.textContent = " · Visite: " + n.toLocaleString("it-IT"); }
       })
       .catch(function () {});
   })();
