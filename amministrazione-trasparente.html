@@ -26,7 +26,7 @@
 <link rel="apple-touch-icon" href="assets/img/icon-192.png">
 <!-- /PWA -->
 </head>
-<body data-page="">
+<body data-page="documenti">
 
 <section class="page-hero">
   <div class="container">
@@ -47,7 +47,7 @@
       <a href="docenti.html" class="svc"><span class="ico">👩‍🏫</span><div><h3>Personale</h3><p>Corpo docenti</p></div></a>
       <a href="ptof.html" class="svc"><span class="ico">🎓</span><div><h3>Offerta formativa</h3><p>PTOF</p></div></a>
       <a href="#bilanci" class="svc"><span class="ico">📊</span><div><h3>Bilanci e finanziamenti</h3><p>Bilancio d'esercizio e sociale</p></div></a>
-      <a href="#servizi" class="svc"><span class="ico">💶</span><div><h3>Servizi e contributi</h3><p>Rette, IBAN, privacy</p></div></a>
+      <a href="#privacy" class="svc"><span class="ico">🔒</span><div><h3>Privacy</h3><p>Gestore e informativa</p></div></a>
     </div>
 
     <h2 id="disposizioni" style="margin-bottom:8px">Disposizioni generali</h2>
@@ -86,11 +86,9 @@
       </a>
     </div>
 
-    <h2 id="servizi" style="margin:38px 0 14px">Servizi e contributi alle famiglie</h2>
-    <div class="grid grid-3 reveal">
-      <a href="rette.html" class="svc"><span class="ico">💶</span><div><h3>Rette e contributi</h3><p>Quote per ordine di scuola</p></div></a>
-      <a href="modulistica.html" class="svc"><span class="ico">📄</span><div><h3>Modulistica e IBAN</h3><p>Moduli e coordinate bancarie</p></div></a>
-      <a href="privacy.html" class="svc"><span class="ico">🔒</span><div><h3>Privacy</h3><p>Informativa e trattamento dati</p></div></a>
+    <h2 id="privacy" style="margin:38px 0 14px">Privacy</h2>
+    <div class="reveal">
+      <a href="privacy.html" class="svc" data-modal data-modal-title="Privacy e protezione dei dati" data-modal-content="#src-privacy"><span class="ico">🔒</span><div><h3>Privacy</h3><p>Gestore: <strong>CMP Sicurezza &amp; Privacy S.r.l.</strong> · referente Clotilde Ferrari, Privacy Junior Consultant</p></div></a>
     </div>
 
     <div class="callout reveal" style="margin-top:36px">
@@ -99,6 +97,15 @@
   </div>
 </section>
 
+<!-- Contenuti mostrati nel modale (data-modal-content) -->
+<div class="lm-source" id="src-privacy" hidden>
+  <p>La scuola tratta i dati personali di alunni, famiglie e personale nel rispetto del Regolamento UE 2016/679 (GDPR), con il supporto di una società specializzata.</p>
+  <h3>Gestore privacy</h3>
+  <p><strong>CMP Sicurezza &amp; Privacy S.r.l.</strong><br>Referente: Clotilde Ferrari — Privacy Junior Consultant<br>Via Casilina, 1428/F — 00133 Roma<br>Tel. <a href="tel:+390694546258">+39 06 94546258</a></p>
+  <a class="lm-doc" href="https://www.cmpsicurezza.it" target="_blank" rel="noopener"><span class="lm-doc-ico">🔗</span><span class="lm-doc-txt"><span>Sito di CMP Sicurezza &amp; Privacy</span><small>www.cmpsicurezza.it</small></span></a>
+  <h3>Informativa</h3>
+  <a class="lm-doc" href="privacy.html"><span class="lm-doc-ico">📄</span><span class="lm-doc-txt"><span>Informativa privacy e cookie</span><small>Come trattiamo i dati personali e quali cookie usa il sito</small></span></a>
+</div>
 <script src="assets/js/layout.js?v=41"></script>
 </body>
 </html>
