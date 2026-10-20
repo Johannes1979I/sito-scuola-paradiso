@@ -49,9 +49,9 @@
     { page: "home",     label: "Home",             href: "index.html" },
     { page: "chi",      label: "Chi siamo",        href: "chi-siamo.html", children: [
       { label: "La nostra identità", href: "chi-siamo.html" },
-      { label: "La nostra mission",  href: "chi-siamo.html#mission" },
+      { label: "La scuola in breve",  href: "chi-siamo.html#mission" },
       { label: "Corpo docenti",      href: "docenti.html" },
-      { label: "I nostri eroi",      href: "eroi.html" }
+      { label: "I nostri grandi ex studenti",      href: "eroi.html" }
     ] },
     { page: "offerta",  label: "Offerta formativa",href: "offerta-formativa.html", children: [
       { label: "Scuola dell'Infanzia",   href: "offerta-formativa.html#infanzia" },
