@@ -38,6 +38,12 @@ $labels = [
     'news.html' => 'News', 'contatti.html' => 'Contatti', 'modulistica.html' => 'Modulistica',
     'albo.html' => 'Albo', 'amministrazione-trasparente.html' => 'Amministrazione Trasparente',
     'privacy.html' => 'Privacy Policy',
+    'scuola-in-breve.html' => 'La scuola in breve', 'scuola-infanzia.html' => 'Scuola dell\'Infanzia', 'scuola-primaria.html' => 'Scuola Primaria',
+    'scuola-secondaria.html' => 'Secondaria di I grado', 'corsi-pomeridiani.html' => 'Corsi pomeridiani', 'servizi-famiglie.html' => 'Servizi alle famiglie',
+    'mensa.html' => 'Mensa', 'permanenza.html' => 'Permanenza', 'doposcuola.html' => 'Doposcuola', 'calendario.html' => 'Calendario',
+    'didattica-digitale.html' => 'Didattica digitale', 'salute-sicurezza.html' => 'Salute e sicurezza', 'pei.html' => 'PEI',
+    'regolamento.html' => 'Regolamento', 'patto-corresponsabilita.html' => 'Patto di corresponsabilità',
+    'giornale.html' => 'Giornale (archiviata)', 'radio.html' => 'Radio SMP (archiviata)', 'genitori.html' => 'Scuola e Genitori (archiviata)',
 ];
 function h(?string $s): string { return htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8'); }
 ?>

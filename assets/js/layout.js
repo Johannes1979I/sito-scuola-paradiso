@@ -49,36 +49,37 @@
     { page: "home",     label: "Home",             href: "index.html" },
     { page: "chi",      label: "Chi siamo",        href: "chi-siamo.html", children: [
       { label: "La nostra identità", href: "chi-siamo.html" },
-      { label: "La scuola in breve",  href: "chi-siamo.html#mission" },
+      { label: "La scuola in breve",  href: "scuola-in-breve.html" },
       { label: "Corpo docenti",      href: "docenti.html" },
       { label: "I nostri grandi ex studenti",      href: "eroi.html" }
     ] },
     { page: "offerta",  label: "Offerta formativa",href: "offerta-formativa.html", children: [
-      { label: "Scuola dell'Infanzia",   href: "offerta-formativa.html#infanzia" },
-      { label: "Scuola Primaria",        href: "offerta-formativa.html#primaria" },
-      { label: "Secondaria di I grado",  href: "offerta-formativa.html#secondaria" },
-      { label: "Corsi pomeridiani",      href: "offerta-formativa.html#corsi-pomeridiani" },
+      { label: "Scuola dell'Infanzia",   href: "scuola-infanzia.html" },
+      { label: "Scuola Primaria",        href: "scuola-primaria.html" },
+      { label: "Secondaria di I grado",  href: "scuola-secondaria.html" },
+      { label: "Corsi pomeridiani",      href: "corsi-pomeridiani.html" },
       { label: "Erasmus",                href: "erasmus.html" }
     ] },
-    { page: "servizi",  label: "Servizi alle famiglie", href: "vita-scolastica.html#mensa", children: [
-      { label: "Mensa",       href: "vita-scolastica.html#mensa" },
-      { label: "Permanenza",  href: "vita-scolastica.html#permanenza" },
-      { label: "Doposcuola",  href: "vita-scolastica.html#doposcuola" }
+    { page: "servizi",  label: "Servizi alle famiglie", href: "servizi-famiglie.html", children: [
+      { label: "Mensa",       href: "mensa.html" },
+      { label: "Permanenza",  href: "permanenza.html" },
+      { label: "Doposcuola",  href: "doposcuola.html" }
     ] },
     { page: "vita",     label: "Vita scolastica",  href: "vita-scolastica.html", children: [
-      { label: "Calendario e servizi",    href: "vita-scolastica.html" },
-      { label: "Il Giornale della scuola",href: "vita-scolastica.html#giornale" },
-      { label: "Radio SMP",               href: "vita-scolastica.html#radio" },
+      { label: "Calendario",              href: "calendario.html" },
+      // ARCHIVIATE (non visibili finche' non arrivano i contenuti): per ripubblicarle togliere il noindex dalla pagina e de-commentare
+      // { label: "Il Giornale della scuola",href: "giornale.html" },
+      // { label: "Radio SMP",               href: "radio.html" },
       { label: "Concorsi",                href: "concorsi.html" },
       { label: "Galleria",                href: "galleria.html" },
-      { label: "Associazione genitori",   href: "genitori.html" },
+      // { label: "Associazione genitori",   href: "genitori.html" },   // ARCHIVIATA
       { label: "Eventi e spettacoli",     href: "teatro.html" }
     ] },
     { page: "documenti", label: "Area documenti",  href: "area-documenti.html", children: [
       { label: "PTOF",                        href: "ptof.html" },
-      { label: "PEI",                         href: "area-documenti.html#pei" },
-      { label: "Regolamento",                 href: "area-documenti.html#regolamento" },
-      { label: "Patto di corresponsabilità",  href: "area-documenti.html#patto" },
+      { label: "PEI",                         href: "pei.html" },
+      { label: "Regolamento",                 href: "regolamento.html" },
+      { label: "Patto di corresponsabilità",  href: "patto-corresponsabilita.html" },
       { label: "Modulistica",                 href: "modulistica.html" },
       { label: "Albo",                        href: "albo.html" },
       { label: "Amministrazione trasparente", href: "amministrazione-trasparente.html" }
@@ -164,7 +165,6 @@
         '<li><a href="docenti.html">Corpo docenti</a></li>' +
         '<li><a href="vita-scolastica.html">Vita scolastica</a></li>' +
         '<li><a href="teatro.html">Teatro di fine anno</a></li>' +
-        '<li><a href="genitori.html">Scuola e Genitori</a></li>' +
         '<li><a href="erasmus.html">Erasmus</a></li>' +
         '<li><a href="galleria.html">Galleria foto</a></li>' +
         '<li><a href="sostienici.html">Sostienici</a></li>' +

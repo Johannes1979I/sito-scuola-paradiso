@@ -17,6 +17,18 @@
             "ogImage": "",
             "keywords": ""
         },
+        "area-documenti.html": {
+            "title": "Area documenti — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Area documenti della Scuola Santa Maria del Paradiso: PTOF, PEI, Regolamento, Patto di corresponsabilità, Modulistica, Albo e Amministrazione trasparente.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "calendario.html": {
+            "title": "Calendario scolastico — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Il calendario scolastico e i prossimi appuntamenti della Scuola Santa Maria del Paradiso di Viterbo: inizio e fine delle lezioni, festività, eventi e scadenze.",
+            "ogImage": "",
+            "keywords": ""
+        },
         "chi-siamo.html": {
             "title": "Chi siamo — Scuola Santa Maria del Paradiso · Viterbo",
             "desc": "La nostra identità: una comunità educativa di ispirazione cristiana a Viterbo, dalla Scuola dell'Infanzia alla Secondaria di I grado.",
@@ -41,9 +53,27 @@
             "ogImage": "",
             "keywords": ""
         },
+        "corsi-pomeridiani.html": {
+            "title": "Corsi pomeridiani — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "I corsi pomeridiani della Scuola Santa Maria del Paradiso di Viterbo: attività per coltivare talenti, passioni e nuove competenze.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "didattica-digitale.html": {
+            "title": "Didattica digitale — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Didattica digitale integrata alla Scuola Santa Maria del Paradiso di Viterbo: piattaforme, registro elettronico Nuvola e guide per alunni e famiglie.",
+            "ogImage": "",
+            "keywords": ""
+        },
         "docenti.html": {
             "title": "Corpo docenti — Scuola Santa Maria del Paradiso · Viterbo",
             "desc": "Il corpo docenti della Scuola Santa Maria del Paradiso di Viterbo: insegnanti della Scuola dell'Infanzia, Primaria e Secondaria di I grado.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "doposcuola.html": {
+            "title": "Doposcuola — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Il doposcuola della Scuola Santa Maria del Paradiso di Viterbo: dal lunedì al venerdì, 14:30–16:30, compiti e studio guidato per Primaria e Secondaria di I grado.",
             "ogImage": "",
             "keywords": ""
         },
@@ -71,6 +101,12 @@
             "ogImage": "",
             "keywords": ""
         },
+        "giornale.html": {
+            "title": "Il Giornale della scuola — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Il Giornale della scuola: il giornalino mensile scritto dagli studenti della Scuola Santa Maria del Paradiso di Viterbo.",
+            "ogImage": "",
+            "keywords": ""
+        },
         "index.html": {
             "title": "Scuola Santa Maria del Paradiso — Scuola Paritaria · Viterbo",
             "desc": "Scuola Paritaria Santa Maria del Paradiso a Viterbo: un cammino educativo dalla Scuola dell'Infanzia alla Secondaria di I grado, con al centro la persona, i valori e la gioia di imparare.",
@@ -86,6 +122,12 @@
         "lavora-con-noi.html": {
             "title": "Lavora con noi — Scuola Santa Maria del Paradiso · Viterbo",
             "desc": "Lavora con noi: invia la tua candidatura spontanea alla Scuola Santa Maria del Paradiso di Viterbo. Cerchiamo persone che condividano la nostra passione educativa.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "mensa.html": {
+            "title": "Mensa — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "La mensa della Scuola Santa Maria del Paradiso di Viterbo: pasti di altissima qualità preparati nella cucina interna. Pranzo Primaria 13:30, Secondaria 14:15.",
             "ogImage": "",
             "keywords": ""
         },
@@ -113,6 +155,24 @@
             "ogImage": "",
             "keywords": ""
         },
+        "patto-corresponsabilita.html": {
+            "title": "Patto di corresponsabilità — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Il Patto Educativo di Corresponsabilità tra scuola e famiglie della Scuola Santa Maria del Paradiso di Viterbo (DPR 245/2007).",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "pei.html": {
+            "title": "PEI — Piano Educativo Individualizzato — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Il PEI (Piano Educativo Individualizzato) della Scuola Santa Maria del Paradiso di Viterbo.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "permanenza.html": {
+            "title": "Permanenza — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "La permanenza alla Scuola Santa Maria del Paradiso di Viterbo: assistenza agli alunni dalla fine del pranzo fino alle 14:30, quando inizia il doposcuola.",
+            "ogImage": "",
+            "keywords": ""
+        },
         "privacy.html": {
             "title": "Privacy Policy — Scuola Santa Maria del Paradiso · Viterbo",
             "desc": "Informativa sulla privacy della Scuola Santa Maria del Paradiso di Viterbo.",
@@ -125,9 +185,57 @@
             "ogImage": "",
             "keywords": ""
         },
+        "radio.html": {
+            "title": "Radio SMP — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Radio SMP: la radio in streaming condotta dagli studenti della Scuola Santa Maria del Paradiso di Viterbo.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "regolamento.html": {
+            "title": "Regolamento degli Organi Collegiali — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Il Regolamento degli Organi Collegiali della Scuola Santa Maria del Paradiso di Viterbo.",
+            "ogImage": "",
+            "keywords": ""
+        },
         "rette.html": {
             "title": "Rette — Scuola Santa Maria del Paradiso · Viterbo",
             "desc": "Rette e contributi della Scuola Santa Maria del Paradiso di Viterbo: Infanzia, Primaria e Secondaria di I grado.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "salute-sicurezza.html": {
+            "title": "Salute e sicurezza — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Salute e sicurezza alla Scuola Santa Maria del Paradiso di Viterbo: protocolli e indicazioni per la tutela di alunni, personale e famiglie.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "scuola-in-breve.html": {
+            "title": "La scuola in breve — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "La Scuola Santa Maria del Paradiso di Viterbo in breve: scuola paritaria di ispirazione cristiana, un unico cammino dall'Infanzia alla Secondaria di I grado.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "scuola-infanzia.html": {
+            "title": "Scuola dell'Infanzia — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "La Scuola dell'Infanzia Santa Maria del Paradiso di Viterbo (3–6 anni): accoglienza, gioco, creatività e prime regole della comunità.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "scuola-primaria.html": {
+            "title": "Scuola Primaria — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "La Scuola Primaria Santa Maria del Paradiso di Viterbo (6–11 anni): solide competenze di base, inglese, cittadinanza e attenzione ai tempi di ciascuno.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "scuola-secondaria.html": {
+            "title": "Secondaria di I grado — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "La Scuola Secondaria di I grado Santa Maria del Paradiso di Viterbo (11–14 anni): metodo di studio, pensiero critico e orientamento alla scuola superiore.",
+            "ogImage": "",
+            "keywords": ""
+        },
+        "servizi-famiglie.html": {
+            "title": "Servizi alle famiglie — Scuola Santa Maria del Paradiso · Viterbo",
+            "desc": "Mensa con cucina interna, permanenza e doposcuola alla Scuola Santa Maria del Paradiso di Viterbo: i servizi pensati per le famiglie.",
             "ogImage": "",
             "keywords": ""
         },
@@ -145,7 +253,7 @@
         },
         "vita-scolastica.html": {
             "title": "Vita scolastica — Scuola Santa Maria del Paradiso · Viterbo",
-            "desc": "Calendario, mensa con cucina interna, permanenza, doposcuola, didattica digitale e informazioni utili per le famiglie della Scuola Santa Maria del Paradiso.",
+            "desc": "Calendario, servizi alle famiglie, didattica digitale, salute e sicurezza, concorsi ed eventi: le informazioni utili per le famiglie della Scuola Santa Maria del Paradiso.",
             "ogImage": "",
             "keywords": ""
         }

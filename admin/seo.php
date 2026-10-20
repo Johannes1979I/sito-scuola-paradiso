@@ -83,6 +83,9 @@ function seo_sitemap(string $root, array $pages, array $g): void {
     $base = rtrim($g['base'], '/');
     $xml  = '<?xml version="1.0" encoding="UTF-8"?>' . "\n" . '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
     foreach ($pages as $p) {
+        // le pagine archiviate (meta robots noindex) non vanno in sitemap
+        $src = @file_get_contents($root . '/' . $p);
+        if (is_string($src) && preg_match('#<meta\s+name="robots"\s+content="[^"]*noindex#i', $src)) { continue; }
         $loc = $base . '/' . ($p === 'index.html' ? '' : $p);
         $xml .= '  <url><loc>' . h($loc) . '</loc></url>' . "\n";
     }
@@ -131,6 +134,12 @@ $labels = [
     'vita-scolastica.html' => 'Vita scolastica', 'teatro.html' => 'Teatro', 'sostienici.html' => 'Sostienici',
     'news.html' => 'News', 'contatti.html' => 'Contatti', 'modulistica.html' => 'Modulistica',
     'albo.html' => 'Albo', 'amministrazione-trasparente.html' => 'Amministrazione Trasparente', 'privacy.html' => 'Privacy Policy',
+    'scuola-in-breve.html' => 'La scuola in breve', 'scuola-infanzia.html' => 'Scuola dell\'Infanzia', 'scuola-primaria.html' => 'Scuola Primaria',
+    'scuola-secondaria.html' => 'Secondaria di I grado', 'corsi-pomeridiani.html' => 'Corsi pomeridiani', 'servizi-famiglie.html' => 'Servizi alle famiglie',
+    'mensa.html' => 'Mensa', 'permanenza.html' => 'Permanenza', 'doposcuola.html' => 'Doposcuola', 'calendario.html' => 'Calendario',
+    'didattica-digitale.html' => 'Didattica digitale', 'salute-sicurezza.html' => 'Salute e sicurezza', 'pei.html' => 'PEI',
+    'regolamento.html' => 'Regolamento', 'patto-corresponsabilita.html' => 'Patto di corresponsabilità',
+    'giornale.html' => 'Giornale (archiviata)', 'radio.html' => 'Radio SMP (archiviata)', 'genitori.html' => 'Scuola e Genitori (archiviata)',
 ];
 ?>
 <!DOCTYPE html>

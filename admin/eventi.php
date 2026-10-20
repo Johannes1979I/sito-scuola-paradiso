@@ -87,7 +87,7 @@ $today = date('Y-m-d');
 <body>
   <div class="nw-bar">
     <span class="brand"><img src="../assets/img/logo.png" alt="">Eventi / Scadenze</span>
-    <span class="topactions"><a href="index.php">← Pannello</a> <a href="../vita-scolastica.html" target="_blank">Vita scolastica ↗</a></span>
+    <span class="topactions"><a href="index.php">← Pannello</a> <a href="../calendario.html" target="_blank">Calendario ↗</a></span>
   </div>
 
   <div class="nw-wrap">
