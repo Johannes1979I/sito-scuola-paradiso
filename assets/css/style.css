@@ -1123,6 +1123,14 @@ html.no-intro #paradiso-intro { display: none !important; }
 .staff-card .avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--bg-blu); color: var(--blu); display: grid; place-items: center; font-size: 1.5rem; margin: 0 auto 12px; }
 .staff-card strong { display: block; color: var(--ink); }
 .staff-card span { font-size: .9rem; color: var(--muted); }
+/* Direzione della scuola (pagina Corpo docenti): card con foto/iniziali */
+.dir-card { text-align: center; }
+.dir-card .dir-avatar { width: 104px; height: 104px; border-radius: 50%; margin: 0 auto 18px; display: grid; place-items: center; overflow: hidden;
+  font-family: "Fraunces", Georgia, serif; font-size: 2.1rem; font-weight: 700; letter-spacing: .02em; color: #fff;
+  background: linear-gradient(135deg, var(--blu-chiaro), var(--blu-scuro)); box-shadow: 0 10px 26px rgba(19,68,155,.25); }
+.dir-card .dir-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.dir-card .tag { margin-bottom: 12px; }
+.dir-card h3 { margin-bottom: 8px; }
 
 /* Riquadro "DA COMPLETARE" (segnaposto contenuti da inserire) */
 .todo-note { background: color-mix(in srgb, var(--giallo) 16%, #fff); border: 1px dashed color-mix(in srgb, var(--arancio) 55%, #fff); border-radius: var(--r-sm); padding: 14px 18px; color: var(--blu-scuro); font-size: .92rem; }
