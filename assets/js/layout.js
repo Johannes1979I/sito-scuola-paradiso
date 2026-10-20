@@ -86,7 +86,8 @@
     ] },
     { page: "sostieni", label: "Sostienici",       href: "sostienici.html" },
     { page: "news",     label: "News",             href: "news.html" },
-    { page: "contatti", label: "Contatti",         href: "contatti.html" }
+    { page: "contatti", label: "Contatti",         href: "contatti.html" },
+    { page: "social",   label: "Seguici sui social", href: "social.html" }
   ];
 
   var current = document.body.getAttribute("data-page") || "home";

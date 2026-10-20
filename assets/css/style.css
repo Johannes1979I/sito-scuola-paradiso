@@ -930,7 +930,7 @@ html.no-intro #paradiso-intro { display: none !important; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
 }
 /* Navigazione → hamburger finché non c'è spazio per tutte le voci su una riga */
-@media (max-width: 1340px) {
+@media (max-width: 1600px) {
   .nav-links, .nav-cta .btn { display: none; }
   .burger { display: flex; }
   .nav-links {
@@ -942,6 +942,13 @@ html.no-intro #paradiso-intro { display: none !important; }
   .nav-links.open { display: flex; transform: none; }
   .nav-links a { padding: 14px 16px; font-size: 1.05rem; }
   .nav-links .btn { display: inline-flex; margin-top: 10px; justify-content: center; }
+}
+/* Menu con 10 voci: sotto 1600px va nel menu a tendina; fino a 1840px versione compatta */
+@media (min-width: 1601px) and (max-width: 1840px) {
+  .nav { gap: 16px; }
+  .nav-links { gap: 1px; }
+  .nav-links a { padding: 9px 9px; font-size: .88rem; }
+  .nav-links .has-sub > a::after { margin-left: 3px; }
 }
 /* Layout → colonna singola su mobile */
 @media (max-width: 760px) {
@@ -1144,7 +1151,7 @@ html.no-intro #paradiso-intro { display: none !important; }
 .nav-links .submenu li { display: block; }
 .nav-links .submenu a { display: block; padding: 9px 12px; border-radius: 8px; white-space: nowrap; font-size: .95rem; }
 .nav-links .submenu a:hover { background: var(--bg-blu); color: var(--blu); }
-@media (max-width: 1340px) {
+@media (max-width: 1600px) {
   .nav-links .submenu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; background: transparent; min-width: 0; padding: 2px 0 8px 14px; }
   .nav-links .submenu a { padding: 10px 16px; font-size: 1rem; color: var(--muted); }
   .nav-links .has-sub > a::after { display: none; }
