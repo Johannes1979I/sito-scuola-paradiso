@@ -1,5 +1,8 @@
 # Credenziali admin: restano SOLO in locale, mai online
 admin/config.php
+# Credenziali invio email dei moduli (solo sul server)
+admin/mail-config.php
+private/
 
 # File di sistema
 .DS_Store

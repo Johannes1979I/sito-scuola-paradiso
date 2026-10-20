@@ -110,7 +110,8 @@
           <div class="field"><label for="od-data">Giorno preferito</label><input id="od-data" name="giorno_preferito" type="date"></div>
         </div>
         <div class="field"><label for="od-msg">Messaggio (facoltativo)</label><textarea id="od-msg" name="messaggio" placeholder="Es. quanti bambini, età, scuola di interesse…"></textarea></div>
-        <label class="consent"><input type="checkbox" required> Ho letto e accetto l'<a href="privacy.html" style="color:var(--blu)">informativa sulla privacy</a>.</label>
+        <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Lascia vuoto questo campo <input type="text" name="sito_web" tabindex="-1" autocomplete="off"></label></div>
+        <label class="consent"><input type="checkbox" name="privacy" value="sì" required> Ho letto e accetto l'<a href="privacy.html" style="color:var(--blu)">informativa sulla privacy</a>.</label>
         <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center">Invia la richiesta</button>
       </form>
     </div>
@@ -139,6 +140,6 @@
   </div>
 </section>
 
-<script src="assets/js/layout.js?v=42"></script>
+<script src="assets/js/layout.js?v=43"></script>
 </body>
 </html>

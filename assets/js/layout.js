@@ -38,7 +38,7 @@
     // formEndpoint = URL del servizio (Formspree "https://formspree.io/f/xxx" o Web3Forms
     // "https://api.web3forms.com/submit"); formKey = access_key (solo Web3Forms);
     // formEmail = indirizzo per il fallback mailto se non c'è endpoint.
-    formEndpoint: "",
+    formEndpoint: "invia.php",
     formKey: "",
     formEmail: "",
     // Claim "Scuola e Famiglie unite"
@@ -362,6 +362,8 @@
         if (form.checkValidity && !form.checkValidity()) { form.reportValidity(); return; }
         var subject = form.getAttribute("data-form") || "Messaggio dal sito";
         var endpoint = (CFG.formEndpoint || "").trim();
+        // invia.php richiede PHP: sulla copia GitHub Pages (statica) si torna al mailto
+        if (/github\.io$/i.test(location.hostname) && !/^https?:/i.test(endpoint)) { endpoint = ""; }
         var btn = form.querySelector("[type=submit]");
         if (endpoint) {
           var fd = new FormData(form);
@@ -382,7 +384,7 @@
           var to = (CFG.formEmail || CFG.email || "").trim();
           var lines = [];
           Array.prototype.forEach.call(form.elements, function (el) {
-            if (!el.name || el.type === "submit" || el.type === "hidden") { return; }
+            if (!el.name || el.name === "sito_web" || el.type === "submit" || el.type === "hidden") { return; }
             if (el.type === "checkbox" && !el.checked) { return; }
             var lab = (el.labels && el.labels[0]) ? el.labels[0].textContent.trim().replace(/\s+/g, " ") : el.name;
             lines.push(lab + ": " + (el.type === "checkbox" ? "sì" : el.value));
