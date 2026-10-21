@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef4fd"/><stop offset="1" stop-color="#e3ecfa"/>
+    </linearGradient>
+    <linearGradient id="shield" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2f6bd6"/><stop offset="1" stop-color="#13449b"/>
+    </linearGradient>
+    <linearGradient id="shieldEdge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5b8fe6"/><stop offset="1" stop-color="#0f3a86"/>
+    </linearGradient>
+    <radialGradient id="bubble" cx="0.35" cy="0.3" r="0.75">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".95"/>
+      <stop offset=".55" stop-color="#d7ecff" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#9fc9f5" stop-opacity=".35"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="22" stdDeviation="22" flood-color="#13449b" flood-opacity=".22"/>
+    </filter>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#0f1c33" flood-opacity=".14"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="1200" fill="url(#bg)"/>
+
+  <!-- macchie di colore morbide sullo sfondo -->
+  <circle cx="250" cy="300" r="170" fill="#ffc23c" opacity=".22"/>
+  <circle cx="960" cy="260" r="140" fill="#1fc196" opacity=".18"/>
+  <circle cx="980" cy="900" r="190" fill="#ff5470" opacity=".13"/>
+  <circle cx="200" cy="930" r="150" fill="#29b8e6" opacity=".18"/>
+  <ellipse cx="600" cy="1015" rx="300" ry="34" fill="#13449b" opacity=".10"/>
+
+  <!-- scudo -->
+  <g filter="url(#shadow)">
+    <path d="M600 215 C700 268 800 290 880 292 C880 560 860 790 600 965 C340 790 320 560 320 292 C400 290 500 268 600 215 Z" fill="url(#shieldEdge)"/>
+    <path d="M600 250 C690 296 780 318 848 322 C846 562 826 765 600 925 C374 765 354 562 352 322 C420 318 510 296 600 250 Z" fill="url(#shield)"/>
+  </g>
+  <!-- riflesso sullo scudo -->
+  <path d="M600 250 C510 296 420 318 352 322 C353 420 362 510 384 590 C430 450 510 330 600 250 Z" fill="#ffffff" opacity=".09"/>
+  <!-- croce -->
+  <g filter="url(#soft)">
+    <rect x="545" y="410" width="110" height="330" rx="26" fill="#ffffff"/>
+    <rect x="435" y="520" width="330" height="110" rx="26" fill="#ffffff"/>
+  </g>
+
+  <!-- cuore -->
+  <g transform="translate(790 712) rotate(-8)" filter="url(#soft)">
+    <path d="M0 78 C-30 56 -96 14 -96 -36 C-96 -72 -68 -96 -38 -96 C-18 -96 -6 -86 0 -72 C6 -86 18 -96 38 -96 C68 -96 96 -72 96 -36 C96 14 30 56 0 78 Z" fill="#ff5470"/>
+    <path d="M-66 -40 C-66 -60 -52 -72 -36 -72" stroke="#ffffff" stroke-width="11" stroke-linecap="round" fill="none" opacity=".6"/>
+  </g>
+
+  <!-- distintivo verde con spunta -->
+  <g transform="translate(330 760)" filter="url(#soft)">
+    <circle r="78" fill="#1fc196"/>
+    <circle r="78" fill="none" stroke="#ffffff" stroke-width="8" opacity=".5"/>
+    <path d="M-34 2 L-10 26 L38 -24" stroke="#ffffff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+
+  <!-- saponetta con bolle -->
+  <g transform="translate(225 560) rotate(-12)" filter="url(#soft)">
+    <rect x="-95" y="-52" width="190" height="104" rx="44" fill="#ffd27a"/>
+    <rect x="-95" y="-52" width="190" height="56" rx="40" fill="#ffe3a6"/>
+    <rect x="-55" y="-26" width="110" height="18" rx="9" fill="#ffffff" opacity=".7"/>
+  </g>
+  <circle cx="190" cy="455" r="46" fill="url(#bubble)" stroke="#bfe0ff" stroke-width="3"/>
+  <circle cx="275" cy="405" r="30" fill="url(#bubble)" stroke="#bfe0ff" stroke-width="3"/>
+  <circle cx="235" cy="335" r="20" fill="url(#bubble)" stroke="#bfe0ff" stroke-width="3"/>
+  <circle cx="985" cy="470" r="40" fill="url(#bubble)" stroke="#bfe0ff" stroke-width="3"/>
+  <circle cx="930" cy="560" r="24" fill="url(#bubble)" stroke="#bfe0ff" stroke-width="3"/>
+  <circle cx="1010" cy="610" r="16" fill="url(#bubble)" stroke="#bfe0ff" stroke-width="3"/>
+
+  <!-- gocce d'acqua -->
+  <g fill="#29b8e6">
+    <path d="M905 330 C905 330 875 370 875 392 C875 410 889 422 905 422 C921 422 935 410 935 392 C935 370 905 330 905 330 Z"/>
+    <path d="M975 370 C975 370 958 393 958 406 C958 416 966 423 975 423 C984 423 992 416 992 406 C992 393 975 370 975 370 Z" opacity=".75"/>
+  </g>
+  <path d="M893 372 C886 382 884 392 886 400" stroke="#ffffff" stroke-width="6" stroke-linecap="round" fill="none" opacity=".7"/>
+
+  <!-- scintille -->
+  <g fill="#ffc23c">
+    <path d="M600 120 L612 152 L644 164 L612 176 L600 208 L588 176 L556 164 L588 152 Z"/>
+    <path d="M1035 760 L1043 781 L1064 789 L1043 797 L1035 818 L1027 797 L1006 789 L1027 781 Z"/>
+    <path d="M150 680 L157 699 L176 706 L157 713 L150 732 L143 713 L124 706 L143 699 Z"/>
+  </g>
+  <g fill="#ff7a3c" opacity=".8">
+    <circle cx="460" cy="175" r="10"/><circle cx="760" cy="185" r="8"/><circle cx="480" cy="1060" r="9"/><circle cx="745" cy="1075" r="11"/>
+  </g>
+</svg>
