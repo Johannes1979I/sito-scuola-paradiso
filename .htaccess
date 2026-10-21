@@ -1,0 +1,60 @@
+# Sito Scuola Santa Maria del Paradiso
+# Vecchi indirizzi del sito WordPress (?page_id=, ?p=, wp-content) -> pagine nuove, con redirect permanente (301).
+# Cosi' chi arriva da Google o da un vecchio link trova la pagina giusta.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+RewriteCond %{QUERY_STRING} (^|&)page_id=1010(&|$)
+RewriteRule ^(index\.php)?$ /scuola-infanzia.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)page_id=1017(&|$)
+RewriteRule ^(index\.php)?$ /scuola-primaria.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)page_id=1019(&|$)
+RewriteRule ^(index\.php)?$ /scuola-secondaria.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)page_id=1099(&|$)
+RewriteRule ^(index\.php)?$ /didattica-digitale.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)page_id=118(&|$)
+RewriteRule ^(index\.php)?$ /contatti.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)page_id=207(&|$)
+RewriteRule ^(index\.php)?$ /chi-siamo.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)page_id=914(&|$)
+RewriteRule ^(index\.php)?$ /privacy.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)page_id=984(&|$)
+RewriteRule ^(index\.php)?$ /modulistica.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)page_id=1317(&|$)
+RewriteRule ^(index\.php)?$ /albo.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)page_id=1366(&|$)
+RewriteRule ^(index\.php)?$ /albo.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)page_id=1482(&|$)
+RewriteRule ^(index\.php)?$ /albo.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)page_id=1691(&|$)
+RewriteRule ^(index\.php)?$ /amministrazione-trasparente.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)page_id=1825(&|$)
+RewriteRule ^(index\.php)?$ /amministrazione-trasparente.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)page_id=1830(&|$)
+RewriteRule ^(index\.php)?$ /amministrazione-trasparente.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)page_id=1841(&|$)
+RewriteRule ^(index\.php)?$ /amministrazione-trasparente.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)page_id=1900(&|$)
+RewriteRule ^(index\.php)?$ /amministrazione-trasparente.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)p=1782(&|$)
+RewriteRule ^(index\.php)?$ /sostienici.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)p=3456(&|$)
+RewriteRule ^(index\.php)?$ /sostienici.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)p=3462(&|$)
+RewriteRule ^(index\.php)?$ /sostienici.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)p=3318(&|$)
+RewriteRule ^(index\.php)?$ /calendario.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)p=4004(&|$)
+RewriteRule ^(index\.php)?$ /news.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)p=3058(&|$)
+RewriteRule ^(index\.php)?$ /index.html? [R=301,L]
+
+# PDF del vecchio sito copiati in uploads/documenti
+RewriteRule ^wp-content/uploads/2020/04/coordinate-IBAN\.pdf$ /uploads/documenti/coordinate-IBAN.pdf [R=301,L]
+RewriteRule ^wp-content/uploads/2020/12/Regolamento-Organi-Collegiali\.pdf$ /uploads/documenti/regolamento-organi-collegiali.pdf [R=301,L]
+RewriteRule ^wp-content/uploads/2021/03/m_pi\.AOODRLA\.REGISTRO_UFFICIALEU\.0029328\.06-10-2020\.pdf$ /uploads/documenti/nota-miur-29328-2020.pdf [R=301,L]
+RewriteRule ^wp-content/uploads/2021/11/informativa-ai-sensi-art-58-L\.-106_2021-documento-aggiornato-4\.pdf$ /uploads/documenti/informativa-art58-L106-2021.pdf [R=301,L]
+# Altri file e pagine del vecchio WordPress: all'area documenti / alla home
+RewriteRule ^wp-content/ /area-documenti.html [R=302,L]
+RewriteRule ^(wp-login\.php|wp-admin/?|feed/?)$ / [R=302,L]
+</IfModule>
