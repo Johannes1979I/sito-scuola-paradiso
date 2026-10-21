@@ -6,6 +6,11 @@
 (function () {
   "use strict";
 
+  // Note «DA COMPLETARE» visibili solo nell'editor, con ?todo=1 o sul server locale
+  if (/[?&](edit|todo)=1/.test(location.search) || /^(localhost|127\.0\.0\.1)$/.test(location.hostname)) {
+    document.documentElement.classList.add("show-todo");
+  }
+
   /* ----------------------------------------------------------
      CONFIGURAZIONE — modifica qui i dati una volta sola
      ---------------------------------------------------------- */

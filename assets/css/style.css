@@ -1142,6 +1142,9 @@ html.no-intro #paradiso-intro { display: none !important; }
 /* Riquadro "DA COMPLETARE" (segnaposto contenuti da inserire) */
 .todo-note { background: color-mix(in srgb, var(--giallo) 16%, #fff); border: 1px dashed color-mix(in srgb, var(--arancio) 55%, #fff); border-radius: var(--r-sm); padding: 14px 18px; color: var(--blu-scuro); font-size: .92rem; }
 .todo-note strong { color: var(--arancio); }
+/* Le note «DA COMPLETARE» non si vedono al pubblico: solo nell'editor (?edit=1), con ?todo=1 o in locale */
+.todo-note { display: none; }
+html.show-todo .todo-note { display: block; }
 
 /* ---------- Menu a tendine (header) ---------- */
 .nav-links li.has-sub { position: relative; }
