@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff4ec"/><stop offset="1" stop-color="#ffe7da"/></linearGradient>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#b5470f" flood-opacity=".20"/></filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <circle cx="660" cy="120" r="120" fill="#ff7a3c" opacity=".14"/>
+  <circle cx="120" cy="480" r="130" fill="#29b8e6" opacity=".14"/>
+  <ellipse cx="380" cy="505" rx="250" ry="22" fill="#b5470f" opacity=".10"/>
+  <!-- tavolozza -->
+  <g filter="url(#sh)">
+    <path d="M380 140 C540 140 640 230 630 330 C622 410 560 440 510 420 C470 404 450 430 460 460 C472 500 430 520 380 520 C230 520 130 430 130 320 C130 210 240 140 380 140 Z" fill="#f3d9b1"/>
+  </g>
+  <ellipse cx="505" cy="455" rx="28" ry="24" fill="#ffe7da"/>
+  <circle cx="250" cy="250" r="38" fill="#ff5470"/>
+  <circle cx="365" cy="215" r="36" fill="#ffc23c"/>
+  <circle cx="480" cy="235" r="36" fill="#1fc196"/>
+  <circle cx="555" cy="320" r="32" fill="#2f6bd6"/>
+  <circle cx="215" cy="365" r="34" fill="#29b8e6"/>
+  <circle cx="310" cy="440" r="30" fill="#7b5cd6"/>
+  <g fill="#ffffff" opacity=".45"><circle cx="238" cy="238" r="9"/><circle cx="353" cy="203" r="9"/><circle cx="468" cy="223" r="9"/><circle cx="545" cy="309" r="8"/><circle cx="204" cy="354" r="8"/><circle cx="300" cy="430" r="7"/></g>
+  <!-- pennelli -->
+  <g transform="rotate(-38 560 470)">
+    <rect x="540" y="300" width="22" height="240" rx="11" fill="#13449b"/>
+    <rect x="537" y="270" width="28" height="44" rx="6" fill="#c9d1dc"/>
+    <path d="M537 272 C537 230 551 205 551 190 C551 205 565 230 565 272 Z" fill="#ff5470"/>
+  </g>
+  <g transform="rotate(-25 640 470)">
+    <rect x="626" y="330" width="16" height="200" rx="8" fill="#ff7a3c"/>
+    <rect x="623" y="304" width="22" height="34" rx="5" fill="#c9d1dc"/>
+    <path d="M623 306 C623 274 634 256 634 244 C634 256 645 274 645 306 Z" fill="#1fc196"/>
+  </g>
+  <g fill="#ffc23c"><path d="M110 120 l9 24 24 9 -24 9 -9 24 -9-24 -24-9 24-9z"/><path d="M700 330 l6 16 16 6 -16 6 -6 16 -6-16 -16-6 16-6z"/></g>
+</svg>

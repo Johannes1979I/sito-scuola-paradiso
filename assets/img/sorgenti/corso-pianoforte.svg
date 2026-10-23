@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef3fd"/><stop offset="1" stop-color="#dfe8fb"/></linearGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f6bd6"/><stop offset="1" stop-color="#13449b"/></linearGradient>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#13449b" flood-opacity=".22"/></filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <circle cx="130" cy="120" r="110" fill="#ffc23c" opacity=".20"/>
+  <circle cx="690" cy="470" r="140" fill="#2f6bd6" opacity=".10"/>
+  <ellipse cx="400" cy="500" rx="270" ry="22" fill="#13449b" opacity=".10"/>
+  <!-- pianoforte -->
+  <g filter="url(#sh)">
+    <rect x="140" y="250" width="520" height="210" rx="26" fill="url(#body)"/>
+    <rect x="165" y="300" width="470" height="130" rx="10" fill="#ffffff"/>
+  </g>
+  <g fill="none" stroke="#c9d6ee" stroke-width="3">
+    <path d="M224 300v130M283 300v130M341 300v130M400 300v130M459 300v130M517 300v130M576 300v130"/>
+  </g>
+  <g fill="#0f1c33">
+    <rect x="205" y="300" width="36" height="78" rx="6"/><rect x="264" y="300" width="36" height="78" rx="6"/>
+    <rect x="381" y="300" width="36" height="78" rx="6"/><rect x="440" y="300" width="36" height="78" rx="6"/><rect x="498" y="300" width="36" height="78" rx="6"/>
+  </g>
+  <rect x="180" y="265" width="140" height="18" rx="9" fill="#ffffff" opacity=".25"/>
+  <!-- note musicali -->
+  <g fill="#ff7a3c">
+    <ellipse cx="560" cy="200" rx="22" ry="17" transform="rotate(-20 560 200)"/><rect x="576" y="110" width="7" height="92" rx="3"/>
+    <path d="M579 110 q34 12 30 46 q-8-22-30-24z"/>
+  </g>
+  <g fill="#1fc196">
+    <ellipse cx="250" cy="190" rx="18" ry="14" transform="rotate(-20 250 190)"/><ellipse cx="320" cy="170" rx="18" ry="14" transform="rotate(-20 320 170)"/>
+    <rect x="263" y="110" width="6" height="80" rx="3"/><rect x="333" y="92" width="6" height="80" rx="3"/>
+    <path d="M263 110 L339 92 L339 108 L263 126 Z"/>
+  </g>
+  <g fill="#ffc23c"><path d="M680 150 l9 24 24 9 -24 9 -9 24 -9-24 -24-9 24-9z"/><path d="M110 330 l6 16 16 6 -16 6 -6 16 -6-16 -16-6 16-6z"/></g>
+</svg>
