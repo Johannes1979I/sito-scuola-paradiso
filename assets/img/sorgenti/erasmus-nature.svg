@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e4f3fd"/><stop offset="1" stop-color="#f4fbf3"/></linearGradient>
+    <linearGradient id="h1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fdcb6"/><stop offset="1" stop-color="#5cc795"/></linearGradient>
+    <linearGradient id="h2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4fc08b"/><stop offset="1" stop-color="#1fa878"/></linearGradient>
+    <linearGradient id="h3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#21a87a"/><stop offset="1" stop-color="#14805b"/></linearGradient>
+    <radialGradient id="sun"><stop offset="0" stop-color="#ffd76b"/><stop offset="1" stop-color="#ffc23c"/></radialGradient>
+    <filter id="sh" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#0f1c33" flood-opacity=".22"/></filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#sky)"/>
+
+  <!-- sole e nuvole -->
+  <circle cx="985" cy="165" r="135" fill="#ffc23c" opacity=".16"/>
+  <circle cx="985" cy="165" r="78" fill="url(#sun)"/>
+  <g fill="#ffffff" opacity=".95">
+    <ellipse cx="225" cy="165" rx="92" ry="30"/><circle cx="185" cy="146" r="36"/><circle cx="250" cy="134" r="46"/>
+    <ellipse cx="660" cy="105" rx="68" ry="20"/><circle cx="635" cy="92" r="24"/><circle cx="685" cy="84" r="31"/>
+  </g>
+
+  <!-- colline -->
+  <path d="M0 500 C200 410 380 440 560 505 C760 575 980 440 1200 485 L1200 900 L0 900 Z" fill="url(#h1)"/>
+  <path d="M0 625 C180 545 410 565 610 630 C830 700 1020 590 1200 615 L1200 900 L0 900 Z" fill="url(#h2)"/>
+  <path d="M0 765 C240 690 480 735 690 780 C900 825 1050 750 1200 760 L1200 900 L0 900 Z" fill="url(#h3)"/>
+
+  <!-- rotta tra i tre Paesi -->
+  <path d="M250 405 C430 215 690 235 900 435" fill="none" stroke="#13449b" stroke-width="7" stroke-dasharray="4 20" stroke-linecap="round" opacity=".75"/>
+  <path d="M575 288 C640 340 650 420 590 520" fill="none" stroke="#13449b" stroke-width="7" stroke-dasharray="4 20" stroke-linecap="round" opacity=".75"/>
+
+  <!-- alberi -->
+  <g>
+    <rect x="96" y="595" width="24" height="120" rx="10" fill="#8a5a33"/>
+    <circle cx="108" cy="540" r="82" fill="#14805b"/><circle cx="58" cy="590" r="55" fill="#1fa878"/><circle cx="158" cy="590" r="58" fill="#1fa878"/>
+    <circle cx="82" cy="512" r="20" fill="#ffffff" opacity=".13"/>
+  </g>
+  <g>
+    <rect x="1040" y="640" width="24" height="120" rx="10" fill="#8a5a33"/>
+    <circle cx="1052" cy="585" r="82" fill="#14805b"/><circle cx="1002" cy="635" r="55" fill="#1fa878"/><circle cx="1102" cy="635" r="58" fill="#1fa878"/>
+    <circle cx="1026" cy="557" r="20" fill="#ffffff" opacity=".13"/>
+  </g>
+  <g>
+    <rect x="766" y="600" width="14" height="72" rx="6" fill="#8a5a33"/>
+    <path d="M773 475 L835 610 L711 610 Z" fill="#14805b"/><path d="M773 520 L848 650 L698 650 Z" fill="#1a9a6d"/>
+  </g>
+
+  <!-- segnaposto dei Paesi -->
+  <g filter="url(#sh)">
+    <g transform="translate(250 405)">
+      <path d="M0 95 C-70 15 -78 -20 -78 -42 A78 78 0 1 1 78 -42 C78 -20 70 15 0 95 Z" fill="#ffffff"/>
+      <g transform="translate(0 -42)"><clipPath id="ci"><circle r="58"/></clipPath><g clip-path="url(#ci)"><rect x="-58" y="-58" width="39" height="116" fill="#1f9a57"/><rect x="-19" y="-58" width="38" height="116" fill="#ffffff"/><rect x="19" y="-58" width="39" height="116" fill="#d8323c"/></g><circle r="58" fill="none" stroke="#d6dde8" stroke-width="3"/></g>
+    </g>
+    <g transform="translate(590 520)">
+      <path d="M0 95 C-70 15 -78 -20 -78 -42 A78 78 0 1 1 78 -42 C78 -20 70 15 0 95 Z" fill="#ffffff"/>
+      <g transform="translate(0 -42)"><circle r="58" fill="#ffffff"/><path d="M-38 -6 C-28 -22 -12 -16 0 -24 C12 -32 24 -38 44 -42 C32 -28 24 -16 12 -8 C2 -2 -12 2 -22 8 C-32 12 -44 6 -38 -6 Z" fill="#c9752b"/><g fill="none" stroke="#2e7d4f" stroke-width="5" stroke-linecap="round"><path d="M-4 38 C-16 32 -28 22 -34 12"/><path d="M4 38 C16 32 28 22 34 12"/></g><g fill="#2e7d4f"><ellipse cx="-26" cy="27" rx="8" ry="3.6" transform="rotate(35 -26 27)"/><ellipse cx="-14" cy="35" rx="8" ry="3.6" transform="rotate(20 -14 35)"/><ellipse cx="26" cy="27" rx="8" ry="3.6" transform="rotate(-35 26 27)"/><ellipse cx="14" cy="35" rx="8" ry="3.6" transform="rotate(-20 14 35)"/></g><circle r="58" fill="none" stroke="#d6dde8" stroke-width="3"/></g>
+    </g>
+    <g transform="translate(900 435)">
+      <path d="M0 95 C-70 15 -78 -20 -78 -42 A78 78 0 1 1 78 -42 C78 -20 70 15 0 95 Z" fill="#ffffff"/>
+      <g transform="translate(0 -42)"><clipPath id="cp"><circle r="58"/></clipPath><g clip-path="url(#cp)"><rect x="-58" y="-58" width="116" height="58" fill="#ffffff"/><rect x="-58" y="0" width="116" height="58" fill="#dc2f46"/></g><circle r="58" fill="none" stroke="#d6dde8" stroke-width="3"/></g>
+    </g>
+  </g>
+
+  <!-- foglie -->
+  <g fill="#1fc196">
+    <path d="M430 170 C470 140 520 150 535 190 C495 215 450 210 430 170 Z"/>
+  </g>
+  <path d="M433 172 C465 176 505 183 532 190" fill="none" stroke="#14805b" stroke-width="4" stroke-linecap="round"/>
+</svg>
