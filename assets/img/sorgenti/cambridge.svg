@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef3fd"/><stop offset="1" stop-color="#e2eafb"/></linearGradient>
+    <linearGradient id="cap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c3f86"/><stop offset="1" stop-color="#0f2a5f"/></linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#f3f6fb"/></linearGradient>
+    <filter id="sh" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#13449b" flood-opacity=".20"/></filter>
+    <filter id="sh2" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#0f1c33" flood-opacity=".16"/></filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <circle cx="190" cy="170" r="140" fill="#ffc23c" opacity=".18"/>
+  <circle cx="1030" cy="700" r="190" fill="#2f6bd6" opacity=".10"/>
+  <circle cx="1050" cy="190" r="90" fill="#ff5470" opacity=".10"/>
+  <ellipse cx="600" cy="790" rx="360" ry="30" fill="#13449b" opacity=".10"/>
+
+  <!-- certificato -->
+  <g filter="url(#sh)" transform="rotate(-6 600 520)">
+    <rect x="330" y="330" width="540" height="400" rx="22" fill="url(#paper)"/>
+    <rect x="352" y="352" width="496" height="356" rx="14" fill="none" stroke="#c9d6ee" stroke-width="4"/>
+    <rect x="352" y="352" width="496" height="356" rx="14" fill="none" stroke="#ffc23c" stroke-width="2" stroke-dasharray="2 10" opacity=".9"/>
+    <rect x="430" y="400" width="340" height="26" rx="13" fill="#13449b"/>
+    <rect x="470" y="452" width="260" height="14" rx="7" fill="#c9d6ee"/>
+    <rect x="440" y="486" width="320" height="12" rx="6" fill="#dfe6f3"/>
+    <rect x="460" y="512" width="280" height="12" rx="6" fill="#dfe6f3"/>
+    <rect x="420" y="620" width="150" height="8" rx="4" fill="#c9d6ee"/>
+    <path d="M430 600 c20 -24 40 -24 55 -4 c12 16 30 16 46 -6" fill="none" stroke="#2f6bd6" stroke-width="5" stroke-linecap="round"/>
+    <!-- sigillo -->
+    <g transform="translate(720 618)">
+      <path d="M-26 22 L-40 92 L-12 76 L4 100 L14 30 Z" fill="#ff5470"/>
+      <path d="M26 22 L40 92 L12 76 L-4 100 L-14 30 Z" fill="#e23d5b"/>
+      <circle r="52" fill="#ffc23c"/>
+      <circle r="40" fill="none" stroke="#ffffff" stroke-width="5" opacity=".7"/>
+      <path d="M0 -22 L7 -7 L23 -6 L11 5 L15 21 L0 12 L-15 21 L-11 5 L-23 -6 L-7 -7 Z" fill="#ffffff"/>
+    </g>
+  </g>
+
+  <!-- tocco -->
+  <g filter="url(#sh)" transform="translate(810 250) rotate(12)">
+    <path d="M-150 0 L0 -62 L150 0 L0 62 Z" fill="url(#cap)"/>
+    <path d="M-88 26 L-88 92 C-60 122 60 122 88 92 L88 26 L0 62 Z" fill="#132f6a"/>
+    <path d="M0 0 C40 10 92 28 112 60" fill="none" stroke="#ffc23c" stroke-width="7" stroke-linecap="round"/>
+    <path d="M104 56 L126 112 L100 112 Z" fill="#ffc23c"/>
+    <circle r="11" fill="#ffc23c"/>
+  </g>
+
+  <!-- fumetti -->
+  <g filter="url(#sh2)">
+    <path d="M110 330 h230 a28 28 0 0 1 28 28 v74 a28 28 0 0 1 -28 28 h-150 l-44 38 v-38 h-36 a28 28 0 0 1 -28 -28 v-74 a28 28 0 0 1 28 -28 Z" fill="#ffffff"/>
+    <text x="225" y="412" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="56" font-weight="700" fill="#13449b">Hello!</text>
+  </g>
+  <g filter="url(#sh2)">
+    <path d="M880 470 h190 a26 26 0 0 1 26 26 v64 a26 26 0 0 1 -26 26 h-30 v34 l-40 -34 h-120 a26 26 0 0 1 -26 -26 v-64 a26 26 0 0 1 26 -26 Z" fill="#ff7a3c"/>
+    <text x="975" y="542" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700" fill="#ffffff">Well done!</text>
+  </g>
+
+  <!-- libri -->
+  <g filter="url(#sh2)">
+    <rect x="140" y="640" width="250" height="44" rx="8" fill="#1fc196"/>
+    <rect x="160" y="596" width="220" height="44" rx="8" fill="#2f6bd6"/>
+    <rect x="150" y="552" width="230" height="44" rx="8" fill="#ffc23c"/>
+    <rect x="150" y="552" width="22" height="44" fill="#ffffff" opacity=".35"/>
+    <rect x="160" y="596" width="22" height="44" fill="#ffffff" opacity=".3"/>
+    <rect x="140" y="640" width="22" height="44" fill="#ffffff" opacity=".3"/>
+  </g>
+  <g fill="#ffc23c"><path d="M560 150 l10 26 26 10 -26 10 -10 26 -10 -26 -26 -10 26 -10z"/><path d="M1080 360 l7 18 18 7 -18 7 -7 18 -7 -18 -18 -7 18 -7z"/><path d="M100 520 l6 15 15 6 -15 6 -6 15 -6 -15 -15 -6 15 -6z"/></g>
+</svg>
