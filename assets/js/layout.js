@@ -63,7 +63,7 @@
       { label: "Scuola Primaria",        href: "scuola-primaria.html" },
       { label: "Secondaria di I grado",  href: "scuola-secondaria.html" },
       { label: "Corsi pomeridiani",      href: "corsi-pomeridiani.html" },
-      { label: "Certificazioni Cambridge", href: "cambridge.html" },
+      { label: "Sezione Cambridge English", href: "cambridge.html" },
       { label: "Erasmus",                href: "erasmus.html" }
     ] },
     { page: "servizi",  label: "Servizi alle famiglie", href: "servizi-famiglie.html", children: [

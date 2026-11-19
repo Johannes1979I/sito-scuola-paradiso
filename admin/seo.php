@@ -139,7 +139,7 @@ $labels = [
     'mensa.html' => 'Mensa', 'permanenza.html' => 'Permanenza', 'doposcuola.html' => 'Doposcuola', 'calendario.html' => 'Calendario',
     'didattica-digitale.html' => 'Didattica digitale', 'salute-sicurezza.html' => 'Salute e sicurezza', 'pei.html' => 'PEI',
     'regolamento.html' => 'Regolamento', 'patto-corresponsabilita.html' => 'Patto di corresponsabilità',
-    'giornale.html' => 'Giornale (archiviata)', 'radio.html' => 'Radio SMP (archiviata)', 'genitori.html' => 'Scuola e Genitori (archiviata)', 'social.html' => 'Seguici sui social', 'cambridge.html' => 'Certificazioni Cambridge',
+    'giornale.html' => 'Giornale (archiviata)', 'radio.html' => 'Radio SMP (archiviata)', 'genitori.html' => 'Scuola e Genitori (archiviata)', 'social.html' => 'Seguici sui social', 'cambridge.html' => 'Sezione Cambridge English',
 ];
 ?>
 <!DOCTYPE html>
