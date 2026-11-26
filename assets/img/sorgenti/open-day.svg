@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef3fd"/><stop offset="1" stop-color="#fff4e2"/></linearGradient>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#eef2fa"/></linearGradient>
+    <linearGradient id="roof" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f6bd6"/><stop offset="1" stop-color="#13449b"/></linearGradient>
+    <linearGradient id="light" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe7a3"/><stop offset="1" stop-color="#ffc23c"/></linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd76b" stop-opacity=".55"/><stop offset="1" stop-color="#ffd76b" stop-opacity="0"/></linearGradient>
+    <filter id="sh" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#13449b" flood-opacity=".20"/></filter>
+    <filter id="sh2" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#0f1c33" flood-opacity=".18"/></filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <circle cx="170" cy="160" r="130" fill="#ffc23c" opacity=".16"/>
+  <circle cx="1060" cy="720" r="200" fill="#2f6bd6" opacity=".09"/>
+  <circle cx="1080" cy="150" r="80" fill="#ff5470" opacity=".10"/>
+  <ellipse cx="600" cy="800" rx="470" ry="34" fill="#13449b" opacity=".10"/>
+
+  <!-- fascio di luce dalla porta -->
+  <path d="M520 790 L680 790 L860 880 L340 880 Z" fill="url(#beam)"/>
+
+  <!-- scuola -->
+  <g filter="url(#sh)">
+    <rect x="300" y="330" width="600" height="460" rx="18" fill="url(#wall)"/>
+    <path d="M270 345 L600 150 L930 345 Z" fill="url(#roof)"/>
+    <circle cx="600" cy="262" r="46" fill="#ffffff"/>
+    <circle cx="600" cy="262" r="36" fill="none" stroke="#13449b" stroke-width="5"/>
+    <path d="M600 240 v24 l14 10" fill="none" stroke="#13449b" stroke-width="5" stroke-linecap="round"/>
+    <!-- finestre -->
+    <g fill="#cfe0fb">
+      <rect x="350" y="400" width="110" height="90" rx="12"/><rect x="740" y="400" width="110" height="90" rx="12"/>
+      <rect x="350" y="560" width="110" height="90" rx="12"/><rect x="740" y="560" width="110" height="90" rx="12"/>
+    </g>
+    <g fill="#ffffff" opacity=".7"><rect x="362" y="410" width="26" height="70" rx="6"/><rect x="752" y="410" width="26" height="70" rx="6"/><rect x="362" y="570" width="26" height="70" rx="6"/><rect x="752" y="570" width="26" height="70" rx="6"/></g>
+    <!-- porta aperta -->
+    <path d="M520 790 V600 a80 80 0 0 1 160 0 V790 Z" fill="url(#light)"/>
+    <path d="M520 790 V600 a80 80 0 0 1 30 -62 L470 560 V770 Z" fill="#13449b"/>
+    <path d="M680 790 V600 a80 80 0 0 0 -30 -62 L730 560 V770 Z" fill="#0c2c6b"/>
+    <circle cx="492" cy="672" r="7" fill="#ffc23c"/><circle cx="708" cy="672" r="7" fill="#ffc23c"/>
+    <rect x="490" y="786" width="220" height="16" rx="8" fill="#ff7a3c"/>
+  </g>
+
+  <!-- palloncini -->
+  <g>
+    <path d="M250 520 C258 600 236 680 262 790" fill="none" stroke="#56657f" stroke-width="3"/>
+    <path d="M200 470 C210 560 230 640 262 790" fill="none" stroke="#56657f" stroke-width="3"/>
+    <ellipse cx="250" cy="470" rx="46" ry="56" fill="#ff5470"/><path d="M244 524 l6 12 6 -12 z" fill="#ff5470"/>
+    <ellipse cx="196" cy="420" rx="42" ry="52" fill="#ffc23c"/><path d="M190 470 l6 12 6 -12 z" fill="#ffc23c"/>
+    <ellipse cx="234" cy="452" rx="10" ry="18" fill="#ffffff" opacity=".35"/><ellipse cx="182" cy="402" rx="9" ry="16" fill="#ffffff" opacity=".35"/>
+  </g>
+  <g>
+    <path d="M950 500 C942 590 966 680 938 790" fill="none" stroke="#56657f" stroke-width="3"/>
+    <ellipse cx="950" cy="450" rx="46" ry="56" fill="#1fc196"/><path d="M944 504 l6 12 6 -12 z" fill="#1fc196"/>
+    <ellipse cx="934" cy="432" rx="10" ry="18" fill="#ffffff" opacity=".35"/>
+  </g>
+
+  <!-- foglietti del calendario con le tre date -->
+  <g filter="url(#sh2)" font-family="Georgia, 'Times New Roman', serif" text-anchor="middle">
+    <g transform="translate(118 680) rotate(-8)">
+      <rect x="-70" y="-70" width="140" height="150" rx="18" fill="#ffffff"/>
+      <path d="M-70 -52 a18 18 0 0 1 18 -18 h104 a18 18 0 0 1 18 18 v20 h-140 z" fill="#13449b"/>
+      <text x="0" y="-38" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#ffffff" letter-spacing="3">DIC</text>
+      <text x="0" y="48" font-size="76" font-weight="700" fill="#13449b">16</text>
+    </g>
+    <g transform="translate(1040 300) rotate(7)">
+      <rect x="-70" y="-70" width="140" height="150" rx="18" fill="#ffffff"/>
+      <path d="M-70 -52 a18 18 0 0 1 18 -18 h104 a18 18 0 0 1 18 18 v20 h-140 z" fill="#ff7a3c"/>
+      <text x="0" y="-38" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#ffffff" letter-spacing="3">DIC</text>
+      <text x="0" y="48" font-size="76" font-weight="700" fill="#ff7a3c">17</text>
+    </g>
+    <g transform="translate(1050 620) rotate(-5)">
+      <rect x="-70" y="-70" width="140" height="150" rx="18" fill="#ffffff"/>
+      <path d="M-70 -52 a18 18 0 0 1 18 -18 h104 a18 18 0 0 1 18 18 v20 h-140 z" fill="#1fc196"/>
+      <text x="0" y="-38" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#ffffff" letter-spacing="3">DIC</text>
+      <text x="0" y="48" font-size="76" font-weight="700" fill="#1a9a6d">21</text>
+    </g>
+  </g>
+
+  <!-- stelline -->
+  <g fill="#ffc23c"><path d="M440 110 l10 26 26 10 -26 10 -10 26 -10 -26 -26 -10 26 -10z"/><path d="M820 90 l7 18 18 7 -18 7 -7 18 -7 -18 -18 -7 18 -7z"/><path d="M90 330 l6 15 15 6 -15 6 -6 15 -6 -15 -15 -6 15 -6z"/><path d="M1130 470 l6 15 15 6 -15 6 -6 15 -6 -15 -15 -6 15 -6z"/></g>
+</svg>

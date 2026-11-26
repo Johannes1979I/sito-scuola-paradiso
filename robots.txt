@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://johannes1979i.github.io/sito-scuola-paradiso/sitemap.xml
+Sitemap: https://www.scuolasantamariadelparadiso.it/sitemap.xml

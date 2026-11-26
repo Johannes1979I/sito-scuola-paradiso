@@ -25,7 +25,7 @@
     cellRaw: "+393405416568",
     email: "segreteria@scuolasantamariadelparadiso.it",
     pec: "spsmparadiso@inviapec.it",
-    orari: "Lun–Ven · 7:45–10:00 / 12:00–13:30",
+    orari: "Lun e Gio 8:30–10:00 / 14:00–15:30 · Mar e Ven 8:30–10:00 · Mer chiuso",
     // Canale chat PROVVISORIO (da decidere: WhatsApp Business o altro)
     whatsapp: "393405416568",
     whatsappMsg: "Salve, vorrei alcune informazioni sulla scuola.",
@@ -55,7 +55,7 @@
     { page: "chi",      label: "Chi siamo",        href: "chi-siamo.html", children: [
       { label: "La nostra identità", href: "chi-siamo.html" },
       { label: "La scuola in breve",  href: "scuola-in-breve.html" },
-      { label: "Corpo docenti",      href: "docenti.html" },
+      { label: "Comitato direttivo", href: "docenti.html" },
       { label: "I nostri grandi ex studenti",      href: "eroi.html" }
     ] },
     { page: "offerta",  label: "Offerta formativa",href: "offerta-formativa.html", children: [
@@ -84,7 +84,7 @@
     { page: "documenti", label: "Area documenti",  href: "area-documenti.html", children: [
       { label: "PTOF",                        href: "ptof.html" },
       { label: "PEI",                         href: "pei.html" },
-      { label: "Regolamento",                 href: "regolamento.html" },
+      { label: "Regolamenti",                 href: "regolamento.html" },
       { label: "Patto di corresponsabilità",  href: "patto-corresponsabilita.html" },
       { label: "Modulistica",                 href: "modulistica.html" },
       { label: "Albo",                        href: "albo.html" },
@@ -169,7 +169,7 @@
         '<li><a href="offerta-formativa.html">Offerta formativa</a></li>' +
         '<li><a href="open-day.html">Open Day</a></li>' +
         '<li><a href="iscrizioni.html">Come iscriversi</a></li>' +
-        '<li><a href="docenti.html">Corpo docenti</a></li>' +
+        '<li><a href="docenti.html">Comitato direttivo</a></li>' +
         '<li><a href="vita-scolastica.html">Vita scolastica</a></li>' +
         '<li><a href="teatro.html">Teatro di fine anno</a></li>' +
         '<li><a href="erasmus.html">Erasmus</a></li>' +

@@ -103,7 +103,7 @@ $CSRF  = csrf_token();
 $pages = site_pages();
 $seo   = seo_read($SEO_FILE);
 if (!isset($seo['global']) || !is_array($seo['global'])) {
-    $seo['global'] = ['base' => 'https://johannes1979i.github.io/sito-scuola-paradiso', 'siteName' => 'Scuola Santa Maria del Paradiso', 'ogDefault' => 'assets/img/logo.png'];
+    $seo['global'] = ['base' => 'https://www.scuolasantamariadelparadiso.it', 'siteName' => 'Scuola Santa Maria del Paradiso', 'ogDefault' => 'assets/img/logo.png'];
 }
 if (!isset($seo['pages']) || !is_array($seo['pages'])) { $seo['pages'] = []; }
 
