@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff4e2"/><stop offset="1" stop-color="#fde6d2"/></linearGradient>
+    <linearGradient id="tab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#eef2fa"/></linearGradient>
+    <linearGradient id="tk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e08a3c"/><stop offset="1" stop-color="#b8612a"/></linearGradient>
+    <filter id="sh" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#8a4a1c" flood-opacity=".22"/></filter>
+    <filter id="sh2" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#0f1c33" flood-opacity=".18"/></filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <circle cx="160" cy="150" r="130" fill="#ffc23c" opacity=".18"/>
+  <circle cx="1060" cy="760" r="190" fill="#ff7a3c" opacity=".10"/>
+  <circle cx="1070" cy="140" r="80" fill="#2f6bd6" opacity=".08"/>
+
+  <!-- foglie d'autunno -->
+  <g opacity=".95">
+    <path transform="translate(130 790) rotate(-20)" d="M0 -40 L10 -14 L36 -22 L22 0 L40 14 L12 16 L8 42 L0 22 L-8 42 L-12 16 L-40 14 L-22 0 L-36 -22 L-10 -14 Z" fill="#e2582b"/>
+    <path transform="translate(1080 780) rotate(25) scale(.9)" d="M0 -40 L10 -14 L36 -22 L22 0 L40 14 L12 16 L8 42 L0 22 L-8 42 L-12 16 L-40 14 L-22 0 L-36 -22 L-10 -14 Z" fill="#ffb02e"/>
+    <path transform="translate(300 110) rotate(15) scale(.7)" d="M0 -40 L10 -14 L36 -22 L22 0 L40 14 L12 16 L8 42 L0 22 L-8 42 L-12 16 L-40 14 L-22 0 L-36 -22 L-10 -14 Z" fill="#ffb02e"/>
+    <path transform="translate(900 120) rotate(-30) scale(.75)" d="M0 -40 L10 -14 L36 -22 L22 0 L40 14 L12 16 L8 42 L0 22 L-8 42 L-12 16 L-40 14 L-22 0 L-36 -22 L-10 -14 Z" fill="#c9452a"/>
+  </g>
+
+  <g transform="translate(0 -110)">
+  <!-- tavola -->
+  <ellipse cx="600" cy="800" rx="520" ry="40" fill="#8a4a1c" opacity=".12"/>
+  <g filter="url(#sh)">
+    <path d="M90 560 Q600 500 1110 560 L1110 760 Q600 820 90 760 Z" fill="url(#tab)"/>
+    <path d="M90 560 Q600 500 1110 560" fill="none" stroke="#ffc23c" stroke-width="8" stroke-dasharray="2 18" stroke-linecap="round"/>
+  </g>
+
+  <!-- tacchino su vassoio -->
+  <g filter="url(#sh)">
+    <ellipse cx="600" cy="560" rx="230" ry="62" fill="#ffffff"/>
+    <ellipse cx="600" cy="560" rx="200" ry="48" fill="#f3f6fb"/>
+    <path d="M430 520 C430 380 770 380 770 520 C770 560 430 560 430 520 Z" fill="url(#tk)"/>
+    <path d="M470 470 C520 420 620 410 690 440" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" opacity=".28"/>
+    <g>
+      <path d="M440 505 C400 480 380 450 392 430 C404 412 432 426 448 470" fill="#c8702f"/>
+      <circle cx="388" cy="428" r="14" fill="#fff6ea"/><circle cx="398" cy="418" r="12" fill="#fff6ea"/>
+      <path d="M760 505 C800 480 820 450 808 430 C796 412 768 426 752 470" fill="#c8702f"/>
+      <circle cx="812" cy="428" r="14" fill="#fff6ea"/><circle cx="802" cy="418" r="12" fill="#fff6ea"/>
+    </g>
+    <g fill="#1fc196"><path d="M470 545 c-20 -18 -10 -40 12 -30 c4 18 0 26 -12 30z"/><path d="M730 545 c20 -18 10 -40 -12 -30 c-4 18 0 26 12 30z"/></g>
+  </g>
+
+  <!-- purè -->
+  <g filter="url(#sh2)">
+    <ellipse cx="250" cy="650" rx="110" ry="32" fill="#ffffff"/>
+    <path d="M170 640 C170 580 330 580 330 640 Z" fill="#fff3c8"/>
+    <path d="M200 610 C230 590 270 590 300 612" fill="none" stroke="#ffe08a" stroke-width="8" stroke-linecap="round"/>
+    <rect x="236" y="586" width="28" height="12" rx="4" fill="#ffd34d"/>
+  </g>
+  <!-- mais e carote -->
+  <g filter="url(#sh2)">
+    <ellipse cx="420" cy="705" rx="96" ry="28" fill="#ffffff"/>
+    <g transform="translate(390 690) rotate(-14)"><rect x="-16" y="-44" width="32" height="84" rx="16" fill="#ffc23c"/><g fill="#ffd96b"><circle cx="-6" cy="-30" r="5"/><circle cx="6" cy="-18" r="5"/><circle cx="-6" cy="-6" r="5"/><circle cx="6" cy="6" r="5"/><circle cx="-6" cy="18" r="5"/></g><path d="M-16 30 C-30 46 -10 52 0 40 C10 52 30 46 16 30 Z" fill="#7cc36a"/></g>
+    <g transform="translate(450 700) rotate(30)"><path d="M0 -40 L14 30 L-14 30 Z" fill="#ff7a3c"/><path d="M-8 30 l-8 18 M0 30 v20 M8 30 l8 18" stroke="#1fa878" stroke-width="5" stroke-linecap="round"/></g>
+    <g transform="translate(470 690) rotate(55)"><path d="M0 -34 L12 26 L-12 26 Z" fill="#ff8c4a"/><path d="M-6 26 l-6 14 M6 26 l6 14" stroke="#1fa878" stroke-width="5" stroke-linecap="round"/></g>
+  </g>
+  <!-- torta di mele -->
+  <g filter="url(#sh2)">
+    <ellipse cx="800" cy="705" rx="120" ry="34" fill="#ffffff"/>
+    <path d="M700 690 C700 640 900 640 900 690 L890 712 C860 724 740 724 710 712 Z" fill="#d98a3a"/>
+    <ellipse cx="800" cy="668" rx="100" ry="26" fill="#f0b25b"/>
+    <g stroke="#d98a3a" stroke-width="7" stroke-linecap="round"><path d="M730 664 L870 672"/><path d="M745 652 L855 684"/><path d="M800 643 L800 694"/><path d="M760 690 L840 646"/></g>
+  </g>
+  <!-- regalini e biglietto -->
+  <g filter="url(#sh2)">
+    <rect x="950" y="600" width="110" height="90" rx="10" fill="#2f6bd6"/><rect x="996" y="600" width="18" height="90" fill="#ffc23c"/><rect x="950" y="636" width="110" height="16" fill="#ffc23c"/>
+    <path d="M1005 600 C980 570 960 590 1000 600 C1040 590 1030 570 1005 600 Z" fill="#ffc23c"/>
+    <rect x="130" y="470" width="150" height="100" rx="12" fill="#ffffff" transform="rotate(-8 205 520)"/>
+    <text x="205" y="532" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="38" font-weight="700" fill="#e2582b" transform="rotate(-8 205 520)">Grazie!</text>
+  </g>
+  </g>
+  <g fill="#ffc23c"><path d="M600 120 l10 26 26 10 -26 10 -10 26 -10 -26 -26 -10 26 -10z"/><path d="M1110 250 l7 18 18 7 -18 7 -7 18 -7 -18 -18 -7 18 -7z"/><path d="M90 300 l6 15 15 6 -15 6 -6 15 -6 -15 -15 -6 15 -6z"/></g>
+</svg>
