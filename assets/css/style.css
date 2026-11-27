@@ -1328,3 +1328,13 @@ a.corso { color: inherit; text-decoration: none; cursor: pointer; }
 .intl-body h3 { margin: 12px 0 8px; }
 .intl-body p { color: var(--muted); margin-bottom: 14px; }
 .intl-body .tag { display: inline-block; font-size: .76rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blu); background: var(--bg-blu); padding: 5px 12px; border-radius: 100px; }
+
+/* Avviso elezioni Consiglio di Istituto (temporaneo) */
+.vote-wrap { padding-bottom: 0; }
+.vote-bar { display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center; background: #fff; border: 2px solid var(--blu-chiaro); border-radius: var(--r-xl); padding: clamp(22px, 3.5vw, 34px) clamp(22px, 4vw, 40px); box-shadow: 0 20px 40px -24px rgba(19,68,155,.45); }
+.vote-ico { width: 76px; height: 76px; border-radius: 22px; background: var(--bg-blu); display: grid; place-items: center; font-size: 2.4rem; }
+.vote-tag { display: inline-block; background: var(--rosa); color: #fff; font-weight: 700; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; padding: 6px 14px; border-radius: 999px; }
+.vote-text h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); margin: 10px 0 6px; }
+.vote-text p { color: var(--muted); margin: 0; }
+.vote-btn { white-space: nowrap; }
+@media (max-width: 860px) { .vote-bar { grid-template-columns: 1fr; text-align: center; justify-items: center; } .vote-btn { white-space: normal; } }
